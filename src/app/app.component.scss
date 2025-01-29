@@ -1,0 +1,21 @@
+.main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;   
+    transition: 0.5s;
+}
+
+.main.dark
+{
+    background-color: #8c52ff;
+}
+
+.main.light
+{
+    background-color: #ff66c4;
+}
+
