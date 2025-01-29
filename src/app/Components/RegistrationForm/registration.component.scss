@@ -9,6 +9,10 @@
     justify-content: center;
     align-items: center;
     gap: 40px;
+
+    @media (max-width:768px) {
+      width: 85vw;
+    }
 }
 .logo
 {
@@ -22,11 +26,47 @@
  height: 60px;
  border-radius: 20px;
  border: none;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 20px;
+ font-size: large;
+ text-wrap: wrap;
+ cursor: pointer;
+ @media (max-width:500px) {
+    width: 80%;
+    font-size: small;
+    font-weight: bold;
+    gap: 5px;
+ }
+ 
 }
 .GoogleLogo
 {
-    height: 50px;
+    height: 40px;
     border-radius: 50%;
+}
+
+.GuestLogin
+{
+ width: 60%;
+ height: 60px;
+ border-radius: 20px;
+ border: none;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 20px;
+ font-size: large;cursor: pointer;
+ background-color: darkmagenta;
+ color: white;
+ text-wrap: wrap;
+ @media (max-width:500px) {
+    width: 80%;
+    font-size: small;
+    font-weight: bold;
+    
+ }
 }
 
 .dark
@@ -36,5 +76,17 @@
 
 .light
 {
-    background-color: #ff66c4;
+    background-color: #f5a2b5
+}
+
+.light-text
+{
+  
+  color: black;
+  
+}
+
+.dark-text
+{
+  color: white;
 }

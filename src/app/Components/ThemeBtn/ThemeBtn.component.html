@@ -1,3 +1,3 @@
-<button class="ThemeBtn" [ngClass]="themeService.themeSignal()">
-Theme
-</button>
+<div class="container">
+    <img [src]="themeService.themeSignal() === 'dark' ? 'dark-bocchi.gif' : 'light-bocchi.gif'" alt="Bocchi Gif" class="gif">
+</div>
