@@ -1,0 +1,21 @@
+.Registration-Section
+{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+    @media (max-width:768px) {
+      width: 85vw;
+    }
+}
+.logo
+{
+    border-radius: 50%;
+    height: 150px;
+}
