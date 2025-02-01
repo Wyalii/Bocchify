@@ -1,0 +1,12 @@
+<section class="Registration-Section" >
+    <img [src]="'/Bochi.jpeg'" alt="Bocchify" class="logo">
+    <button  class="Login" [ngClass]="themeService.themeSignal()">
+        <p [ngClass]="themeService.themeSignal() === 'dark' ? 'dark-text' : 'light-text'">Login</p>
+    </button>
+    <button  class="Registration" [ngClass]="themeService.themeSignal()">
+        <p [ngClass]="themeService.themeSignal() === 'dark' ? 'dark-text' : 'light-text'">Registration</p>
+    </button>
+    <button class="GuestLogin">
+        <p>Continue as a guest.</p>
+    </button>
+</section>

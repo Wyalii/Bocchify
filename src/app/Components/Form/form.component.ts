@@ -3,11 +3,11 @@ import { ThemeService } from '../../services/theme.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'Registration-Form',
-  templateUrl: 'registration.component.html',
-  styleUrl: 'registration.component.scss',
+  selector: 'Form',
+  templateUrl: 'form.component.html',
+  styleUrl: 'form.component.scss',
   imports: [CommonModule],
 })
-export class RegistrationForm {
+export class Form {
   constructor(public themeService: ThemeService) {}
 }
