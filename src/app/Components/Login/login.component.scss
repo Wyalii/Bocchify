@@ -1,0 +1,69 @@
+.Login
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.logo
+{
+    border-radius: 50%;
+    height: 150px;
+}
+
+h1{
+  color: black;
+  font-weight: lighter;
+  font-size: xx-large;
+  padding: 0;
+  margin: 0;
+}
+.input{
+  height: 60px;
+  width: 200px;
+  border: none;
+  background-color: #8c52ff;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  outline: none;
+  font-size: larger;
+}
+
+.button{
+  height: 60px;
+  width: 200px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: larger;
+  background-color: gainsboro;
+}
+
+.input::placeholder
+{
+  color: white;
+}
+
+.dark
+{
+    background-color: #8c52ff;
+}
+
+.light
+{
+    background-color: #f5a2b5
+}
+.light-text
+{
+  
+  color: black;
+  
+}
+
+.dark-text
+{
+  color: white;
+}

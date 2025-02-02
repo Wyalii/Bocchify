@@ -1,16 +1,18 @@
-<section class="Form" *ngIf="!isLogin && !isRegistering">
+<section class="Form" >
+    <div class="form-header" *ngIf="isLogin || isRegistering">
+        <button type="button" (click)="handleGoBack()">Go Back</button>
+    </div>
     <img [src]="'/Bochi.jpeg'" alt="Bocchify" class="logo">
-    <button type="button" class="Login" [ngClass]="themeService.themeSignal()">
+    <button *ngIf="!isLogin && !isRegistering" type="button" class="LoginBtn" [ngClass]="themeService.themeSignal()" (click)="toggleLogin()">
         <p [ngClass]="themeService.themeSignal() === 'dark' ? 'dark-text' : 'light-text'">Login</p>
     </button>
-    <button type="button" class="Registration" [ngClass]="themeService.themeSignal()">
-        <p [ngClass]="themeService.themeSignal() === 'dark' ? 'dark-text' : 'light-text'" (click)="toggleRegister()">Registration</p>
+    <button *ngIf="!isLogin && !isRegistering" type="button" class="RegistrationBtn" [ngClass]="themeService.themeSignal()" (click)="toggleRegister()">
+        <p [ngClass]="themeService.themeSignal() === 'dark' ? 'dark-text' : 'light-text'">Registration</p>
     </button>
-    <button type="button" class="GuestLogin">
+    <button *ngIf="!isLogin && !isRegistering"  type="button" class="GuestLogin">
         <p>Continue as a guest.</p>
     </button>
-</section>
-
-<section class=Form *ngIf="!isLogin && isRegistering" >
-<Register></Register>
+    <Login *ngIf="!isRegistering && isLogin" class="login"></Login>
+    <Register *ngIf="!isLogin && isRegistering" class="register"></Register>
+    
 </section>

@@ -1,21 +1,70 @@
-.Registration-Section
+.Registration
 {
-    width: 500px;
-    height: 500px;
-    background-color: white;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
-    @media (max-width:768px) {
-      width: 85vw;
-    }
 }
 .logo
 {
     border-radius: 50%;
     height: 150px;
+}
+
+h1{
+  color: black;
+  font-weight: lighter;
+  font-size: xx-large;
+  padding: 0;
+  margin: 0;
+}
+.input{
+  height: 60px;
+  width: 200px;
+  border: none;
+  background-color: #8c52ff;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  outline: none;
+  font-size: larger;
+}
+
+.button{
+  height: 60px;
+  width: 200px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: larger;
+  background-color: gainsboro;
+}
+
+.input::placeholder
+{
+  color: white;
+}
+
+.dark
+{
+    background-color: #8c52ff;
+}
+
+.light
+{
+    background-color: #f5a2b5
+}
+.light-text
+{
+  
+  color: black;
+  
+}
+
+.dark-text
+{
+  color: white;
 }
