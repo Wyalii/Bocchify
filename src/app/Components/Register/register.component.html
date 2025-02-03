@@ -1,6 +1,6 @@
 <div class="Registration">
-  <h1 @fadeLeft>Registration</h1>
-  <input placeholder="Username" class="input">
-  <input placeholder="Password" type="password" class="input" >
-  <button type="button" class="button">Submit</button>
+  <h1>Registration</h1>
+  <input #usernameInput placeholder="Username" class="input">
+  <input #passwordInput placeholder="Password" type="password" class="input" >
+  <button type="button" class="button" (click)="register(usernameInput.value,passwordInput.value)">Submit</button>
 </div>

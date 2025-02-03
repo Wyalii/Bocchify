@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: 'login.component.scss',
   imports: [CommonModule],
 })
-export class Login {}
+export class Login {
+  login() {
+    console.log('login clicked');
+  }
+}
