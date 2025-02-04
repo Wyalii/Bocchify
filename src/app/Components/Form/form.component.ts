@@ -12,7 +12,7 @@ import { Login } from '../Login/login.component';
 })
 export class Form {
   isRegistering: boolean = false;
-  isLogin: boolean = false;
+  isLogin: boolean = true;
   constructor(public themeService: ThemeService) {}
 
   toggleRegister() {
