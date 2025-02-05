@@ -1,7 +1,7 @@
 <div class="Login">
     <h1>Login</h1>
-    <input placeholder="Username" class="input">
-    <input placeholder="Password" type="password" class="input">
-    <button type="button" class="button" (click)="login()">Submit</button>
+    <input #usernameInput placeholder="Username" class="input" [class]="themeService.themeSignal() === 'dark' ? 'light' : 'dark'">
+    <input #passwordInput placeholder="Password" type="password" class="input" [class]="themeService.themeSignal() === 'dark' ? 'light' : 'dark'">
+    <button type="button" class="button" (click)="login(usernameInput.value,passwordInput.value)">Submit</button>
     
   </div>

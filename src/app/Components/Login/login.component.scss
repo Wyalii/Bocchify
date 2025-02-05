@@ -6,12 +6,9 @@
   flex-direction: column;
   gap: 20px;
   font-family: monospace;
+  margin-bottom: 40px;
 }
-.logo
-{
-    border-radius: 50%;
-    height: 150px;
-}
+
 
 h1{
   color: black;
@@ -19,6 +16,7 @@ h1{
   font-size: xx-large;
   padding: 0;
   margin: 0;
+  font-family: monospace;
 }
 .input{
   height: 60px;
@@ -30,6 +28,7 @@ h1{
   color: white;
   outline: none;
   font-size: larger;
+  font-family: monospace;
 }
 
 .button{
@@ -40,6 +39,7 @@ h1{
   cursor: pointer;
   font-size: larger;
   background-color: gainsboro;
+  font-family: monospace;
 }
 
 .input::placeholder

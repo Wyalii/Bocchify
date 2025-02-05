@@ -1,5 +1,5 @@
 <section class="Form" >
-    <div class="box1" [ngClass]="themeService.themeSignal() === 'dark' ? 'light' : 'dark'">
+    <div class="box1" [class]="themeService.themeSignal() === 'dark' ? 'light' : 'dark'">
         <img [src]="'/Bochi.jpeg'" alt="Bocchify" class="logo">
         <div class="title-box">
           <h1>Welcome To</h1>
@@ -7,18 +7,17 @@
         </div>
     </div>
     <div class="box2">
-        <button *ngIf="!isLogin && !isRegistering" type="button" class="LoginBtn" [ngClass]="themeService.themeSignal()" (click)="toggleLogin()">
-            <p [ngClass]="themeService.themeSignal() === 'dark' ? 'dark-text' : 'light-text'">Login</p>
-        </button>
-        <button *ngIf="!isLogin && !isRegistering" type="button" class="RegistrationBtn" [ngClass]="themeService.themeSignal()" (click)="toggleRegister()">
-            <p [ngClass]="themeService.themeSignal() === 'dark' ? 'dark-text' : 'light-text'">Registration</p>
-        </button>
-        <button *ngIf="!isLogin && !isRegistering"  type="button" class="GuestLogin">
-            <p>Continue as a guest.</p>
-        </button>
+      
+        
         <Login *ngIf="!isRegistering && isLogin" class="login"></Login>
-        <p *ngIf="!isRegistering && isLogin" (click)="toggleRegister()" class="Trigger">Create Account</p>
+    
         <Register *ngIf="!isLogin && isRegistering" class="register"></Register>
-        <p *ngIf="!isLogin && isRegistering" (click)="toggleLogin()" class="Trigger">Login</p>
+        
+        <div class="guest-login">
+           <p *ngIf="!isRegistering && isLogin" (click)="toggleRegister()" class="Trigger">Create Account</p>
+           <p *ngIf="!isLogin && isRegistering" (click)="toggleLogin()" class="Trigger">Login</p>
+           <hr>
+           <p>continue as a guest</p>
+        </div>
     </div>
 </section>
