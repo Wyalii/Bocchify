@@ -1,0 +1,15 @@
+<header>
+    <div class="box1">
+      <img [src]="'/Bochi.jpeg'" alt="Bocchify" class="logo">
+      
+    </div>
+
+    <div class="box2">
+      <input class="search" placeholder="Search...">
+      <img src="/search.png" alt="search" class="glass">
+    </div>
+
+    <button class="box3" [class]="themeService.themeSignal() === 'dark' ? 'light' : 'dark'">
+        <a class="cursor-pointer" routerLink="/auth-page" routerLinkActive="active">Login/Registration</a>
+    </button>
+</header>

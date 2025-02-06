@@ -1,6 +1,7 @@
 <main class="main" [ngClass]="themeService.themeSignal()">
-    <Theme-Button (click)="themeService.updateTheme()"></Theme-Button>
-    <Form></Form>
-  </main>
-  <router-outlet />
+  <app-header ></app-header>
+  <app-landing *ngIf="currentRoute === '/'"></app-landing>
+  <router-outlet [@routeAnimation]="currentRoute"></router-outlet>
   
+  
+</main>

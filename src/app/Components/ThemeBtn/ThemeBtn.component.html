@@ -1,3 +1,1 @@
-<div class="container">
-    <img [src]="themeService.themeSignal() === 'dark' ? 'dark-bocchi.gif' : 'light-bocchi.gif'" alt="Bocchi Gif" class="gif">
-</div>
+<img [src]="themeService.themeSignal() === 'dark' ? 'dark-bocchi.gif' : 'light-bocchi.gif'" alt="Bocchi Gif" class="gif" (click)="themeService.updateTheme()">

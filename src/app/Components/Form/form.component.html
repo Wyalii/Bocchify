@@ -7,12 +7,8 @@
         </div>
     </div>
     <div class="box2">
-      
-        
         <Login *ngIf="!isRegistering && isLogin" class="login"></Login>
-    
         <Register *ngIf="!isLogin && isRegistering" class="register"></Register>
-        
         <div class="guest-login">
            <p *ngIf="!isRegistering && isLogin" (click)="toggleRegister()" class="Trigger">Create Account</p>
            <p *ngIf="!isLogin && isRegistering" (click)="toggleLogin()" class="Trigger">Login</p>

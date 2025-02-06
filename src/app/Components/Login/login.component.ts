@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ThemeService } from '../../services/theme.service';
 import { CookieService } from 'ngx-cookie-service';
-
+import { Router } from '@angular/router';
 interface AuthResponse {
   message: string;
   token: string;
@@ -19,7 +19,8 @@ export class Login {
   constructor(
     public themeService: ThemeService,
     private http: HttpClient,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private router: Router
   ) {}
 
   private apiUrl = 'http://localhost:5227/api/Auth/login';
@@ -31,6 +32,7 @@ export class Login {
         console.log(response.token);
         if (response.token !== undefined && response.token !== null) {
           this.cookieService.set('token', response.token, undefined, '/');
+          this.router.navigate(['/main-page']);
         }
       },
       error: (response) => {
