@@ -1,7 +1,5 @@
 <main class="main" [ngClass]="themeService.themeSignal()">
   <app-header ></app-header>
   <app-landing *ngIf="currentRoute === '/'"></app-landing>
-  <router-outlet [@routeAnimation]="currentRoute"></router-outlet>
-  
-  
+  <router-outlet ></router-outlet>
 </main>
