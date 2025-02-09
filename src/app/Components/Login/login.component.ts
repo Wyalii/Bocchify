@@ -28,11 +28,10 @@ export class Login {
     const requestBody = { username, password };
     this.http.post<AuthResponse>(this.apiUrl, requestBody).subscribe({
       next: (response) => {
-        console.log('success:', response);
-        console.log(response.token);
         if (response.token !== undefined && response.token !== null) {
           this.cookieService.set('token', response.token, undefined, '/');
-          this.router.navigate(['/main-page']);
+          this.router.navigate(['/']);
+          window.location.reload();
         }
       },
       error: (response) => {

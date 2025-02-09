@@ -81,6 +81,7 @@ a{
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .dark
@@ -91,4 +92,68 @@ a{
 .light
 {
     background-color: #f5a2b5
+}
+
+.mode-container
+{
+    
+    position: relative;
+}
+.slide
+{
+    width: 100px;
+    height: 45px;
+    border-radius: 15px;
+    border:none;
+    
+}
+
+@keyframes SlideRight {
+    from{left: 5px;}
+    to {left: 60px}
+}
+
+@keyframes SlideLeft {
+    from{left: 50px;}
+    to{left: 5px}
+}
+
+.slide-right
+{
+    animation-name: SlideRight;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+.slide-left
+{
+    animation-name: SlideLeft;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+.theme-btn
+{
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    
+}
+
+.disabled{
+    display: none;
+    
+}
+
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.guest-img
+{
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
 }
