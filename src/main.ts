@@ -7,6 +7,8 @@ import { AuthPageComponent } from './app/pages/auth-page/auth-page.component';
 import { authGuard } from './app/guards/auth.guard';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HttpClientModule } from '@angular/common/http';
+import { register as registerSwiperEelements } from 'swiper/element/bundle';
+registerSwiperEelements();
 const routes: Routes = [
   {
     path: 'auth-page',

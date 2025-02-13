@@ -7,6 +7,7 @@
     align-items: center;
     gap: 30px;   
     transition: 0.5s;
+    
 }
 
 .main.dark
@@ -17,5 +18,19 @@
 .main.light
 {
     background-color: #f5a2b5;
+}
+.landing-container
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+    
+}
+.header
+{
+    width: 100%;
 }
 

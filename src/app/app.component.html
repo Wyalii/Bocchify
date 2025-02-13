@@ -1,5 +1,5 @@
 <main class="main" [ngClass]="themeService.themeSignal()">
-  <app-header ></app-header>
-  <app-landing *ngIf="currentRoute === '/'"></app-landing>
+  <app-header class="header"></app-header>
+  <app-landing *ngIf="currentRoute === '/'" class="landing-container"></app-landing>
   <router-outlet ></router-outlet>
 </main>

@@ -8,7 +8,13 @@ import { Observable } from 'rxjs';
 export class SpotifyServiceService {
   constructor(private http: HttpClient) {}
 
-  getAccessToken(): Observable<any> {
-    return this.http.get('http://localhost:5227/api/Spotify/access-token');
+  getAlbumsByName(albumName: string): Observable<any> {
+    return this.http.post(
+      'http://localhost:5227/api/Spotify/get-album',
+      JSON.stringify(albumName),
+      {
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 }

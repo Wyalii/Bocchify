@@ -1,12 +1,16 @@
-import { Component, ViewEncapsulation, OnInit, inject } from '@angular/core';
+import {
+  Component,
+  ViewEncapsulation,
+  OnInit,
+  inject,
+  CUSTOM_ELEMENTS_SCHEMA,
+} from '@angular/core';
 import { NavigationEnd, RouterOutlet } from '@angular/router';
 import { ThemeService } from './services/theme.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LandingComponent } from './Components/landing/landing.component';
 import { HeaderComponent } from './Components/header/header.component';
-import { SpotifyServiceService } from './services/spotify-service.service';
-import { jwtDecode } from 'jwt-decode';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './services/token.service';
 @Component({
@@ -15,22 +19,16 @@ import { TokenService } from './services/token.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   encapsulation: ViewEncapsulation.None,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppComponent implements OnInit {
   title = 'Bocchify';
   currentRoute: string = '';
-  accessToken: string = '';
   cookieService = inject(CookieService);
   tokenService = inject(TokenService);
-  decodedToken: any;
-  constructor(
-    public themeService: ThemeService,
-    private router: Router,
-    private spotifyService: SpotifyServiceService
-  ) {}
+  constructor(public themeService: ThemeService, private router: Router) {}
   ngOnInit(): void {
     this.CheckRoutes();
-    this.getAccessToken();
     this.tokenService.decodeUserToken();
   }
 
@@ -40,15 +38,5 @@ export class AppComponent implements OnInit {
         this.currentRoute = this.router.url;
       }
     });
-  }
-  getAccessToken() {
-    this.spotifyService.getAccessToken().subscribe(
-      (response) => {
-        this.accessToken = response.accessToken;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
   }
 }

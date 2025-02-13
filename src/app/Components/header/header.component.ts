@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
     this.tokenService.decodedToken$.subscribe((decodedUserToken) => {
       if (decodedUserToken) {
         this.decodedToken = decodedUserToken;
-        console.log(this.decodedToken);
       }
     });
   }
