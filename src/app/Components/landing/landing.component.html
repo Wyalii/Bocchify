@@ -1,12 +1,15 @@
 <div class="box1">
 sidebar here
 </div>
-<div class="box2">
-<swiper-container slides-per-view="6" loop="true" paginaton="true" space-between="10" clickable="true" >
-  <swiper-slide *ngFor="let album of Albums" class="slide">
+
+<div class="box2" [class]="themeService.themeSignal() === 'dark'? 'light' : 'dark'">
+<h1>Playlists From Spotfiy:</h1>
+<swiper-container slides-per-view="6" loop="true" paginaton="true" space-between="20" clickable="true">
+  <swiper-slide *ngFor="let playlist of Playlists"  class="slide">
     <div class="album-card">
-      <img [src]="album.images?.[0]?.url" alt="{{ album.name }}" class="album-img">
-      <p class="album-title">{{ album.name }}</p>
+      <img [src]="playlist.images?.[0]?.url" alt="{{ playlist.name }}" class="album-img">
+      <p class="album-title">{{ playlist?.name }}</p>
+      <img src="/play-btn.png" class="play-btn">
     </div>
   </swiper-slide>
 </swiper-container>

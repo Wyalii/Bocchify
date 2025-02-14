@@ -8,7 +8,6 @@ export const pagesGuardGuard: CanActivateFn = (route, state) => {
   const token = cookieService.get('token');
   if (!token) {
     router.navigate(['/']);
-
     return false;
   }
   return true;

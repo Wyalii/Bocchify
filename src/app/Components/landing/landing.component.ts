@@ -5,8 +5,13 @@ import {
   OnInit,
 } from '@angular/core';
 import { SpotifyServiceService } from '../../services/spotify-service.service';
-
+import { ThemeService } from '../../services/theme.service';
 import { CommonModule } from '@angular/common';
+
+interface Playlist {
+  name: string;
+  images?: { url: string }[];
+}
 
 @Component({
   selector: 'app-landing',
@@ -17,13 +22,12 @@ import { CommonModule } from '@angular/common';
 })
 export class LandingComponent implements OnInit {
   spotifyService = inject(SpotifyServiceService);
-  Albums: any;
-
+  Playlists: any;
+  constructor(public themeService: ThemeService) {}
   ngOnInit(): void {
-    this.spotifyService.getAlbumsByName('Bleach Soundtrack').subscribe({
+    this.spotifyService.getPlaylistsByName('Anime Soundtracks').subscribe({
       next: (data) => {
-        this.Albums = data.albums.items;
-        console.log(this.Albums);
+        this.Playlists = data.playlists.items;
       },
       error: (err) => {
         console.log(err);

@@ -13,6 +13,7 @@ import { LandingComponent } from './Components/landing/landing.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './services/token.service';
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, CommonModule, LandingComponent, HeaderComponent],
