@@ -1,18 +1,7 @@
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  inject,
-  OnInit,
-} from '@angular/core';
-import { SpotifyServiceService } from '../../services/spotify-service.service';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { CommonModule } from '@angular/common';
-
-interface Playlist {
-  name: string;
-  images?: { url: string }[];
-}
-
+import { YoutubeServiceService } from '../../services/youtube-service.service';
 @Component({
   selector: 'app-landing',
   imports: [CommonModule],
@@ -21,17 +10,20 @@ interface Playlist {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class LandingComponent implements OnInit {
-  spotifyService = inject(SpotifyServiceService);
-  Playlists: any;
-  constructor(public themeService: ThemeService) {}
+  constructor(
+    public themeService: ThemeService,
+    public youtubeService: YoutubeServiceService
+  ) {}
+  OpeningsDefault: boolean = true;
+  EndingsDefault: boolean = false;
+  SoundTracksDefault: boolean = false;
+  AnimesDefault: boolean = false;
+
+  category: string = '';
+  selectCategory(categoryInput: string) {
+    this.category = categoryInput;
+  }
   ngOnInit(): void {
-    this.spotifyService.getPlaylistsByName('Anime Soundtracks').subscribe({
-      next: (data) => {
-        this.Playlists = data.playlists.items;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+    this.youtubeService.getBleachOpenings('PLWgzYL0xXn_gN6TEiOVrX4xYzLIg-0bj0');
   }
 }

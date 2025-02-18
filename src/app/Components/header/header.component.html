@@ -1,10 +1,7 @@
 <header>
     <div class="box1">
-      <img [src]="'/Bochi.jpeg'" alt="Bocchify" class="logo" routerLink="/" routerLinkActive="active"> 
-      <div class="mode-container">
-        <input class="slide" [class]="themeService.themeSignal() === 'dark'? 'light' : 'dark'" readonly disabled>
-        <Theme-Button class="theme-btn" [class]="themeService.themeSignal() === 'dark' ? 'slide-left' : 'slide-right'"></Theme-Button>
-      </div>
+      <img [src]="'/Bochi.jpeg'" alt="Bocchify" class="logo" > 
+      <h1>Bocchify.</h1>
     </div>
 
     <div class="box2">
@@ -12,13 +9,9 @@
       <img src="/search.png" alt="search" class="glass">
     </div>
 
-    <div [class]="decodedToken ? 'disabled': ''">
-      <button class="box3" [class]="themeService.themeSignal() === 'dark' ? 'light' : 'dark'" >
-        <a class="cursor-pointer" routerLink="/auth-page" routerLinkActive="active">Login/Registration</a>
-      </button>
+    <div class="mode-container">
+      <input class="slide" [class]="themeService.themeSignal() === 'dark'? 'light' : 'dark'" readonly disabled>
+      <Theme-Button class="theme-btn" [class]="themeService.themeSignal() === 'dark' ? 'slide-left' : 'slide-right'"></Theme-Button>
     </div>
-    <div class="profile">
-      <img src="/guest.png" alt="guest icon" [class]="!decodedToken ? 'disabled':''" class="guest-img">
-      
-    </div>
+    
 </header>

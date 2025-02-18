@@ -2,15 +2,28 @@
 sidebar here
 </div>
 
-<div class="box2" [class]="themeService.themeSignal() === 'dark'? 'light' : 'dark'">
-<h1>Playlists From Spotfiy:</h1>
-<swiper-container slides-per-view="6" loop="true" paginaton="true" space-between="20" clickable="true">
-  <swiper-slide *ngFor="let playlist of Playlists"  class="slide">
-    <div class="album-card">
-      <img [src]="playlist.images?.[0]?.url" alt="{{ playlist.name }}" class="album-img">
-      <p class="album-title">{{ playlist?.name }}</p>
-      <img src="/play-btn.png" class="play-btn">
+<div class="box2">
+    <div class="box2-header" [ngClass]="themeService.themeSignal() === 'dark' ? 'light' : 'dark'">
+      <button>Openings</button>
+      <button>Endings</button>
+      <button>SoundTracks</button>
+      <button>Animes</button>
     </div>
-  </swiper-slide>
-</swiper-container>
+    <div *ngIf="OpeningsDefault" class="Openings-Default-Box">
+      <h2>Bleach Openings</h2>
+      <swiper-container slides-per-view="3" space-between="10">
+        <swiper-slide *ngFor="let opening of youtubeService.BleachOpenings" class="slide">
+          <img *ngIf="opening.snippet?.thumbnails?.medium?.url" 
+               [src]="opening.snippet.thumbnails.medium.url" 
+               alt="Bleach Opening" class="op-img">
+          <img src="/play-btn.png" class="play-img">     
+        </swiper-slide>
+      </swiper-container>
+      
+    </div>
+
+
+    <div *ngIf="EndingsDefault" class="Endings-Default-Box"></div>
+    <div *ngIf="SoundTracksDefault" class="SoundTracks-Default-Box"></div>
+    <div *ngIf="AnimesDefault" class="Animes-Default-Box"></div>
 </div>
