@@ -1,0 +1,20 @@
+<div class="anime-card">
+  <img [src]="anime.images.jpg.image_url" alt="{{ anime.title }}" class="anime-img">
+  <div class="anime-info">
+   <p class="airing">{{anime.status}}</p>
+   <p class="episodes">{{anime.episodes}} episodes</p>
+   <h1 class="anime-title">{{anime.title}}</h1>
+
+   <div class="anime-rating">
+    <div class="rating-box">
+      <img src="/star.png" alt="star image" class="star">
+      <p>{{anime.score}}</p>
+      
+    </div>
+    <div class="ranking-box">
+      <p>#{{anime.rank}}</p>
+      <p>ranking</p>
+    </div>
+   </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+.anime-card
+{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 5px;
+  gap: 8px;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+img{
+  border-radius: 10px;
+}
+.airing
+{
+  color: white;
+  font-weight: bold;
+  font-size: medium;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 10px;
+}
+.anime-info
+{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+.anime-rating
+{
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+.anime-title
+{
+  font-size: x-large;
+}
+.rating-box
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.star
+{
+  height: 17px;
+  width: 17px;
+}
+.ranking-box
+{
+  display: flex;
+  gap: 2px;
+}
+.anime-img
+{
+  cursor: pointer;
+}

@@ -1,10 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { CommonModule } from '@angular/common';
-import { YoutubeServiceService } from '../../services/youtube-service.service';
+import { AnimeService } from '../../services/anime.service';
+import { AnimeCardComponent } from '../anime-card/anime-card.component';
+
 @Component({
   selector: 'app-landing',
-  imports: [CommonModule],
+  imports: [CommonModule, AnimeCardComponent],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -12,18 +14,18 @@ import { YoutubeServiceService } from '../../services/youtube-service.service';
 export class LandingComponent implements OnInit {
   constructor(
     public themeService: ThemeService,
-    public youtubeService: YoutubeServiceService
+    public animeService: AnimeService
   ) {}
-  OpeningsDefault: boolean = true;
-  EndingsDefault: boolean = false;
-  SoundTracksDefault: boolean = false;
-  AnimesDefault: boolean = false;
-
-  category: string = '';
-  selectCategory(categoryInput: string) {
-    this.category = categoryInput;
-  }
+  topAnimes: any[] = [];
   ngOnInit(): void {
-    this.youtubeService.getBleachOpenings('PLWgzYL0xXn_gN6TEiOVrX4xYzLIg-0bj0');
+    this.animeService.getTopAnimes().subscribe({
+      next: (animeData) => {
+        this.topAnimes = animeData;
+        console.log(this.topAnimes);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 }
