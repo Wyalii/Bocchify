@@ -6,6 +6,10 @@ header{
     height: 60px;
     padding-top: 30px;
     font-family: monospace;
+    @media (max-width:1000px) {
+        width: 80%;
+        justify-content: space-between;
+    };
 }
 
 .profile-icon
@@ -28,6 +32,18 @@ header{
     align-items: center;
     justify-content: center;
     gap: 30px;
+    @media (max-width:1000px) {
+        display: none;
+    }
+}
+.small-menu-img
+{
+    height: 50px;
+    width: 50px;
+    display: none;
+    @media (max-width:1000px) {
+        display: block;
+    }
 }
 .box2
 {
@@ -39,6 +55,9 @@ header{
     justify-content: center;
     gap: 30px;
     font-size: x-large;
+    @media (max-width:600px) {
+        width: 150px;
+    }
 }
 
 .box3
@@ -76,6 +95,12 @@ a{
     height: 35px;
     top: 11px;
     right: 88%;
+    @media (max-width:600px) {
+       width: 25px;
+       height: 25px;
+       top: 15px;
+       right: 70%;
+    }
 }
 .logo
 {
@@ -97,8 +122,10 @@ a{
 
 .mode-container
 {
-    
     position: relative;
+    @media (max-width:1000px) {
+        display: none;
+    }
 }
 .slide
 {

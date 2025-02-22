@@ -9,6 +9,8 @@
       <img src="/search.png" alt="search" class="glass">
     </div>
 
+    <img class="small-menu-img" src="/menu.png" alt="menu-img">
+
     <div class="mode-container">
       <input class="slide" [class]="themeService.themeSignal() === 'dark'? 'light' : 'dark'" readonly disabled>
       <Theme-Button class="theme-btn" [class]="themeService.themeSignal() === 'dark' ? 'slide-left' : 'slide-right'"></Theme-Button>

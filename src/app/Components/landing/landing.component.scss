@@ -11,7 +11,9 @@
     align-items: start;
     justify-content: start;
     gap: 15px;
-    
+    @media (max-width:500px) {
+      width: 100%;
+    }
 }
 .box1-header
 {
@@ -30,10 +32,20 @@
     background: none;
     cursor: pointer;
 }
+.top-anime-container
+{
+    width: 100%;
+    @media (max-width: 1020px) {
+      display: flex;    
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+}
+
 swiper-container
 {
     width: 100%;
-   
 }
 swiper-slide
 {
