@@ -1,5 +1,4 @@
 
-
 .box1
 {
     width: 80%;
@@ -14,25 +13,10 @@
     @media (max-width:500px) {
       width: 100%;
     }
+    overflow-y: scroll;
 }
-.box1-header
-{
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    gap: 10px;
-    background-color: #f5a2b5;
-    padding: 5px;
-    border-radius: 8px;
-}
-.box1-header button{
-    padding: 10px;
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-.top-anime-container
+
+.top-anime-container,.top-manga-container
 {
     width: 100%;
     @media (max-width: 1020px) {
@@ -50,8 +34,12 @@ swiper-container
 swiper-slide
 {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: start;
+    @media (max-width:1020px) {
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 

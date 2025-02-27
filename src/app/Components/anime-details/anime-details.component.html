@@ -1,0 +1,76 @@
+<header class="anime-details-header" [ngClass]="themeService.themeSignal() === 'dark'? 'light' :'dark'">
+    <h1>English Title: {{animeDetails.title_english}}</h1>
+    <h2>Japaneese Title: {{animeDetails.title_japanese}}</h2>
+</header>
+
+<main class="anime-details-main">
+  <aside class="anime-sidebar">
+    <img [src]="animeDetails.images.jpg.image_url" class="anime-img" alt="anime image">
+    <section class="anime-information">
+       <p class="title">Information</p>
+       <hr>
+       <p>Type: {{animeDetails.type}}</p>
+       <p>Episodes: {{animeDetails.episodes}}</p>
+       <p>Status: {{animeDetails.status}}</p>
+       <p>Aired: {{animeDetails.aired.string}}</p>
+       <p>Season: {{animeDetails.season}}</p>
+       <p>Broadcast: {{animeDetails.broadcast.string}}</p>
+       <p>Producers:</p>
+        <ul class="anime-producers">
+            <li *ngFor="let producer of animeDetails.producers">
+               <a [href]="producer.url" target="_blank">{{producer.name}}</a>
+            </li>
+        </ul>
+
+        <p>Licensors:</p>
+        <ul class="anime-licensors">
+            <li *ngFor="let licensor of animeDetails.licensors">
+               <a [href]="licensor.url" target="_blank">{{licensor.name}}</a>
+            </li>
+        </ul>
+
+        <p>Studios:</p>
+        <ul class="anime-Studios">
+            <li *ngFor="let studio of animeDetails.studios">
+               <a [href]="studio.url" target="_blank">{{studio.name}}</a>
+            </li>
+        </ul>
+
+        <p>Genres:</p>
+        <ul class="anime-Genres">
+            <li *ngFor="let genre of animeDetails.genres">
+               <a [href]="genre.url" target="_blank">{{genre.name}}</a>
+            </li>
+        </ul>
+
+        <p>Themes:</p>
+        <ul class="anime-Themes">
+            <li *ngFor="let theme of animeDetails.themes">
+               <a [href]="theme.url" target="_blank">{{theme.name}}</a>
+            </li>
+        </ul>
+
+        <p>Duration: {{animeDetails.duration}}</p>
+
+    </section>
+
+    <section class="anime-statistics">
+      <p class="title">Statistics</p>
+      <hr>
+      <p>Score: {{animeDetails.score}}</p>
+      <p>Scored By: {{animeDetails.scored_by}} mal users</p>
+      <p>Ranked: #{{animeDetails.rank}}</p>
+    </section>
+  </aside>
+
+  <section class="anime-details-section">
+    <h3>Synopsis</h3>
+    <hr>
+    <p class="synopsis">{{animeDetails.synopsis}}</p>
+    <h3>Trailer</h3>
+    <hr>
+    <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  [src]="safeTrailerUrl">
+
+    </iframe>
+  </section>
+</main>

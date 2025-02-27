@@ -1,0 +1,83 @@
+.manga-card
+{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 5px;
+  gap: 8px;
+  border: 2px solid black;
+  border-radius: 8px;
+  @media (max-width:500px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+img{
+  border-radius: 10px;
+  
+}
+.airing
+{
+  color: white;
+  font-weight: bold;
+  font-size: medium;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 10px;
+}
+.manga-info
+{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  @media (max-width:500px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.manga-rating
+{
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  
+  @media (max-width:500px) {
+    justify-content: center;
+    align-items: center;
+  }
+}
+.manga-title
+{
+  font-size: x-large;
+  text-align: start;
+}
+.rating-box
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  @media (max-width:500px) {
+    justify-content: center;
+    align-items: center;
+  }
+}
+.star
+{
+  height: 17px;
+  width: 17px;
+}
+.ranking-box
+{
+  display: flex;
+  gap: 2px;
+}
+.manga-img
+{
+  cursor: pointer;
+}

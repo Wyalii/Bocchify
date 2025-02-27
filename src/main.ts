@@ -5,6 +5,8 @@ import { importProvidersFrom } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HttpClientModule } from '@angular/common/http';
 import { register as registerSwiperEelements } from 'swiper/element/bundle';
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app.routes';
 registerSwiperEelements();
 
 bootstrapApplication(AppComponent, {
@@ -12,5 +14,6 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(BrowserAnimationsModule),
     provideAnimationsAsync(),
     importProvidersFrom(HttpClientModule),
+    provideRouter(routes),
   ],
 }).catch((err) => console.error(err));

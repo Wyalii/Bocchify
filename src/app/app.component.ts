@@ -7,13 +7,12 @@ import {
 import { RouterOutlet } from '@angular/router';
 import { ThemeService } from './services/theme.service';
 import { CommonModule } from '@angular/common';
-import { LandingComponent } from './Components/landing/landing.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, LandingComponent, HeaderComponent],
+  imports: [RouterOutlet, CommonModule, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   encapsulation: ViewEncapsulation.None,

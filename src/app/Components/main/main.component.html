@@ -1,0 +1,29 @@
+
+<div class="box1">  
+  <div class="top-anime-container">
+    <h2>Top Animes:</h2>
+    <div *ngIf="animeService.isLoadingAnimes() === true">loading top animes...</div>
+    <swiper-container slides-per-view="1" space-between="20" [breakpoints]="{
+      '1020': { 'slidesPerView': 2 },
+      '1520':{'slidesPerView': 3}
+    }">
+      <swiper-slide *ngFor="let anime of (topAnimes$ | async)" (click)="navigateToAnimeDetails(anime.mal_id)">
+        <app-anime-card [anime]="anime"></app-anime-card>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+  
+  
+  <div class="top-manga-container">
+    <h2>Top Mangas:</h2>
+    <div *ngIf="animeService.isLoadingMangas() === true">loading top mangas...</div>
+    <swiper-container slides-per-view="1" space-between="20" [breakpoints]="{
+      '1020': { 'slidesPerView': 2 },
+      '1520':{'slidesPerView': 3}
+    }">
+      <swiper-slide *ngFor="let manga of (topMangas$ | async)">
+        <app-manga-card [manga]="manga"></app-manga-card>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</div>

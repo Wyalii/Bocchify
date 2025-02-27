@@ -1,0 +1,19 @@
+<div class="manga-card">
+    <img [src]="manga.images.jpg.image_url" alt="{{ manga.title }}" class="manga-img">
+    <div class="manga-info">
+     <p class="airing">{{manga.status}}</p>
+     <h1 class="manga-title">{{manga.title}}</h1>
+  
+     <div class="manga-rating">
+      <div class="rating-box">
+        <img src="/star.png" alt="star image" class="star">
+        <p>{{manga.score}}</p>
+        
+      </div>
+      <div class="ranking-box">
+        <p>#{{manga.rank}}</p>
+        <p>ranking</p>
+      </div>
+     </div>
+    </div>
+</div>
