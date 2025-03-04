@@ -26,9 +26,11 @@ export class MainComponent {
     this.topMangas$ = this.animeService.getTopMangas();
   }
 
-  navigateToAnimeDetails(AnimeId: boolean) {
+  navigateToAnimeDetails(AnimeId: number) {
     this.router.navigate(['/anime', AnimeId]);
   }
 
-  navigateToMangaDetails() {}
+  navigateToMangaDetails(MangaId: number) {
+    this.router.navigate(['/manga', MangaId]);
+  }
 }

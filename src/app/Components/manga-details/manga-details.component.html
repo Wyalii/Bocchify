@@ -1,1 +1,54 @@
-<p>manga-details works!</p>
+<header class="manga-details-header" [ngClass]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">
+    <h1>English Title: {{mangaDetails.title_english}}</h1>
+    <h2>Japaneese Title: {{mangaDetails.title_japanese}}</h2>
+</header>
+
+<main class="manga-details-main">
+  <aside class="manga-sidebar">
+    <img [src]="mangaDetails.images.jpg.image_url" class="manga-img" alt="manga image">
+    <section class="manga-information">
+       <p class="title">Information</p>
+       <hr>
+       <p>Type: {{mangaDetails.type}}</p>
+       <p>Chapters: {{mangaDetails.chapters ?? "Unknown"}}</p>
+       <p>Volumes: {{mangaDetails.volumes ?? "Unknown"}}</p>
+       <p>Status: {{mangaDetails.status}}</p>
+       <p>Published: {{mangaDetails.published.string}}</p>
+       <p>Genres:</p>
+        <ul>
+          <li *ngFor="let genre of mangaDetails.genres">
+             <a [href]="genre.url" target="_blank">{{genre.name}}</a>
+          </li>
+        </ul>
+
+        <p>Authors:</p>
+        <ul>
+          <li *ngFor="let author of mangaDetails.authors">
+             <a [href]="author.url" target="_blank">{{author.name}}</a>
+          </li>
+        </ul> 
+        
+        <p>Themes:</p>
+        <ul>
+          <li *ngFor="let theme of mangaDetails.themes">
+             <a [href]="theme.url" target="_blank">{{theme.name}}</a>
+          </li>
+        </ul> 
+    
+    </section>
+  </aside>
+
+  <section class="manga-details-section">
+    <header class="manga-miniheader">
+
+     
+      
+    </header>
+    <h3>Synopsis</h3>
+    <hr>
+    <p class="synopsis">{{mangaDetails.synopsis}}</p>
+    <h3>Background</h3>
+    <hr>
+    <p class="synopsis">{{mangaDetails.background}}</p>
+  </section>
+</main>

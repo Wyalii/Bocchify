@@ -24,7 +24,7 @@ export class AnimeDetailsComponent implements OnInit {
   }
   ngOnInit(): void {
     if (this.animeId) {
-      this.animeService.getAnimeDetails(+this.animeId).subscribe((response) => {
+      this.animeService.getAnimeDetails(this.animeId).subscribe((response) => {
         this.animeDetails = response;
         console.log('log from ng on init: ');
         console.log(this.animeDetails);

@@ -21,7 +21,7 @@
       '1020': { 'slidesPerView': 2 },
       '1520':{'slidesPerView': 3}
     }">
-      <swiper-slide *ngFor="let manga of (topMangas$ | async)">
+      <swiper-slide *ngFor="let manga of (topMangas$ | async)" (click)="navigateToMangaDetails(manga.mal_id)">
         <app-manga-card [manga]="manga"></app-manga-card>
       </swiper-slide>
     </swiper-container>

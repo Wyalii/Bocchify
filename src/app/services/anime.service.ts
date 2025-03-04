@@ -40,8 +40,18 @@ export class AnimeService {
     );
   }
 
-  getAnimeDetails(id: number) {
+  getAnimeDetails(id: string) {
     let url = `https://api.jikan.moe/v4/anime/${id}/full`;
+    return this.http.get<any>(url).pipe(
+      map((response) => {
+        console.log('Anime Details', response);
+        return response.data;
+      })
+    );
+  }
+
+  getMangaDetails(id: string) {
+    let url = `https://api.jikan.moe/v4/manga/${id}/full`;
     return this.http.get<any>(url).pipe(
       map((response) => {
         console.log('Anime Details', response);
