@@ -40,9 +40,15 @@
 
   <section class="manga-details-section">
     <header class="manga-miniheader">
-
-     
-      
+      <div class="rank" [ngClass]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">
+        Rank #{{mangaDetails.rank}}
+      </div>
+      <div class="score" [ngClass]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">
+        Score: {{mangaDetails.score}}
+      </div>
+      <div class="scored-by" [ngClass]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">
+        Scored By: {{mangaDetails.scored_by}} MAL users
+      </div>
     </header>
     <h3>Synopsis</h3>
     <hr>

@@ -30,7 +30,11 @@ h3,p{
     gap: 10px;
     margin-bottom: 20px;
 }
-
+.rank,.score,.scored-by
+{
+  border-radius: 8px;
+  padding: 20px;
+}
 
 
 
@@ -87,6 +91,7 @@ hr {
   .synopsis
   {
     line-height: 2;
+    margin-bottom: 20px;
   }
   iframe
   {
