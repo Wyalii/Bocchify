@@ -17,6 +17,11 @@ h3,p{
     align-items: start;
     justify-content: start;
     gap: 40px;
+    @media (max-width:730px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 }
 .manga-miniheader
 {
@@ -48,6 +53,9 @@ h3,p{
     background-color: white;
     padding: 10px;
     border-radius: 8px;
+    @media (max-width:730px) {
+      width: 100%;
+    }
 }
 .manga-details-section
 {
@@ -56,10 +64,62 @@ h3,p{
 .manga-img
 {
     border-radius: 9px;
+   
 }
-.manga-information,.manga-statistics
+.manga-information
 {
     width: 100%;
+    @media (max-width:730px) {
+      display: none;
+    }
+}
+.manga-title-english
+{
+  @media (max-width:1080px) {
+    font-size: x-large;
+  }
+
+  @media (max-width:855px) {
+    font-size: large;
+  }
+  @media (max-width:670px) {
+    font-size: medium;
+  }
+}
+
+.manga-title-japanese
+{
+  @media (max-width:1080px) {
+    font-size: large;
+  }
+  @media (max-width:855px) {
+    font-size: medium;
+  }
+  @media (max-width:670px) {
+    font-size: small;
+  }
+}
+.manga-information-mobile
+{
+  display: none;
+
+  line-height: 1.6;
+  @media (max-width:730px) {
+     width: 100%;
+     display: flex;
+     align-items: start;
+     
+     gap: 20px;
+  }
+  @media (max-width:440px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.box1
+{
+  overflow-y: scroll;
 }
 .title
 {
