@@ -1,5 +1,5 @@
 <header>
-    <div class="box1">
+    <div *ngIf="burgerMenuService.burgerMenu() === false" class="box1">
       <img [src]="'/Bochi.jpeg'" alt="Bocchify" class="logo" > 
       <h1>Bocchify.</h1>
     </div>
@@ -9,9 +9,9 @@
       <img src="/search.png" alt="search" class="glass">
     </div>
 
-    <img class="small-menu-img" src="/menu.png" alt="menu-img">
+    <img *ngIf="burgerMenuService.burgerMenu() === false" (click)="toggleMenu()" class="burger-menu-img" src="/menu.png" alt="menu-img">
 
-    <div class="mode-container">
+    <div *ngIf="burgerMenuService.burgerMenu() === false" class="mode-container">
       <input class="slide" [class]="themeService.themeSignal() === 'dark'? 'light' : 'dark'" readonly disabled>
       <Theme-Button class="theme-btn" [class]="themeService.themeSignal() === 'dark' ? 'slide-left' : 'slide-right'"></Theme-Button>
     </div>

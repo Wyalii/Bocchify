@@ -17,6 +17,16 @@ app-main
     align-items: center;
     overflow: hidden;
 }
+app-burger-menu
+{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    width: 40%;
+    
+
+}
 app-anime-details,app-manga-details
 {
     width: 100%;
@@ -29,12 +39,12 @@ app-anime-details,app-manga-details
     overflow-y: scroll;
     
 }
-.main.dark
+.dark
 {
     background-color: #8c52ff;
 }
 
-.main.light
+.light
 {
     background-color: #f5a2b5;
 }

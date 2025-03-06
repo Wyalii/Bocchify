@@ -1,4 +1,5 @@
 <main class="main" [ngClass]="themeService.themeSignal()">
   <app-header class="header"></app-header>
+  <app-burger-menu @slideIn *ngIf="burgerMenuService.burgerMenu() === true" [ngClass]="themeService.themeSignal() === 'dark' ?'light' : 'dark'"></app-burger-menu>
   <router-outlet ></router-outlet>
 </main>
