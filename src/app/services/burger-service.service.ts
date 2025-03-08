@@ -5,9 +5,6 @@ import { Injectable, signal } from '@angular/core';
 })
 export class BurgerServiceService {
   burgerMenu = signal(false);
-  burgerMenuValue() {
-    return this.burgerMenu;
-  }
   toggleMenu() {
     this.burgerMenu.set(!this.burgerMenu());
   }

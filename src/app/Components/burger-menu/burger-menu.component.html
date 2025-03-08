@@ -1,1 +1,24 @@
-<p>burger-menu works!</p>
+
+<header class="burger-menu-header">
+    <section class="box1">
+        <img [src]="'/Bochi.jpeg'" alt="Bocchify" class="logo" > 
+        <h1>Bocchify.</h1>
+    
+        <section class="mode-container">
+            <input class="slide" [class]="themeService.themeSignal() === 'dark'? 'dark' : 'light'" readonly disabled>
+            <Theme-Button class="theme-btn" [class]="themeService.themeSignal() === 'dark' ? 'slide-left' : 'slide-right'"></Theme-Button>
+        </section>
+    </section>
+</header>
+
+
+<section class="registration-login-container">
+    <button class="register" [class]="themeService.themeSignal() === 'dark' ? 'dark' :'light'">Register</button>
+    <p>Or</p>
+    <button class="login" [class]="themeService.themeSignal() === 'dark' ? 'dark' :'light'">Login</button>
+</section>
+
+<footer>
+    <button class="closeBtn" (click)="burgerMenuService.toggleMenu()">Close</button>
+</footer>
+

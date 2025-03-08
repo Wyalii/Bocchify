@@ -9,6 +9,12 @@
       <img src="/search.png" alt="search" class="glass">
     </div>
 
+    <div class="registration-login-container">
+      <button class="register" [class]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">Register</button>
+      <hr class="vertical">
+      <button class="login" [class]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">Login</button>
+    </div>
+
     <img *ngIf="burgerMenuService.burgerMenu() === false" (click)="toggleMenu()" class="burger-menu-img" src="/menu.png" alt="menu-img">
 
     <div *ngIf="burgerMenuService.burgerMenu() === false" class="mode-container">

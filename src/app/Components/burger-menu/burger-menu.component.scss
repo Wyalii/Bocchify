@@ -1,0 +1,114 @@
+.mode-container
+{
+    position: relative;
+    
+}
+
+.burger-menu-header
+{
+    
+    padding: 5px;
+}
+footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.closeBtn
+{
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    height: 40px;
+    width: 100px;
+}
+footer button{
+    cursor: pointer;
+}
+.slide
+{
+    width: 100px;
+    height: 45px;
+    border-radius: 15px;
+    border:none;
+    
+}
+
+.theme-btn
+{
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    
+}
+
+.dark
+{
+    background-color: #8c52ff;
+}
+
+.light
+{
+    background-color: #f5a2b5
+}
+
+@keyframes SlideRight {
+    from{left: 5px;}
+    to {left: 60px}
+}
+
+@keyframes SlideLeft {
+    from{left: 50px;}
+    to{left: 5px}
+}
+
+.slide-right
+{
+    animation-name: SlideRight;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+.slide-left
+{
+    animation-name: SlideLeft;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+.logo
+{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.registration-login-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    gap: 15px;
+   
+}
+
+.register,.login
+{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 100px;
+    height: 43px;
+    cursor: pointer;
+}
+
+.box1
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    
+}
