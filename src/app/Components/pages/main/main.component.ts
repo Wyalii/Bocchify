@@ -1,4 +1,9 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Injectable } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  Injectable,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
@@ -16,17 +21,30 @@ import { JikanService } from '../../../services/jikan.service';
   styleUrl: './main.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class MainComponent {
-  topAnimes$: Observable<any[]> = of([]);
-  topMangas$: Observable<any[]> = of([]);
+export class MainComponent implements OnInit {
+  topAnimes: any[] = [];
+  topMangas: any[] = [];
 
   constructor(
     public themeService: ThemeService,
     public jikanService: JikanService,
     private router: Router
-  ) {
-    this.topAnimes$ = this.jikanService.getTopAnimes();
-    this.topMangas$ = this.jikanService.getTopMangas();
+  ) {}
+  ngOnInit(): void {
+    this.loadAnimes(1);
+    this.loadMangas(1);
+  }
+
+  loadAnimes(page: number) {
+    this.jikanService.getTopAnimes(page).subscribe((response) => {
+      this.topAnimes = response.data;
+    });
+  }
+
+  loadMangas(page: number) {
+    this.jikanService.getTopMangas(page).subscribe((response) => {
+      this.topMangas = response.data;
+    });
   }
 
   navigateToAnimeDetails(AnimeId: number) {
@@ -35,5 +53,8 @@ export class MainComponent {
 
   navigateToMangaDetails(MangaId: number) {
     this.router.navigate(['/manga', MangaId]);
+  }
+  navigateToTopAnimeList() {
+    this.router.navigate(['/topAnimes']);
   }
 }

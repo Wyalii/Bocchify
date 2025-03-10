@@ -16,7 +16,7 @@ export class JikanService {
 
   Search(search: string) {
     this.AnimeSearch(search).subscribe();
-    this.MnagaSearch(search).subscribe();
+    this.MangaSearch(search).subscribe();
   }
 
   AnimeSearch(search: string) {
@@ -34,7 +34,7 @@ export class JikanService {
     );
   }
 
-  MnagaSearch(search: string) {
+  MangaSearch(search: string) {
     this.isLoadingMangas.set(true);
     let url = `https://api.jikan.moe/v4/manga?q=${search}`;
     return this.http.get<any>(url).pipe(
@@ -50,29 +50,31 @@ export class JikanService {
     );
   }
 
-  getTopAnimes() {
+  getTopAnimes(page: number = 1) {
     this.isLoadingAnimes.set(true);
-    let url = 'https://api.jikan.moe/v4/top/anime';
+    const url = `https://api.jikan.moe/v4/top/anime?page=${page}`;
     return this.http.get<any>(url).pipe(
-      delay(1000),
       map((response) => {
-        console.log('Anime API Response:', response);
-        return response.data;
+        return {
+          data: response.data,
+          pagination: response.pagination,
+        };
       }),
       finalize(() => this.isLoadingAnimes.set(false))
     );
   }
 
-  getTopMangas() {
+  getTopMangas(page: number = 1) {
     this.isLoadingMangas.set(true);
-    let url = 'https://api.jikan.moe/v4/top/manga';
+    const url = `https://api.jikan.moe/v4/top/manga?page=${page}`;
     return this.http.get<any>(url).pipe(
       delay(1000),
       map((response) => {
-        console.log('Manga API Response:', response);
-        return response.data;
+        return {
+          data: response.data,
+          pagination: response.pagination,
+        };
       }),
-      map((mangas: Manga[]) => mangas.sort((a, b) => a.rank - b.rank)),
       finalize(() => this.isLoadingMangas.set(false))
     );
   }

@@ -1,0 +1,30 @@
+
+.manga-list-container
+{
+    overflow-y: scroll;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+img{
+    border-radius: 8px;
+    cursor: pointer;
+}
+.manga-list
+{
+    display: flex;
+    align-items: start;
+    gap: 15px;
+    height: auto;
+}
+.manga-info
+{
+    display: flex;
+    flex-direction: column;
+}
+.pagination
+{
+    width: 100%;
+    height: 5%;
+}
