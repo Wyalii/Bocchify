@@ -5,8 +5,9 @@
     </div>
 
     <div class="box2">
-      <input class="search" placeholder="Search..." [class]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">
-      <img src="/search.png" alt="search" class="glass">
+      <input [(ngModel)]="searchQuery" type="search" class="search" placeholder="Search..." [class]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">
+      <img (click)="onSearch()" src="/search.png" alt="search" class="glass">
+      
     </div>
 
     <div class="registration-login-container">

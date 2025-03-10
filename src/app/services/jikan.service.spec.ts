@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AnimeService } from './anime.service';
+import { AnimeService } from './jikan.service';
 
 describe('AnimeService', () => {
   let service: AnimeService;

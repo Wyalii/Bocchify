@@ -1,0 +1,19 @@
+<h1>Anime search results:</h1>
+<swiper-container 
+  slides-Per-View="1" 
+  space-Between="20" 
+  [breakpoints]="breakpoints">
+  <swiper-slide *ngFor="let anime of jikanService.animeSearchResults.data">
+    <app-anime-card [anime]="anime"></app-anime-card>
+  </swiper-slide>
+</swiper-container>
+
+<h1>Manga search results:</h1>
+<swiper-container 
+  slides-Per-View="1" 
+  space-Between="20" 
+  [breakpoints]="breakpoints">
+  <swiper-slide *ngFor="let manga of jikanService.mangaSearchResults.data">
+    <app-manga-card [manga]="manga"></app-manga-card>
+  </swiper-slide>
+</swiper-container>

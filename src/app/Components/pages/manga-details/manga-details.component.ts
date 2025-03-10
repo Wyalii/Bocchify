@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AnimeService } from '../../services/anime.service';
-import { ThemeService } from '../../services/theme.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { JikanService } from '../../../services/jikan.service';
+import { ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-manga-details',
@@ -16,15 +16,14 @@ export class MangaDetailsComponent implements OnInit {
   mangaDetails: any = {};
   constructor(
     private route: ActivatedRoute,
-    private animeService: AnimeService,
-    public themeService: ThemeService,
-    private sanitizer: DomSanitizer
+    private jikanService: JikanService,
+    public themeService: ThemeService
   ) {
     this.mangaId = this.route.snapshot.paramMap.get('id');
   }
   ngOnInit(): void {
     if (this.mangaId) {
-      this.animeService.getMangaDetails(this.mangaId).subscribe((response) => {
+      this.jikanService.getMangaDetails(this.mangaId).subscribe((response) => {
         this.mangaDetails = response;
       });
     }

@@ -1,19 +1,56 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-
-import { delay, finalize, map, Observable } from 'rxjs';
+import { delay, finalize, map } from 'rxjs';
 interface Manga {
   rank: number;
 }
 @Injectable({
   providedIn: 'root',
 })
-export class AnimeService {
+export class JikanService {
   constructor(private http: HttpClient) {}
+  animeSearchResults: any = {};
+  mangaSearchResults: any = {};
   isLoadingAnimes = signal(false);
   isLoadingMangas = signal(false);
 
-  getTopAnimes(): Observable<any[]> {
+  Search(search: string) {
+    this.AnimeSearch(search).subscribe();
+    this.MnagaSearch(search).subscribe();
+  }
+
+  AnimeSearch(search: string) {
+    this.isLoadingAnimes.set(true);
+    let url = `https://api.jikan.moe/v4/anime?q=${search}`;
+    return this.http.get<any>(url).pipe(
+      map((response) => {
+        console.log('anime search result:', response);
+        this.animeSearchResults = response;
+        return this.animeSearchResults;
+      }),
+      finalize(() => {
+        this.isLoadingAnimes.set(false);
+      })
+    );
+  }
+
+  MnagaSearch(search: string) {
+    this.isLoadingMangas.set(true);
+    let url = `https://api.jikan.moe/v4/manga?q=${search}`;
+    return this.http.get<any>(url).pipe(
+      delay(1000),
+      map((response) => {
+        console.log(' manga search result:', response);
+        this.mangaSearchResults = response;
+        return this.mangaSearchResults;
+      }),
+      finalize(() => {
+        this.isLoadingMangas.set(false);
+      })
+    );
+  }
+
+  getTopAnimes() {
     this.isLoadingAnimes.set(true);
     let url = 'https://api.jikan.moe/v4/top/anime';
     return this.http.get<any>(url).pipe(
@@ -26,7 +63,7 @@ export class AnimeService {
     );
   }
 
-  getTopMangas(): Observable<any[]> {
+  getTopMangas() {
     this.isLoadingMangas.set(true);
     let url = 'https://api.jikan.moe/v4/top/manga';
     return this.http.get<any>(url).pipe(

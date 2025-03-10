@@ -1,5 +1,5 @@
 <div class="manga-card">
-    <img [src]="manga.images.jpg.image_url" alt="{{ manga.title }}" class="manga-img">
+    <img [src]="manga.images.jpg.image_url" alt="{{ manga.title }}" class="manga-img" (click)="navigateToMangaDetails(manga.mal_id)">
     <div class="manga-info">
      <p class="airing">{{manga.status}}</p>
      <h1 class="manga-title">{{manga.title}}</h1>

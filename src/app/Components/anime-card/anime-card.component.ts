@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-anime-card',
@@ -7,8 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './anime-card.component.html',
   styleUrl: './anime-card.component.scss',
 })
-export class AnimeCardComponent implements OnInit {
+export class AnimeCardComponent {
+  constructor(private router: Router) {}
   @Input() anime: any;
 
-  ngOnInit(): void {}
+  navigateToAnimeDetails(AnimeId: number) {
+    this.router.navigate(['/anime', AnimeId]);
+  }
 }

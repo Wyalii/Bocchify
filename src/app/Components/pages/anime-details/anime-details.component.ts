@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AnimeService } from '../../services/anime.service';
-import { CommonModule } from '@angular/common';
-import { ThemeService } from '../../services/theme.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { ThemeService } from '../../../services/theme.service';
+import { JikanService } from '../../../services/jikan.service';
 @Component({
   selector: 'app-anime-details',
   imports: [CommonModule],
@@ -16,7 +16,7 @@ export class AnimeDetailsComponent implements OnInit {
   animeDetails: any = {};
   constructor(
     private route: ActivatedRoute,
-    private animeService: AnimeService,
+    private jikanService: JikanService,
     public themeService: ThemeService,
     private sanitizer: DomSanitizer
   ) {
@@ -24,17 +24,16 @@ export class AnimeDetailsComponent implements OnInit {
   }
   ngOnInit(): void {
     if (this.animeId) {
-      this.animeService.getAnimeDetails(this.animeId).subscribe((response) => {
-        this.animeDetails = response;
-        console.log('log from ng on init: ');
-        console.log(this.animeDetails);
-
-        if (this.animeDetails.trailer?.embed_url) {
-          this.safeTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-            this.animeDetails.trailer.embed_url
-          );
-        }
-      });
+      this.jikanService
+        .getAnimeDetails(this.animeId)
+        .subscribe((response: any) => {
+          this.animeDetails = response;
+          if (this.animeDetails.trailer?.embed_url) {
+            this.safeTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+              this.animeDetails.trailer.embed_url
+            );
+          }
+        });
     }
   }
 }

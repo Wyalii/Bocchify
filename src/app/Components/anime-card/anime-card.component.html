@@ -1,5 +1,5 @@
 <div class="anime-card">
-  <img [src]="anime.images.jpg.image_url" alt="{{ anime.title }}" class="anime-img">
+  <img [src]="anime.images.jpg.image_url" alt="{{ anime.title }}" class="anime-img" (click)="navigateToAnimeDetails(anime.mal_id)">
   <div class="anime-info">
    <p class="airing">{{anime.status}}</p>
    <p class="episodes">{{anime.episodes}} episodes</p>

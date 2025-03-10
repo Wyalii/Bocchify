@@ -1,11 +1,14 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ThemeService } from '../../services/theme.service';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Injectable } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AnimeService } from '../../services/anime.service';
-import { AnimeCardComponent } from '../anime-card/anime-card.component';
-import { MangaCardComponent } from '../manga-card/manga-card.component';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { AnimeCardComponent } from '../../anime-card/anime-card.component';
+import { MangaCardComponent } from '../../manga-card/manga-card.component';
+import { ThemeService } from '../../../services/theme.service';
+import { JikanService } from '../../../services/jikan.service';
+@Injectable({
+  providedIn: 'root',
+})
 @Component({
   selector: 'app-main',
   imports: [CommonModule, AnimeCardComponent, MangaCardComponent],
@@ -19,11 +22,11 @@ export class MainComponent {
 
   constructor(
     public themeService: ThemeService,
-    public animeService: AnimeService,
+    public jikanService: JikanService,
     private router: Router
   ) {
-    this.topAnimes$ = this.animeService.getTopAnimes();
-    this.topMangas$ = this.animeService.getTopMangas();
+    this.topAnimes$ = this.jikanService.getTopAnimes();
+    this.topMangas$ = this.jikanService.getTopMangas();
   }
 
   navigateToAnimeDetails(AnimeId: number) {

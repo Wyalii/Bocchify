@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
-import { AnimeDetailsComponent } from './Components/anime-details/anime-details.component';
-import { MainComponent } from './Components/main/main.component';
-import { MangaDetailsComponent } from './Components/manga-details/manga-details.component';
+import { MainComponent } from './Components/pages/main/main.component';
+import { AnimeDetailsComponent } from './Components/pages/anime-details/anime-details.component';
+import { MangaDetailsComponent } from './Components/pages/manga-details/manga-details.component';
+import { SearchResultsComponent } from './Components/pages/search-results/search-results.component';
 
 export const routes: Routes = [
   {
@@ -17,5 +18,9 @@ export const routes: Routes = [
     path: 'manga/:id',
     title: 'MangaDetails',
     component: MangaDetailsComponent,
+  },
+  {
+    path: 'search',
+    component: SearchResultsComponent,
   },
 ];
