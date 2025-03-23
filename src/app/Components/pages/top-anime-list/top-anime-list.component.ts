@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AnimeCardComponent } from '../../anime-card/anime-card.component';
 import { JikanService } from '../../../services/jikan.service';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
 @Component({
   selector: 'app-top-anime-list',
-  imports: [AnimeCardComponent, CommonModule],
+  imports: [CommonModule],
   templateUrl: './top-anime-list.component.html',
   styleUrl: './top-anime-list.component.scss',
 })

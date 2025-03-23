@@ -5,7 +5,6 @@ import {
   OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { AnimeCardComponent } from '../../anime-card/anime-card.component';
 import { MangaCardComponent } from '../../manga-card/manga-card.component';

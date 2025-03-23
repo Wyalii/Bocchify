@@ -10,10 +10,11 @@
     align-items: start;
     justify-content: start;
     gap: 15px;
+    overflow-y: scroll;
     @media (max-width:500px) {
       width: 100%;
     }
-    overflow-y: scroll;
+    
 }
 h2{
     cursor: pointer;
