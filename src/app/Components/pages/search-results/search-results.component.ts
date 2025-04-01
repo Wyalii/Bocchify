@@ -20,5 +20,7 @@ export class SearchResultsComponent {
   navigateToAnimeSearch() {
     this.router.navigate(['/animeSearch']);
   }
-  navigateToMangaSearch() {}
+  navigateToMangaSearch() {
+    this.router.navigate(['/mangaSearch']);
+  }
 }

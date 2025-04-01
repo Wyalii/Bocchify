@@ -37,7 +37,7 @@ export class JikanService {
 
   MangaSearch(search: string, page: number) {
     this.isLoadingMangas.set(true);
-    let url = `https://api.jikan.moe/v4/manga?q=${search}`;
+    let url = `https://api.jikan.moe/v4/manga?q=${search}&page=${page}`;
     return this.http.get<any>(url).pipe(
       delay(1000),
       map((response) => {
@@ -94,7 +94,7 @@ export class JikanService {
     let url = `https://api.jikan.moe/v4/manga/${id}/full`;
     return this.http.get<any>(url).pipe(
       map((response) => {
-        console.log('Anime Details', response);
+        console.log('Manga Details', response);
         return response.data;
       })
     );

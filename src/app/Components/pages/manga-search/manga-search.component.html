@@ -1,1 +1,25 @@
-<p>manga-search works!</p>
+
+<section class="manga-list-container">
+    <section *ngFor="let manga of searchMangas" class="manga-list">
+        <img [src]="manga.images.jpg.image_url" (click)="navigateToMangaDetails(manga.mal_id)">
+         <section class="manga-info">
+          <h2>{{manga.title}}</h2>
+          <h3>Rank #{{manga.rank}}</h3>
+          <h3>Score: {{manga.score}}</h3>
+          <h4>{{manga.type}} ({{manga.volumes}}) volumes</h4>
+          <h4>{{manga.published.string}}</h4>
+          <h4>mal members: {{manga.members}}</h4>
+        </section>
+    </section>
+      
+  </section>
+  <footer class="pagination" [class]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">
+    <button (click)="prevPage()" [disabled]="currentPage === 1" class="nav-btn">Previous</button>
+
+    <span>Page</span>
+    <input type="number" [(ngModel)]="inputPage" (keydown.enter)="goToPage()" min="1" [max]="totalPages" />
+    <span>of {{ totalPages }}</span>
+  
+    <button (click)="nextPage()" [disabled]="!hasNextPage" class="nav-btn">Next</button>
+  </footer>
+  
