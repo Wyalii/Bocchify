@@ -13,4 +13,12 @@
   </section>
     
 </section>
-<footer class="pagination" [class]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">pagination</footer>
+<footer class="pagination" [class]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">
+  <button (click)="prevPage()" [disabled]="currentPage === 1" class="nav-btn">Previous</button>
+
+  <span>Page</span>
+  <input type="number" [(ngModel)]="inputPage" (keydown.enter)="goToPage()" min="1" [max]="totalPages" />
+  <span>of {{ totalPages }}</span>
+
+  <button (click)="nextPage()" [disabled]="!hasNextPage" class="nav-btn">Next</button>
+</footer>

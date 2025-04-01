@@ -26,5 +26,15 @@ img{
 .pagination
 {
     width: 100%;
-    height: 5%;
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.nav-btn
+{
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid black;
 }
