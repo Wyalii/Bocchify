@@ -56,4 +56,7 @@ export class MainComponent implements OnInit {
   navigateToTopAnimeList() {
     this.router.navigate(['/topAnimes']);
   }
+  navigateToTopMangaList() {
+    this.router.navigate(['/topMangas']);
+  }
 }
