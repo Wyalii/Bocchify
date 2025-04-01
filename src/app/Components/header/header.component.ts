@@ -27,6 +27,7 @@ export class HeaderComponent {
 
   onSearch() {
     this.animeService.Search(this.searchQuery);
+    this.animeService.searchInput.set(this.searchQuery);
     this.router.navigate(['/search'], { queryParams: { q: this.searchQuery } });
   }
 

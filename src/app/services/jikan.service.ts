@@ -13,15 +13,16 @@ export class JikanService {
   mangaSearchResults: any = {};
   isLoadingAnimes = signal(false);
   isLoadingMangas = signal(false);
+  searchInput = signal<string>('');
 
   Search(search: string) {
-    this.AnimeSearch(search).subscribe();
-    this.MangaSearch(search).subscribe();
+    this.AnimeSearch(search, 1).subscribe();
+    this.MangaSearch(search, 1).subscribe();
   }
 
-  AnimeSearch(search: string) {
+  AnimeSearch(search: string, page: number) {
     this.isLoadingAnimes.set(true);
-    let url = `https://api.jikan.moe/v4/anime?q=${search}`;
+    let url = `https://api.jikan.moe/v4/anime?q=${search}&page=${page}`;
     return this.http.get<any>(url).pipe(
       map((response) => {
         console.log('anime search result:', response);
@@ -34,7 +35,7 @@ export class JikanService {
     );
   }
 
-  MangaSearch(search: string) {
+  MangaSearch(search: string, page: number) {
     this.isLoadingMangas.set(true);
     let url = `https://api.jikan.moe/v4/manga?q=${search}`;
     return this.http.get<any>(url).pipe(
