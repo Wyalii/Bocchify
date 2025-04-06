@@ -19,7 +19,7 @@ app-main
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    
 }
 .router-outlet-container
 {
@@ -28,6 +28,11 @@ app-main
     display: flex;
     align-items: start;
     justify-content: center;
+    overflow-y: hidden;
+    
+}
+.scrollable
+{
     overflow-y: scroll;
 }
 app-burger-menu

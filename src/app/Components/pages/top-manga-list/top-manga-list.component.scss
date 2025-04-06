@@ -22,6 +22,10 @@ img{
 {
     display: flex;
     flex-direction: column;
+    @media (max-width:500px) {
+        gap: 10px;
+    }
+
 }
 .pagination
 {
@@ -38,4 +42,40 @@ img{
     border-radius: 8px;
     cursor: pointer;
     border: 1px solid black;
+}
+.manga-img
+{
+    @media (max-width:500px) {
+        width: 200px;
+    }
+    @media (max-width:460px) {
+        width: 150px;
+    }
+    @media (max-width:400px) {
+        width: 100px;
+    }
+}
+h2
+{
+    text-wrap: wrap;
+    @media (max-width:500px) {
+        font-size: large;
+        padding: 0;
+        margin: 0;
+    }
+    @media (max-width:400px) {
+        font-size: medium;
+    }
+}
+h3,h4{
+    text-wrap: wrap;
+    @media (max-width:500px) {
+        font-size: medium;
+        padding: 0;
+        margin: 0;
+    }
+
+    @media (max-width:370px) {
+        font-size: small;
+    }
 }

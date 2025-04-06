@@ -4,7 +4,7 @@ import {
   inject,
   CUSTOM_ELEMENTS_SCHEMA,
 } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { ThemeService } from './services/theme.service';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './Components/header/header.component';
@@ -50,6 +50,11 @@ export class AppComponent {
 
   constructor(
     public themeService: ThemeService,
-    public burgerMenuService: BurgerServiceService
+    public burgerMenuService: BurgerServiceService,
+    public router: Router
   ) {}
+
+  isOnMainRoute(): boolean {
+    return this.router.url === '/main';
+  }
 }

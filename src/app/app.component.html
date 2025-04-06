@@ -1,7 +1,10 @@
 <main class="main" [ngClass]="themeService.themeSignal()">
   <app-header class="header" [ngClass]="burgerMenuService.burgerMenu() ? 'blured': ''"></app-header>
   <app-burger-menu @slideIn *ngIf="burgerMenuService.burgerMenu() === true" [ngClass]="themeService.themeSignal() === 'dark' ?'light' : 'dark'"></app-burger-menu>
-  <div [ngClass]="burgerMenuService.burgerMenu() ? 'blured': ''" class="router-outlet-container">
+  <div  [ngClass]="[
+     burgerMenuService.burgerMenu() ? 'blured' : '',
+     isOnMainRoute() ? 'scrollable' : '']"  
+     class="router-outlet-container">
     <router-outlet></router-outlet>
   </div>
 </main>

@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { delay, finalize, map } from 'rxjs';
-interface Manga {
-  rank: number;
-}
+import { ToastrService } from 'ngx-toastr';
+import { catchError, delay, finalize, map, throwError } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
 export class JikanService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastr: ToastrService) {}
+
   animeSearchResults: any = {};
   mangaSearchResults: any = {};
   isLoadingAnimes = signal(false);
@@ -29,6 +29,11 @@ export class JikanService {
         this.animeSearchResults = response;
         return this.animeSearchResults;
       }),
+      catchError((err) => {
+        this.toastr.error('Failed to fetch anime search results.', 'Error');
+        console.error('Anime Search Error:', err);
+        return throwError(() => err);
+      }),
       finalize(() => {
         this.isLoadingAnimes.set(false);
       })
@@ -44,6 +49,11 @@ export class JikanService {
         console.log(' manga search result:', response);
         this.mangaSearchResults = response;
         return this.mangaSearchResults;
+      }),
+      catchError((err) => {
+        this.toastr.error('Failed to fetch manga search results.', 'Error');
+        console.error('Manga Search Error:', err);
+        return throwError(() => err);
       }),
       finalize(() => {
         this.isLoadingMangas.set(false);
@@ -61,6 +71,11 @@ export class JikanService {
           pagination: response.pagination,
         };
       }),
+      catchError((err) => {
+        this.toastr.error('Failed to fetch top animes.', 'Error');
+        console.error('Top Animes Error:', err);
+        return throwError(() => err);
+      }),
       finalize(() => this.isLoadingAnimes.set(false))
     );
   }
@@ -76,6 +91,11 @@ export class JikanService {
           pagination: response.pagination,
         };
       }),
+      catchError((err) => {
+        this.toastr.error('Failed to fetch top mangas.', 'Error');
+        console.error('Top Mangas Error:', err);
+        return throwError(() => err);
+      }),
       finalize(() => this.isLoadingMangas.set(false))
     );
   }
@@ -86,6 +106,11 @@ export class JikanService {
       map((response) => {
         console.log('Anime Details', response);
         return response.data;
+      }),
+      catchError((err) => {
+        this.toastr.error('Failed to load anime details.', 'Error');
+        console.error('Anime Details Error:', err);
+        return throwError(() => err);
       })
     );
   }
@@ -96,6 +121,11 @@ export class JikanService {
       map((response) => {
         console.log('Manga Details', response);
         return response.data;
+      }),
+      catchError((err) => {
+        this.toastr.error('Failed to load manga details.', 'Error');
+        console.error('Manga Details Error:', err);
+        return throwError(() => err);
       })
     );
   }
