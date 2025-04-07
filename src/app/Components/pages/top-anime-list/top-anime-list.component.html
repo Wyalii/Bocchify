@@ -1,7 +1,7 @@
 
 <section class="anime-list-container">
   <section *ngFor="let anime of topAnimes" class="anime-list">
-      <img [src]="anime.images.jpg.image_url" (click)="navigateToAnimeDetails(anime.mal_id)">
+      <img [src]="anime.images.jpg.image_url" (click)="navigateToAnimeDetails(anime.mal_id)" class="anime-img">
        <section class="anime-info">
         <h2>{{anime.title}}</h2>
         <h3>Rank #{{anime.rank}}</h3>
