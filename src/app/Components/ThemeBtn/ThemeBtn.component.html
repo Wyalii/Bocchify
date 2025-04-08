@@ -1,1 +1,11 @@
-<img [src]="themeService.themeSignal() === 'dark' ? 'dark.jpeg' : 'light.jpeg'" alt="Bocchi Gif" class="gif" (click)="themeService.updateTheme()">
+<img 
+  [src]="
+    themeService.themeSignal() === 'bocchi' ? 'bocchi.jpeg' :
+    themeService.themeSignal() === 'ryo' ? 'ryo.jpg' :
+    themeService.themeSignal() === 'nikija' ? 'nikija.jpg' : 
+    themeService.themeSignal() === 'ikuyo' ? 'ikuyo.jpg': 'bocchi.jpeg'
+  "
+  alt="Bocchi Gif"
+  class="gif"
+  (click)="themeService.updateTheme()"
+/>

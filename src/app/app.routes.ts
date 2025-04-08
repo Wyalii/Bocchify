@@ -10,7 +10,7 @@ import { MangaSearchComponent } from './Components/pages/manga-search/manga-sear
 
 export const routes: Routes = [
   {
-    path: 'main',
+    path: '',
     component: MainComponent,
   },
   {

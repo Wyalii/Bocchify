@@ -8,16 +8,16 @@
 
 
 <section class="registration-login-container">
-    <button class="register" [class]="themeService.themeSignal() === 'dark' ? 'dark' :'light'">Register</button>
+    <button class="register" [ngClass]="themeService.themeSignal()">Register</button>
     <p>Or</p>
-    <button class="login" [class]="themeService.themeSignal() === 'dark' ? 'dark' :'light'">Login</button>
+    <button class="login" [ngClass]="themeService.themeSignal()">Login</button>
 </section>
 
 <footer>
-    <section class="mode-container">
-        <input class="slide" [class]="themeService.themeSignal() === 'dark'? 'dark' : 'light'" readonly disabled>
-        <Theme-Button class="theme-btn" [class]="themeService.themeSignal() === 'dark' ? 'slide-left' : 'slide-right'"></Theme-Button>
+    <section class="mode-container" >
+        <input class="slide"  readonly disabled [ngClass]="themeService.themeSignal()">
+        <Theme-Button class="theme-btn" [ngClass]="slideClass" (click)="handleAnimation()"></Theme-Button>
     </section>
-    <button class="closeBtn" (click)="burgerMenuService.toggleMenu()">Close</button>
+    <button class="closeBtn" (click)="burgerMenuService.toggleMenu()" >Close</button>
 </footer>
 

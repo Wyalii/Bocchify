@@ -1,5 +1,15 @@
-
 .box1
+{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    @media (max-width:660px) {
+        flex-direction: column;
+    }
+}
+.box2
 {
     width: 80%;
     height: 100%;
@@ -19,7 +29,12 @@ h2{
     cursor: pointer;
 }
 
-
+.bgImage
+{
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+}
 .top-anime-container,.top-manga-container
 {
     width: 100%;

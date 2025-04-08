@@ -1,4 +1,4 @@
-import { Component, Injectable, Input } from '@angular/core';
+import { Component, effect, Injectable, Input, Renderer2 } from '@angular/core';
 import { ThemeBtn } from '../ThemeBtn/ThemeBtn.component';
 import { ThemeService } from '../../services/theme.service';
 import { CommonModule } from '@angular/common';
@@ -17,12 +17,24 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  slideClass: string = 'slide-right';
+  private previousTheme: string = '';
+  private themeOrder = ['bocchi', 'ryo', 'nikija', 'ikuyo'];
+
   constructor(
     public themeService: ThemeService,
     public burgerMenuService: BurgerServiceService,
     public animeService: JikanService,
     private router: Router
-  ) {}
+  ) {
+    this.previousTheme = themeService.themeSignal();
+  }
+
+  handleAnimation() {
+    this.slideClass =
+      this.slideClass == 'slide-left' ? 'slide-right' : 'slide-left';
+  }
+
   searchQuery: string = '';
 
   onSearch() {

@@ -55,6 +55,6 @@ export class AppComponent {
   ) {}
 
   isOnMainRoute(): boolean {
-    return this.router.url === '/main';
+    return this.router.url === '/';
   }
 }
