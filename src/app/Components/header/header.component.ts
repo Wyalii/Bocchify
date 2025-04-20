@@ -6,13 +6,14 @@ import { BurgerServiceService } from '../../services/burger-service.service';
 import { FormsModule } from '@angular/forms';
 import { JikanService } from '../../services/jikan.service';
 import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 @Component({
   selector: 'app-header',
-  imports: [ThemeBtn, CommonModule, FormsModule],
+  imports: [ThemeBtn, CommonModule, FormsModule, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

@@ -7,7 +7,8 @@ import { TopAnimeListComponent } from './Components/pages/top-anime-list/top-ani
 import { TopMangaListComponent } from './Components/pages/top-manga-list/top-manga-list.component';
 import { AnimeSearchComponent } from './Components/pages/anime-search/anime-search.component';
 import { MangaSearchComponent } from './Components/pages/manga-search/manga-search.component';
-
+import { RegisterComponent } from './Components/pages/register/register.component';
+import { LoginComponent } from './Components/pages/login/login.component';
 export const routes: Routes = [
   {
     path: '',
@@ -42,5 +43,13 @@ export const routes: Routes = [
   {
     path: 'mangaSearch',
     component: MangaSearchComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
 ];

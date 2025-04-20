@@ -1,5 +1,5 @@
 <header>
-    <div *ngIf="burgerMenuService.burgerMenu() === false" class="box1">
+    <div *ngIf="burgerMenuService.burgerMenu() === false" class="box1" routerLink="/">
       <img [src]="'/Bochi.jpeg'" alt="Bocchify" class="logo" > 
       <h1>Bocchify.</h1>
     </div>
@@ -11,9 +11,9 @@
     </div>
 
     <div class="registration-login-container">
-      <button class="register" [ngClass]="themeService.themeSignal()">Register</button>
+      <button class="register" [ngClass]="themeService.themeSignal()" routerLink="register">Register</button>
       <hr class="vertical">
-      <button class="login" [ngClass]="themeService.themeSignal()">Login</button>
+      <button class="login" [ngClass]="themeService.themeSignal()" routerLink="login">Login</button>
     </div>
 
     <img *ngIf="burgerMenuService.burgerMenu() === false" (click)="toggleMenu()" class="burger-menu-img" src="/menu.png" alt="menu-img">

@@ -25,8 +25,19 @@
     }
     
 }
+h1{
+    @media (max-width:395px) {
+        font-size: x-large;
+    }
+    @media (max-width:315px) {
+        font-size: larger;
+    }
+}
 h2{
     cursor: pointer;
+    @media (max-width:315px) {
+        font-size: large;
+    }
 }
 
 .bgImage

@@ -5,7 +5,7 @@
 </div>
 <div class="box2">  
   <div class="top-anime-container">
-    <h2 (click)="navigateToTopAnimeList()">Top Animes:</h2>
+    <h2 (click)="navigateToTopAnimeList()">View Top Animes:</h2>
     <div *ngIf="jikanService.isLoadingAnimes() === true">loading top animes...</div>
     <swiper-container slides-per-view="1" space-between="20" [breakpoints]="{
       '1020': { 'slidesPerView': 2 },
@@ -19,7 +19,7 @@
   
   
   <div class="top-manga-container">
-    <h2 (click)="navigateToTopMangaList()">Top Mangas:</h2>
+    <h2 (click)="navigateToTopMangaList()">View Top Mangas:</h2>
     <div *ngIf="jikanService.isLoadingMangas() === true">loading top mangas...</div>
     <swiper-container slides-per-view="1" space-between="20" [breakpoints]="{
       '1020': { 'slidesPerView': 2 },

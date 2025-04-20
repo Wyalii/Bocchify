@@ -1,0 +1,44 @@
+.register-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    height: 500px;
+    width: 50%;
+    min-width: 300px;
+    max-width: 700px;
+}
+.input
+{
+    height: 50px;
+    width: 50%;
+    border-radius: 8px;
+    border: 1px solid black;
+    max-width: 300px;
+}
+.register-btn
+{
+    width: 51%;
+    height: 35px;
+    cursor: pointer;
+    background-color: pink;
+    border: 1px solid black;
+    border-radius: 8px;
+    max-width: 300px
+}
+.login-link
+{
+    width: 50%;
+    cursor: pointer;
+    max-width: 300px
+}
+.bgImage
+{
+    width: 100px;
+    height: 100px;
+}

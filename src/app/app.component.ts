@@ -11,13 +11,7 @@ import { HeaderComponent } from './Components/header/header.component';
 import { CookieService } from 'ngx-cookie-service';
 import { BurgerMenuComponent } from './Components/burger-menu/burger-menu.component';
 import { BurgerServiceService } from './services/burger-service.service';
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
-} from '@angular/animations';
+import { trigger, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-root',

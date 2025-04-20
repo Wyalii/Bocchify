@@ -46,7 +46,7 @@ app-main
     align-items: start;
     justify-content: center;
     overflow-y: hidden;
-    
+    overflow-x: hidden;
 }
 .scrollable
 {
@@ -114,5 +114,14 @@ app-top-anime-list,app-top-manga-list
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+app-register,app-login
+{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 

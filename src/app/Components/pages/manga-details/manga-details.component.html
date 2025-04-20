@@ -1,4 +1,4 @@
-<header class="manga-details-header" [ngClass]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">
+<header class="manga-details-header">
     <h1 class="manga-title-english">English Title: {{mangaDetails.title_english}}</h1>
     <h2 class="manga-title-japanese">Japanese Title: {{mangaDetails.title_japanese}}</h2>
 </header>
@@ -70,13 +70,13 @@
 
   <section class="manga-details-section">
     <header class="manga-miniheader">
-      <div class="rank" [ngClass]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">
+      <div class="rank">
         Rank #{{mangaDetails.rank}}
       </div>
-      <div class="score" [ngClass]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">
+      <div class="score">
         Score: {{mangaDetails.score}}
       </div>
-      <div class="scored-by" [ngClass]="themeService.themeSignal() === 'dark' ? 'light' :'dark'">
+      <div class="scored-by">
         Scored By: {{mangaDetails.scored_by}} MAL users
       </div>
     </header>
