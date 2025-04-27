@@ -79,7 +79,8 @@ export class RegisterComponent {
 
     this.backendService.register(registerRequestBody).subscribe({
       next: (response) => {
-        this.toastr.success('Registration successful!');
+        console.log(response);
+        this.toastr.success('Registration successful!', 'Success');
       },
       error: (error) => {
         this.toastr.error('Registration failed. Please try again.', 'Error');

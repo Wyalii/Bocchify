@@ -62,6 +62,7 @@ export class LoginComponent {
     };
     this.backendService.login(loginRequestBody).subscribe({
       next: (response) => {
+        console.log(response);
         this.toastr.success('Registration successful!');
       },
       error: (error) => {

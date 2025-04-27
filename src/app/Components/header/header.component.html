@@ -5,7 +5,7 @@
     </div>
 
     <div class="box2">
-      <input [(ngModel)]="searchQuery" type="search" class="search" placeholder="Search..." [ngClass]="themeService.themeSignal()">
+      <input [(ngModel)]="searchQuery" type="search" class="search" placeholder="Search..." [ngClass]="themeService.themeSignal()" (keydown.enter)="onSearch()">
       <img (click)="onSearch()" src="/search.png" alt="search" class="glass">
       
     </div>

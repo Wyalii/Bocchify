@@ -9,6 +9,7 @@ import { AnimeSearchComponent } from './Components/pages/anime-search/anime-sear
 import { MangaSearchComponent } from './Components/pages/manga-search/manga-search.component';
 import { RegisterComponent } from './Components/pages/register/register.component';
 import { LoginComponent } from './Components/pages/login/login.component';
+import { VerifiedSuccessComponent } from './Components/pages/verified-success/verified-success.component';
 export const routes: Routes = [
   {
     path: '',
@@ -51,5 +52,9 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'verified-success',
+    component: VerifiedSuccessComponent,
   },
 ];

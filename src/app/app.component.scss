@@ -124,4 +124,11 @@ app-register,app-login
     align-items: center;
     justify-content: center;
 }
+app-verified-success
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
