@@ -9,6 +9,7 @@ import { ThemeService } from '../../../services/theme.service';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CookieServiceService } from '../../../services/cookie-service.service';
+import { UserService } from '../../../services/user.service';
 @Component({
   selector: 'app-login',
   imports: [RouterLink, FormsModule],
@@ -30,7 +31,8 @@ export class LoginComponent {
     public themeService: ThemeService,
     private toastr: ToastrService,
     private router: Router,
-    private cookieService: CookieServiceService
+    private cookieService: CookieServiceService,
+    private userService: UserService
   ) {}
   emailInput: string = '';
   passwordInput: string = '';
@@ -54,12 +56,12 @@ export class LoginComponent {
         console.log(response);
         this.toastr.success(`${response.message}`);
         this.cookieService.setToken(response.newToken);
+        this.userService.setUser(response.name, response.profileImage);
       },
       error: (error) => {
-        this.toastr.error('Registration failed. Please try again.', 'Error');
+        this.toastr.error(`${error.error.message}`, 'Error');
         console.error('Register error:', error);
       },
     });
-    this.router.navigate(['/']);
   }
 }

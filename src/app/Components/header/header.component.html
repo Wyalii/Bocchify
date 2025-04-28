@@ -22,7 +22,9 @@
 
     <ng-template #profileTemplate>
       <div class="user-profile-container">
-        <p>user profile image here.</p>
+        <img [src]="profilePicture" *ngIf="profilePicture" class="pfp" [routerLink]="['/profile', username]">
+        <img src="/Pfp.jpeg" *ngIf="!profilePicture" class="pfp" [routerLink]="['/profile', username]">
+        <p [routerLink]="['/profile', username]">{{username}}</p>
       </div>
     </ng-template>
 

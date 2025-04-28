@@ -126,3 +126,21 @@ footer button{
     gap: 30px;
     
 }
+.user-profile-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.pfp
+{
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.username
+{
+    font-size: larger;
+}

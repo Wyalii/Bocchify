@@ -8,6 +8,7 @@ import {
 import { ThemeService } from '../../../services/theme.service';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ImageUploadService } from '../../../services/image-upload.service';
 @Component({
   selector: 'app-register',
   imports: [RouterLink, FormsModule],
@@ -28,12 +29,15 @@ export class RegisterComponent {
     private backendService: BackendService,
     public themeService: ThemeService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private imageUploadService: ImageUploadService
   ) {}
 
   usernameInput: string = '';
   emailInput: string = '';
   passwordInput: string = '';
+  selectedImage: string = '';
+  fileToUpload: File | null = null;
 
   validateUsername(username: string): boolean {
     const usernamePattern = /^[a-zA-Z0-9_]+$/;
@@ -60,7 +64,16 @@ export class RegisterComponent {
     return true;
   }
 
+  onImageSelect(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedImage = URL.createObjectURL(file);
+      this.fileToUpload = file;
+    }
+  }
+
   registerFunc() {
+    let profileImageUrl: string | null = null;
     if (!this.validateUsername(this.usernameInput)) {
       this.toastr.error('invalid username input.', 'Error');
       return;
@@ -73,22 +86,54 @@ export class RegisterComponent {
       this.toastr.error('invalid password input.', 'Error');
       return;
     }
-    const registerRequestBody: RegisterUserBody = {
-      username: this.usernameInput,
-      email: this.emailInput,
-      password: this.passwordInput,
-    };
-
-    this.backendService.register(registerRequestBody).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.toastr.success('Registration successful!', 'Success');
-      },
-      error: (error) => {
-        this.toastr.error('Registration failed. Please try again.', 'Error');
-        console.error('Register error:', error);
-      },
-    });
-    this.router.navigate(['/login']);
+    if (this.fileToUpload) {
+      this.imageUploadService.uploadImage(this.fileToUpload).subscribe({
+        next: (response) => {
+          profileImageUrl = response.secure_url;
+          const registerRequestBody: RegisterUserBody = {
+            username: this.usernameInput,
+            email: this.emailInput,
+            password: this.passwordInput,
+            profileImage: profileImageUrl,
+          };
+          this.backendService.register(registerRequestBody).subscribe({
+            next: (response) => {
+              console.log(response);
+              this.toastr.success('Registration successful!', 'Success');
+              this.router.navigate(['/login']);
+            },
+            error: (error) => {
+              this.toastr.error(
+                'Registration failed. Please try again.',
+                'Error'
+              );
+              console.error('Register error:', error);
+            },
+          });
+        },
+        error: (error) => {
+          this.toastr.error('Image upload failed. Please try again.', 'Error');
+          console.error('Image upload error:', error);
+        },
+      });
+    } else {
+      const registerRequestBody: RegisterUserBody = {
+        username: this.usernameInput,
+        email: this.emailInput,
+        password: this.passwordInput,
+        profileImage: '',
+      };
+      this.backendService.register(registerRequestBody).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.toastr.success('Registration successful!', 'Success');
+        },
+        error: (error) => {
+          this.toastr.error('Registration failed. Please try again.', 'Error');
+          console.error('Register error:', error);
+        },
+      });
+      this.router.navigate(['/login']);
+    }
   }
 }

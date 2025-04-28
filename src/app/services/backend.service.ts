@@ -4,6 +4,7 @@ export interface RegisterUserBody {
   username: string;
   email: string;
   password: string;
+  profileImage: string | null;
 }
 
 export interface LoginUserBody {
@@ -11,8 +12,10 @@ export interface LoginUserBody {
   password: string;
 }
 interface LoginResponse {
+  name: string;
   message: string;
   newToken: string;
+  profileImage: string;
 }
 interface RegisterResponse {
   message: string;
@@ -31,6 +34,7 @@ export class BackendService {
       username: registerRequestBody.username,
       email: registerRequestBody.email,
       password: registerRequestBody.password,
+      profileImage: registerRequestBody.profileImage,
     };
 
     return this.http.post<RegisterResponse>(this.registerUrl, body);

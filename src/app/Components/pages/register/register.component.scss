@@ -42,3 +42,17 @@
     width: 100px;
     height: 100px;
 }
+.selected-image-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.selected-image
+{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}

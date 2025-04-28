@@ -11,6 +11,7 @@ import { RegisterComponent } from './Components/pages/register/register.componen
 import { LoginComponent } from './Components/pages/login/login.component';
 import { VerifiedSuccessComponent } from './Components/pages/verified-success/verified-success.component';
 import { loginGuardGuard } from './guards/login-guard.guard';
+import { ProfilePageComponent } from './Components/pages/profile-page/profile-page.component';
 export const routes: Routes = [
   {
     path: '',
@@ -25,6 +26,10 @@ export const routes: Routes = [
     path: 'manga/:id',
     title: 'MangaDetails',
     component: MangaDetailsComponent,
+  },
+  {
+    path: 'profile/:username',
+    component: ProfilePageComponent,
   },
   {
     path: 'search',

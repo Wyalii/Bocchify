@@ -14,7 +14,9 @@
 </section>
 
 <section class="user-profile-container">
-    <p>user profile image.</p>
+    <img src="/Pfp.jpeg" *ngIf="!profilePicture" class="pfp" [routerLink]="['/profile', username]">
+    <img [src]="profilePicture" *ngIf="profilePicture" class="pfp" [routerLink]="['/profile', username]">
+    <p class="username" [routerLink]="['/profile', username]">{{username}}</p>
 </section>
 
 <footer>

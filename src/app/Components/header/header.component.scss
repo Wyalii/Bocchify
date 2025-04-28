@@ -242,7 +242,18 @@ input::placeholder {
 
 .user-profile-container
 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     @media (max-width:970px) {
         display: none;
     }
+}
+.pfp
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
 }

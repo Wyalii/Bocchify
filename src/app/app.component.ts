@@ -12,7 +12,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { BurgerMenuComponent } from './Components/burger-menu/burger-menu.component';
 import { BurgerServiceService } from './services/burger-service.service';
 import { trigger, style, transition, animate } from '@angular/animations';
-
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, CommonModule, HeaderComponent, BurgerMenuComponent],
