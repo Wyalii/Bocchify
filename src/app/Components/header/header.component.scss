@@ -239,3 +239,10 @@ input::placeholder {
     height:35px;
     background: black;
 }
+
+.user-profile-container
+{
+    @media (max-width:970px) {
+        display: none;
+    }
+}

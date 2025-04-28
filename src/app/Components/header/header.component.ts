@@ -1,4 +1,11 @@
-import { Component, effect, Injectable, Input, Renderer2 } from '@angular/core';
+import {
+  Component,
+  effect,
+  Injectable,
+  Input,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 import { ThemeBtn } from '../ThemeBtn/ThemeBtn.component';
 import { ThemeService } from '../../services/theme.service';
 import { CommonModule } from '@angular/common';
@@ -7,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { JikanService } from '../../services/jikan.service';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import { CookieServiceService } from '../../services/cookie-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,18 +25,20 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   slideClass: string = 'slide-right';
-  private previousTheme: string = '';
-  private themeOrder = ['bocchi', 'ryo', 'nikija', 'ikuyo'];
-
+  searchQuery: string = '';
+  authChecked: boolean = false;
+  isUserAuthenticated: boolean = false;
   constructor(
     public themeService: ThemeService,
     public burgerMenuService: BurgerServiceService,
     public animeService: JikanService,
-    private router: Router
-  ) {
-    this.previousTheme = themeService.themeSignal();
+    private router: Router,
+    private cookieService: CookieServiceService
+  ) {}
+  ngOnInit(): void {
+    this.isLoggedIn();
   }
 
   handleAnimation() {
@@ -36,7 +46,17 @@ export class HeaderComponent {
       this.slideClass == 'slide-left' ? 'slide-right' : 'slide-left';
   }
 
-  searchQuery: string = '';
+  isLoggedIn() {
+    const token = this.cookieService.getToken();
+    if (token && token.trim() !== '') {
+      this.authChecked = true;
+      this.isUserAuthenticated = true;
+      return true;
+    }
+    this.authChecked = true;
+    this.isUserAuthenticated = false;
+    return false;
+  }
 
   onSearch() {
     this.animeService.Search(this.searchQuery);

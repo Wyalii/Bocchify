@@ -7,10 +7,14 @@
 </header>
 
 
-<section class="registration-login-container">
-    <button class="register" [ngClass]="themeService.themeSignal()">Register</button>
+<section class="registration-login-container" *ngIf="!isLoggedIn()">
+    <button class="register" [ngClass]="themeService.themeSignal()" routerLink="/register">Register</button>
     <p>Or</p>
-    <button class="login" [ngClass]="themeService.themeSignal()">Login</button>
+    <button class="login" [ngClass]="themeService.themeSignal()" routerLink="/login">Login</button>
+</section>
+
+<section class="user-profile-container">
+    <p>user profile image.</p>
 </section>
 
 <footer>

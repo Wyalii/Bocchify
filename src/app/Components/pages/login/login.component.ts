@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { trigger, style, transition, animate } from '@angular/animations';
 import {
   BackendService,
@@ -8,6 +8,7 @@ import {
 import { ThemeService } from '../../../services/theme.service';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CookieServiceService } from '../../../services/cookie-service.service';
 @Component({
   selector: 'app-login',
   imports: [RouterLink, FormsModule],
@@ -16,14 +17,10 @@ import { ToastrService } from 'ngx-toastr';
   animations: [
     trigger('fadeAnimation', [
       transition(':enter', [
-        // when component enters
         style({ opacity: 0 }),
         animate('500ms ease-in', style({ opacity: 1 })),
       ]),
-      transition(':leave', [
-        // when component leaves
-        animate('500ms ease-out', style({ opacity: 0 })),
-      ]),
+      transition(':leave', [animate('500ms ease-out', style({ opacity: 0 }))]),
     ]),
   ],
 })
@@ -31,16 +28,12 @@ export class LoginComponent {
   constructor(
     private backendService: BackendService,
     public themeService: ThemeService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router,
+    private cookieService: CookieServiceService
   ) {}
   emailInput: string = '';
   passwordInput: string = '';
-
-  validatePassword(password: string): boolean {
-    const passwordPattern =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-    return passwordPattern.test(password);
-  }
   validateEmail(email: string): boolean {
     const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
     return emailPattern.test(email) && email.length <= 50;
@@ -51,10 +44,6 @@ export class LoginComponent {
       this.toastr.error('invalid email input.', 'Error');
       return;
     }
-    if (!this.validatePassword(this.passwordInput)) {
-      this.toastr.error('invalid password input.', 'Error');
-      return;
-    }
 
     const loginRequestBody: LoginUserBody = {
       email: this.emailInput,
@@ -63,12 +52,14 @@ export class LoginComponent {
     this.backendService.login(loginRequestBody).subscribe({
       next: (response) => {
         console.log(response);
-        this.toastr.success('Registration successful!');
+        this.toastr.success(`${response.message}`);
+        this.cookieService.setToken(response.newToken);
       },
       error: (error) => {
         this.toastr.error('Registration failed. Please try again.', 'Error');
         console.error('Register error:', error);
       },
     });
+    this.router.navigate(['/']);
   }
 }

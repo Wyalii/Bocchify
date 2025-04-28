@@ -1,13 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { catchError, delay, finalize, map, throwError } from 'rxjs';
+import { catchError, delay, finalize, map, of, throwError } from 'rxjs';
+import { CacheService } from './cache.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JikanService {
-  constructor(private http: HttpClient, private toastr: ToastrService) {}
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private cacheService: CacheService
+  ) {}
 
   animeSearchResults: any = {};
   mangaSearchResults: any = {};
@@ -62,14 +67,22 @@ export class JikanService {
   }
 
   getTopAnimes(page: number = 1) {
+    const cacheKey = `top-animes-page-${page}`;
+    const cached = this.cacheService.get(cacheKey);
+
+    if (cached) {
+      return of(cached);
+    }
     this.isLoadingAnimes.set(true);
     const url = `https://api.jikan.moe/v4/top/anime?page=${page}`;
     return this.http.get<any>(url).pipe(
       map((response) => {
-        return {
+        const result = {
           data: response.data,
           pagination: response.pagination,
         };
+        this.cacheService.set(cacheKey, result, 5 * 60 * 1000);
+        return result;
       }),
       catchError((err) => {
         this.toastr.error('Failed to fetch top animes.', 'Error');
@@ -81,15 +94,23 @@ export class JikanService {
   }
 
   getTopMangas(page: number = 1) {
+    const cacheKey = `top-mangas-page-${page}`;
+    const cached = this.cacheService.get(cacheKey);
+
+    if (cached) {
+      return of(cached);
+    }
     this.isLoadingMangas.set(true);
     const url = `https://api.jikan.moe/v4/top/manga?page=${page}`;
     return this.http.get<any>(url).pipe(
       delay(1000),
       map((response) => {
-        return {
+        const result = {
           data: response.data,
           pagination: response.pagination,
         };
+        this.cacheService.set(cacheKey, result, 5 * 60 * 1000);
+        return result;
       }),
       catchError((err) => {
         this.toastr.error('Failed to fetch top mangas.', 'Error');

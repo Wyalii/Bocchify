@@ -10,6 +10,7 @@ import { MangaSearchComponent } from './Components/pages/manga-search/manga-sear
 import { RegisterComponent } from './Components/pages/register/register.component';
 import { LoginComponent } from './Components/pages/login/login.component';
 import { VerifiedSuccessComponent } from './Components/pages/verified-success/verified-success.component';
+import { loginGuardGuard } from './guards/login-guard.guard';
 export const routes: Routes = [
   {
     path: '',
@@ -52,6 +53,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [loginGuardGuard],
   },
   {
     path: 'verified-success',

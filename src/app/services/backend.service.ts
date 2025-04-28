@@ -10,6 +10,13 @@ export interface LoginUserBody {
   email: string;
   password: string;
 }
+interface LoginResponse {
+  message: string;
+  newToken: string;
+}
+interface RegisterResponse {
+  message: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +33,7 @@ export class BackendService {
       password: registerRequestBody.password,
     };
 
-    return this.http.post(this.registerUrl, body);
+    return this.http.post<RegisterResponse>(this.registerUrl, body);
   }
 
   login(loginRequestBody: LoginUserBody) {
@@ -35,6 +42,6 @@ export class BackendService {
       password: loginRequestBody.password,
     };
 
-    return this.http.post(this.loginUrl, body);
+    return this.http.post<LoginResponse>(this.loginUrl, body);
   }
 }

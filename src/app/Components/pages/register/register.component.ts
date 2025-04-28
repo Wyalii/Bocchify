@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { trigger, style, transition, animate } from '@angular/animations';
 import {
   BackendService,
   RegisterUserBody,
 } from '../../../services/backend.service';
 import { ThemeService } from '../../../services/theme.service';
-import { FormControl, FormsModule, Validators } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-register',
@@ -16,14 +16,10 @@ import { ToastrService } from 'ngx-toastr';
   animations: [
     trigger('fadeAnimation', [
       transition(':enter', [
-        // when component enters
         style({ opacity: 0 }),
         animate('500ms ease-in', style({ opacity: 1 })),
       ]),
-      transition(':leave', [
-        // when component leaves
-        animate('500ms ease-out', style({ opacity: 0 })),
-      ]),
+      transition(':leave', [animate('500ms ease-out', style({ opacity: 0 }))]),
     ]),
   ],
 })
@@ -31,7 +27,8 @@ export class RegisterComponent {
   constructor(
     private backendService: BackendService,
     public themeService: ThemeService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   usernameInput: string = '';
@@ -53,9 +50,14 @@ export class RegisterComponent {
   }
 
   validatePassword(password: string): boolean {
-    const passwordPattern =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-    return passwordPattern.test(password);
+    if (password.length < 5) {
+      this.toastr.error(
+        'password must contain more than 5 characters.',
+        'error'
+      );
+      return false;
+    }
+    return true;
   }
 
   registerFunc() {
@@ -87,5 +89,6 @@ export class RegisterComponent {
         console.error('Register error:', error);
       },
     });
+    this.router.navigate(['/login']);
   }
 }
