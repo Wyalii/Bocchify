@@ -7,6 +7,11 @@
   <aside class="anime-sidebar">
     <img [src]="animeDetails.images.jpg.image_url" class="anime-img" alt="anime image">
     <section class="anime-information-mobile">
+      <div class="box1">
+        <p class="title">Information</p>
+        <img [src]=" favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc()">
+       </div>
+       <hr>
       <p>Type: {{animeDetails.type}}</p>
        <p>Episodes: {{animeDetails.episodes}}</p>
        <p>Status: {{animeDetails.status}}</p>
@@ -52,7 +57,10 @@
         <p>Duration: {{animeDetails.duration}}</p>
     </section>
     <section class="anime-information">
-       <p class="title">Information</p>
+       <div class="box1">
+        <p class="title">Information</p>
+        <img [src]=" favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc()">
+       </div>
        <hr>
        <p>Type: {{animeDetails.type}}</p>
        <p>Episodes: {{animeDetails.episodes}}</p>

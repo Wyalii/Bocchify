@@ -46,7 +46,6 @@ export class ThemeService {
       const currentIndex = this.themes.indexOf(currentTheme);
       const nextIndex = (currentIndex + 1) % this.themes.length;
       const newTheme = this.themes[nextIndex];
-
       this.CookieService.set('user-theme', newTheme, 365);
       localStorage.setItem('user-theme', newTheme);
       console.log(newTheme);

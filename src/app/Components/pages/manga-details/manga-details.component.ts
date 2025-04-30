@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { JikanService } from '../../../services/jikan.service';
 import { ThemeService } from '../../../services/theme.service';
+import { CookieServiceService } from '../../../services/cookie-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-manga-details',
@@ -14,10 +15,13 @@ import { ThemeService } from '../../../services/theme.service';
 export class MangaDetailsComponent implements OnInit {
   mangaId: string | null = null;
   mangaDetails: any = {};
+  favourited: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private jikanService: JikanService,
-    public themeService: ThemeService
+    public themeService: ThemeService,
+    private cookieService: CookieServiceService,
+    private toastr: ToastrService
   ) {
     this.mangaId = this.route.snapshot.paramMap.get('id');
   }
@@ -27,5 +31,12 @@ export class MangaDetailsComponent implements OnInit {
         this.mangaDetails = response;
       });
     }
+  }
+
+  addToFavouritesFunc() {
+    if (this.cookieService.getToken() === '' || null) {
+      return this.toastr.error('Please login first.', 'Error');
+    }
+    return (this.favourited = !this.favourited);
   }
 }

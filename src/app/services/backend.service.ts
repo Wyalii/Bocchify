@@ -20,6 +20,13 @@ interface LoginResponse {
 interface RegisterResponse {
   message: string;
 }
+interface FavourteRequest {
+  token: string;
+  mal_id: string;
+}
+interface FavourteResponse {
+  message: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +35,7 @@ export class BackendService {
   constructor(private http: HttpClient) {}
   private registerUrl: string = 'http://localhost:5227/api/Users/Register';
   private loginUrl: string = 'http://localhost:5227/api/Users/Login';
+  private favouriteUrl: string = 'http://localhost:5227/api/Users/Favourites';
 
   register(registerRequestBody: RegisterUserBody) {
     const body = {
@@ -47,5 +55,19 @@ export class BackendService {
     };
 
     return this.http.post<LoginResponse>(this.loginUrl, body);
+  }
+
+  favouriteHandler(favouriteRequest: FavourteRequest) {
+    const header = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${favouriteRequest.token}`,
+    };
+    const body = {
+      mal_id: favouriteRequest.mal_id,
+    };
+
+    return this.http.post<FavourteResponse>(this.favouriteUrl, body, {
+      headers: header,
+    });
   }
 }

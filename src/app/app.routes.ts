@@ -12,6 +12,7 @@ import { LoginComponent } from './Components/pages/login/login.component';
 import { VerifiedSuccessComponent } from './Components/pages/verified-success/verified-success.component';
 import { loginGuardGuard } from './guards/login-guard.guard';
 import { ProfilePageComponent } from './Components/pages/profile-page/profile-page.component';
+import { authGuard } from './guards/auth.guard';
 export const routes: Routes = [
   {
     path: '',
@@ -30,6 +31,7 @@ export const routes: Routes = [
   {
     path: 'profile/:username',
     component: ProfilePageComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'search',

@@ -8,6 +8,11 @@
     <section class="manga-information-mobile">
       <img [src]="mangaDetails.images.jpg.image_url" class="manga-img" alt="manga image">
       <div class="box1">
+        <div class="box5">
+          <p class="title">Information</p>
+          <img [src]=" favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc()">
+         </div>
+         <hr>
         <p>Type: {{mangaDetails.type}}</p>
        <p>Chapters: {{mangaDetails.chapters ?? "Unknown"}}</p>
        <p>Volumes: {{mangaDetails.volumes ?? "Unknown"}}</p>
@@ -37,7 +42,10 @@
     </section>
     <section class="manga-information">
       <img [src]="mangaDetails.images.jpg.image_url" class="manga-img" alt="manga image">
-       <p class="title">Information</p>
+      <div class="box5">
+        <p class="title">Information</p>
+        <img [src]=" favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc()">
+       </div>
        <hr>
        <p>Type: {{mangaDetails.type}}</p>
        <p>Chapters: {{mangaDetails.chapters ?? "Unknown"}}</p>

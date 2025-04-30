@@ -1,1 +1,14 @@
-<p>{{username}}</p>
+<main class="user-info-container">
+    <aside>
+        <h1>Profile</h1>
+        <h1>Favourites</h1>
+        <h1>Settings</h1>
+    </aside>
+    <hr>
+        <section class="user-info-section" *ngIf="selectedPage === 'Profile'">
+            <header>
+                <img src="/Pfp.jpeg" *ngIf="!profilePicture" class="pfp">
+                <img [src]="profilePicture" *ngIf="profilePicture" class="pfp">
+            </header>
+        </section>
+</main>

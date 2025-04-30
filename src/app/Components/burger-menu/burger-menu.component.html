@@ -13,7 +13,7 @@
     <button class="login" [ngClass]="themeService.themeSignal()" routerLink="/login">Login</button>
 </section>
 
-<section class="user-profile-container">
+<section class="user-profile-container" *ngIf="isLoggedIn()">
     <img src="/Pfp.jpeg" *ngIf="!profilePicture" class="pfp" [routerLink]="['/profile', username]">
     <img [src]="profilePicture" *ngIf="profilePicture" class="pfp" [routerLink]="['/profile', username]">
     <p class="username" [routerLink]="['/profile', username]">{{username}}</p>
