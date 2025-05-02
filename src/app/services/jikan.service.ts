@@ -1,8 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { catchError, delay, finalize, map, of, throwError } from 'rxjs';
+import {
+  catchError,
+  delay,
+  finalize,
+  from,
+  map,
+  of,
+  switchMap,
+  throwError,
+} from 'rxjs';
 import { CacheService } from './cache.service';
+import { BackendService } from './backend.service';
+import { CookieServiceService } from './cookie-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +22,9 @@ export class JikanService {
   constructor(
     private http: HttpClient,
     private toastr: ToastrService,
-    private cacheService: CacheService
+    private cacheService: CacheService,
+    private backendService: BackendService,
+    private cookieService: CookieServiceService
   ) {}
 
   animeSearchResults: any = {};
@@ -120,34 +133,88 @@ export class JikanService {
       finalize(() => this.isLoadingMangas.set(false))
     );
   }
-
   getAnimeDetails(id: string) {
-    let url = `https://api.jikan.moe/v4/anime/${id}/full`;
-    return this.http.get<any>(url).pipe(
-      map((response) => {
-        console.log('Anime Details', response);
-        return response.data;
-      }),
-      catchError((err) => {
-        this.toastr.error('Failed to load anime details.', 'Error');
-        console.error('Anime Details Error:', err);
-        return throwError(() => err);
-      })
-    );
+    const token = this.cookieService.getToken();
+    const url = `https://api.jikan.moe/v4/anime/${id}/full`;
+    if (token) {
+      return this.http.get<any>(url).pipe(
+        switchMap((response) =>
+          from(this.backendService.checkFavourite(id, token)).pipe(
+            map((isFavourited) => {
+              console.log(
+                'Anime Details',
+                response.data,
+                'Is Favourite:',
+                isFavourited
+              );
+              return {
+                data: response.data,
+                isFavourited: isFavourited.isFavourited,
+              };
+            })
+          )
+        ),
+        catchError((err) => {
+          this.toastr.error('Failed to load anime details.', 'Error');
+          console.error('Anime Details Error:', err);
+          return throwError(() => err);
+        })
+      );
+    } else {
+      return this.http.get<any>(url).pipe(
+        map((response) => {
+          return response;
+        }),
+        catchError((err) => {
+          this.toastr.error('Failed to load anime details.', 'Error');
+          console.error('Anime Details Error:', err);
+          return throwError(() => err);
+        })
+      );
+    }
   }
 
   getMangaDetails(id: string) {
-    let url = `https://api.jikan.moe/v4/manga/${id}/full`;
-    return this.http.get<any>(url).pipe(
-      map((response) => {
-        console.log('Manga Details', response);
-        return response.data;
-      }),
-      catchError((err) => {
-        this.toastr.error('Failed to load manga details.', 'Error');
-        console.error('Manga Details Error:', err);
-        return throwError(() => err);
-      })
-    );
+    const token = this.cookieService.getToken();
+    const url = `https://api.jikan.moe/v4/manga/${id}/full`;
+    if (token) {
+      return this.http.get<any>(url).pipe(
+        switchMap((response) =>
+          from(this.backendService.checkFavourite(id, token)).pipe(
+            map((isFavourited) => {
+              console.log(
+                'Manga Details',
+                response.data,
+                'Is Favourite:',
+                isFavourited
+              );
+              return {
+                data: response.data,
+                isFavourited: isFavourited.isFavourited,
+              };
+            })
+          )
+        ),
+        catchError((err) => {
+          this.toastr.error('Failed to load manga details.', 'Error');
+          console.error('Manga Details Error:', err);
+          return throwError(() => err);
+        })
+      );
+    } else {
+      return this.http.get<any>(url).pipe(
+        map((response) => {
+          return {
+            data: response.data,
+            isFavourited: false,
+          };
+        }),
+        catchError((err) => {
+          this.toastr.error('Failed to load manga details.', 'Error');
+          console.error('Manga Details Error:', err);
+          return throwError(() => err);
+        })
+      );
+    }
   }
 }

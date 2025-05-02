@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
@@ -38,7 +38,13 @@ export class AnimeDetailsComponent implements OnInit {
       this.jikanService
         .getAnimeDetails(this.animeId)
         .subscribe((response: any) => {
-          this.animeDetails = response;
+          this.animeDetails = response.data;
+          this.favourited = response.isFavourited;
+          console.log(
+            'log from ng on init:',
+            this.animeDetails,
+            response.isFavourited
+          );
           if (this.animeDetails.trailer?.embed_url) {
             this.safeTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
               this.animeDetails.trailer.embed_url
@@ -51,7 +57,7 @@ export class AnimeDetailsComponent implements OnInit {
   addToFavouritesFunc(mal_id: number) {
     console.log(mal_id);
     const token = this.cookieService.getToken();
-    if (token === '' || null) {
+    if (!token) {
       return this.toastr.error('Please login first.', 'Error');
     }
 
@@ -62,7 +68,7 @@ export class AnimeDetailsComponent implements OnInit {
     return this.backendService.favouriteHandler(request).subscribe(
       (data) => {
         console.log(data);
-        this.favourited = !this.favourited;
+        this.favourited = data.favourited;
       },
       (error) => {
         console.log(error);

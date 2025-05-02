@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieServiceService } from './cookie-service.service';
+import { firstValueFrom } from 'rxjs';
 export interface RegisterUserBody {
   username: string;
   email: string;
@@ -25,17 +27,22 @@ export interface FavourteRequest {
   mal_id: number;
 }
 interface FavourteResponse {
-  message: string;
+  favourited: boolean;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class BackendService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieServiceService
+  ) {}
   private registerUrl: string = 'http://localhost:5227/api/Users/Register';
   private loginUrl: string = 'http://localhost:5227/api/Users/Login';
   private favouriteUrl: string = 'http://localhost:5227/api/Users/Favourite';
+  private checkFavouriteUrl: string =
+    'http://localhost:5227/api/Users/CheckFavourite';
 
   register(registerRequestBody: RegisterUserBody) {
     const body = {
@@ -70,5 +77,19 @@ export class BackendService {
     return this.http.post<FavourteResponse>(this.favouriteUrl, body, {
       headers: header,
     });
+  }
+  async checkFavourite(mal_id: string, token: string): Promise<any> {
+    const header = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+
+    const body = {
+      MalId: parseInt(mal_id),
+    };
+
+    return await firstValueFrom(
+      this.http.post(this.checkFavouriteUrl, body, { headers: header })
+    );
   }
 }
