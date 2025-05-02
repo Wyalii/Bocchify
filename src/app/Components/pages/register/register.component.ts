@@ -74,6 +74,7 @@ export class RegisterComponent {
 
   registerFunc() {
     let profileImageUrl: string | null = null;
+
     if (!this.validateUsername(this.usernameInput)) {
       this.toastr.error('invalid username input.', 'Error');
       return;
@@ -117,11 +118,12 @@ export class RegisterComponent {
         },
       });
     } else {
+      const defaultImageUrl = '/Pfp.jpeg';
       const registerRequestBody: RegisterUserBody = {
         username: this.usernameInput,
         email: this.emailInput,
         password: this.passwordInput,
-        profileImage: '',
+        profileImage: defaultImageUrl,
       };
       this.backendService.register(registerRequestBody).subscribe({
         next: (response) => {

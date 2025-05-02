@@ -8,7 +8,7 @@
     <input placeholder="Password" type="password" class="input" [(ngModel)]="passwordInput">
     <label for="fileUpload" class="selected-image-container">
         <p>select profile image.</p>
-        <img [src]="selectedImage || '/Pfp.jpeg'" alt="Profile Image" class="selected-image">
+        <img [src]="selectedImage || 'Pfp.jpeg'" alt="Profile Image" class="selected-image">
     </label>
     <input type="file" accept="image/*" id="fileUpload" hidden (change)="onImageSelect($event)">
     <button class="register-btn" (click)="registerFunc()">Register</button>

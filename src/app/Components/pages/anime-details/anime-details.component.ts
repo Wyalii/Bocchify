@@ -6,6 +6,11 @@ import { ThemeService } from '../../../services/theme.service';
 import { JikanService } from '../../../services/jikan.service';
 import { CookieServiceService } from '../../../services/cookie-service.service';
 import { ToastrService } from 'ngx-toastr';
+import {
+  BackendService,
+  FavourteRequest,
+} from '../../../services/backend.service';
+
 @Component({
   selector: 'app-anime-details',
   imports: [CommonModule],
@@ -23,7 +28,8 @@ export class AnimeDetailsComponent implements OnInit {
     public themeService: ThemeService,
     private sanitizer: DomSanitizer,
     private cookieService: CookieServiceService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private backendService: BackendService
   ) {
     this.animeId = this.route.snapshot.paramMap.get('id');
   }
@@ -42,10 +48,25 @@ export class AnimeDetailsComponent implements OnInit {
     }
   }
 
-  addToFavouritesFunc() {
-    if (this.cookieService.getToken() === '' || null) {
+  addToFavouritesFunc(mal_id: number) {
+    console.log(mal_id);
+    const token = this.cookieService.getToken();
+    if (token === '' || null) {
       return this.toastr.error('Please login first.', 'Error');
     }
-    return (this.favourited = !this.favourited);
+
+    const request: FavourteRequest = {
+      token: token,
+      mal_id: mal_id,
+    };
+    return this.backendService.favouriteHandler(request).subscribe(
+      (data) => {
+        console.log(data);
+        this.favourited = !this.favourited;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

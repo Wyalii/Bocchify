@@ -9,7 +9,7 @@
     <section class="anime-information-mobile">
       <div class="box1">
         <p class="title">Information</p>
-        <img [src]=" favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc()">
+        <img [src]=" favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc(animeDetails.mal_id)">
        </div>
        <hr>
       <p>Type: {{animeDetails.type}}</p>
@@ -59,7 +59,7 @@
     <section class="anime-information">
        <div class="box1">
         <p class="title">Information</p>
-        <img [src]=" favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc()">
+        <img [src]=" favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc(animeDetails.mal_id)">
        </div>
        <hr>
        <p>Type: {{animeDetails.type}}</p>

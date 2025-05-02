@@ -20,9 +20,9 @@ interface LoginResponse {
 interface RegisterResponse {
   message: string;
 }
-interface FavourteRequest {
+export interface FavourteRequest {
   token: string;
-  mal_id: string;
+  mal_id: number;
 }
 interface FavourteResponse {
   message: string;
@@ -35,7 +35,7 @@ export class BackendService {
   constructor(private http: HttpClient) {}
   private registerUrl: string = 'http://localhost:5227/api/Users/Register';
   private loginUrl: string = 'http://localhost:5227/api/Users/Login';
-  private favouriteUrl: string = 'http://localhost:5227/api/Users/Favourites';
+  private favouriteUrl: string = 'http://localhost:5227/api/Users/Favourite';
 
   register(registerRequestBody: RegisterUserBody) {
     const body = {
@@ -63,8 +63,9 @@ export class BackendService {
       Authorization: `Bearer ${favouriteRequest.token}`,
     };
     const body = {
-      mal_id: favouriteRequest.mal_id,
+      MalId: favouriteRequest.mal_id,
     };
+    console.log('log from backend handler:', body);
 
     return this.http.post<FavourteResponse>(this.favouriteUrl, body, {
       headers: header,

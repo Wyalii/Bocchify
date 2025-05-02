@@ -10,7 +10,7 @@
       <div class="box1">
         <div class="box5">
           <p class="title">Information</p>
-          <img [src]=" favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc()">
+          <img [src]=" favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc(mangaDetails.mal_id)">
          </div>
          <hr>
         <p>Type: {{mangaDetails.type}}</p>
@@ -44,7 +44,7 @@
       <img [src]="mangaDetails.images.jpg.image_url" class="manga-img" alt="manga image">
       <div class="box5">
         <p class="title">Information</p>
-        <img [src]=" favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc()">
+        <img [src]=" favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc(mangaDetails.mal_id)">
        </div>
        <hr>
        <p>Type: {{mangaDetails.type}}</p>
