@@ -163,6 +163,7 @@ export class JikanService {
     } else {
       return this.http.get<any>(url).pipe(
         map((response) => {
+          console.log('log from jikan service:', response);
           return response;
         }),
         catchError((err) => {

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { JikanService } from '../../../services/jikan.service';
@@ -26,12 +26,15 @@ export class MangaDetailsComponent implements OnInit {
     public themeService: ThemeService,
     private cookieService: CookieServiceService,
     private toastr: ToastrService,
-    private backendService: BackendService,
-    private cdr: ChangeDetectorRef
+    private backendService: BackendService
   ) {
     this.mangaId = this.route.snapshot.paramMap.get('id');
   }
   ngOnInit(): void {
+    this.getMangaDetailsFunc();
+  }
+
+  getMangaDetailsFunc() {
     if (this.mangaId) {
       this.jikanService.getMangaDetails(this.mangaId).subscribe((response) => {
         this.mangaDetails = response.data;
@@ -55,8 +58,7 @@ export class MangaDetailsComponent implements OnInit {
     return this.backendService.favouriteHandler(request).subscribe(
       (data) => {
         console.log(data);
-        this.favourited = data.favourited;
-        this.cdr.detectChanges();
+        this.getMangaDetailsFunc();
       },
       (error) => {
         console.log(error);

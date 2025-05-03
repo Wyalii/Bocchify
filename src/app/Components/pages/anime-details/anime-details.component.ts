@@ -34,17 +34,17 @@ export class AnimeDetailsComponent implements OnInit {
     this.animeId = this.route.snapshot.paramMap.get('id');
   }
   ngOnInit(): void {
+    this.getAnimeDetailsFunc();
+  }
+
+  getAnimeDetailsFunc() {
     if (this.animeId) {
       this.jikanService
         .getAnimeDetails(this.animeId)
         .subscribe((response: any) => {
           this.animeDetails = response.data;
           this.favourited = response.isFavourited;
-          console.log(
-            'log from ng on init:',
-            this.animeDetails,
-            response.isFavourited
-          );
+          console.log('log from ng on init:', this.animeDetails, response);
           if (this.animeDetails.trailer?.embed_url) {
             this.safeTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
               this.animeDetails.trailer.embed_url
@@ -68,7 +68,7 @@ export class AnimeDetailsComponent implements OnInit {
     return this.backendService.favouriteHandler(request).subscribe(
       (data) => {
         console.log(data);
-        this.favourited = data.favourited;
+        this.getAnimeDetailsFunc();
       },
       (error) => {
         console.log(error);
