@@ -15,4 +15,14 @@ export class CookieServiceService {
   deleteToken(): void {
     this.cookieService.delete('token');
   }
+  isTokenExpired(): boolean {
+    const token = this.getToken();
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const exp = payload.exp * 1000;
+      return Date.now() > exp;
+    } catch (e) {
+      return true;
+    }
+  }
 }

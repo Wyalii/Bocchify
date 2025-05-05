@@ -43,6 +43,8 @@ export class BackendService {
   private favouriteUrl: string = 'http://localhost:5227/api/Users/Favourite';
   private checkFavouriteUrl: string =
     'http://localhost:5227/api/Users/CheckFavourite';
+  private validateTokenUrl: string =
+    'http://localhost:5227/api/Users/ValidateToken';
 
   register(registerRequestBody: RegisterUserBody) {
     const body = {

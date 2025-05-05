@@ -10,10 +10,16 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withInterceptors,
+} from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { tokenValidationInterceptorInterceptor } from './interceptors/token-validation-interceptor.interceptor';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -24,5 +30,8 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(BrowserAnimationsModule),
     provideAnimationsAsync(),
     importProvidersFrom(HttpClientModule),
+    provideHttpClient(
+      withInterceptors([tokenValidationInterceptorInterceptor])
+    ),
   ],
 };
