@@ -1,3 +1,19 @@
+.bocchi
+{
+    background-color: #f5a2b5;
+}
+.ryo
+{
+    background-color: #0675c9;
+}
+.nikija
+{
+    background-color: #e8e805;
+}
+.ikuyo
+{
+    background-color: rgb(241, 67, 67);
+}
 .user-info-container
 {
     display: flex;
@@ -8,6 +24,7 @@
     width: 100%;
     height: 100%;
     padding: 3px;
+    gap: 10px;
 }
 hr{
     height: 100%;
@@ -16,15 +33,48 @@ hr{
 }
 .user-info-section
 {
-
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.user-header
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.image-container
+{
+    position: relative;
+}
+.pfp
+{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.change-pfp-btn
+{
+    cursor: pointer;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+}
+.camera
+{
+    position: absolute;
+    bottom: 10px;
+    right: -5px;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
 }
 
 h1{
     cursor: pointer;
 }
-.pfp
-{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-}
+

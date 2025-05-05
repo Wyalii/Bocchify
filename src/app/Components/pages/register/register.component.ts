@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { trigger, style, transition, animate } from '@angular/animations';
-import {
-  BackendService,
-  RegisterUserBody,
-} from '../../../services/backend.service';
+import { BackendService } from '../../../services/backend.service';
 import { ThemeService } from '../../../services/theme.service';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ImageUploadService } from '../../../services/image-upload.service';
+import { RegisterUserBodyInterface } from '../../../interfaces/register-user-body-interface';
 @Component({
   selector: 'app-register',
   imports: [RouterLink, FormsModule],
@@ -91,7 +89,7 @@ export class RegisterComponent {
       this.imageUploadService.uploadImage(this.fileToUpload).subscribe({
         next: (response) => {
           profileImageUrl = response.secure_url;
-          const registerRequestBody: RegisterUserBody = {
+          const registerRequestBody: RegisterUserBodyInterface = {
             username: this.usernameInput,
             email: this.emailInput,
             password: this.passwordInput,
@@ -119,7 +117,7 @@ export class RegisterComponent {
       });
     } else {
       const defaultImageUrl = '/Pfp.jpeg';
-      const registerRequestBody: RegisterUserBody = {
+      const registerRequestBody: RegisterUserBodyInterface = {
         username: this.usernameInput,
         email: this.emailInput,
         password: this.passwordInput,

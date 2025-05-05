@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { trigger, style, transition, animate } from '@angular/animations';
-import {
-  BackendService,
-  LoginUserBody,
-} from '../../../services/backend.service';
+import { BackendService } from '../../../services/backend.service';
 import { ThemeService } from '../../../services/theme.service';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CookieServiceService } from '../../../services/cookie-service.service';
 import { UserService } from '../../../services/user.service';
+import { LoginUserInterface } from '../../../interfaces/login-user-interface';
 @Component({
   selector: 'app-login',
   imports: [RouterLink, FormsModule],
@@ -47,7 +45,7 @@ export class LoginComponent {
       return;
     }
 
-    const loginRequestBody: LoginUserBody = {
+    const loginRequestBody: LoginUserInterface = {
       email: this.emailInput,
       password: this.passwordInput,
     };

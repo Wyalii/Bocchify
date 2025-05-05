@@ -2,34 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieServiceService } from './cookie-service.service';
 import { firstValueFrom } from 'rxjs';
-export interface RegisterUserBody {
-  username: string;
-  email: string;
-  password: string;
-  profileImage: string | null;
-}
-
-export interface LoginUserBody {
-  email: string;
-  password: string;
-}
-interface LoginResponse {
-  name: string;
-  message: string;
-  newToken: string;
-  profileImage: string;
-}
-interface RegisterResponse {
-  message: string;
-}
-export interface FavourteRequest {
-  token: string;
-  mal_id: number;
-}
-interface FavourteResponse {
-  favourited: boolean;
-}
-
+import { RegisterUserBodyInterface } from '../interfaces/register-user-body-interface';
+import { RegisterResponseInterface } from '../interfaces/register-response-interface';
+import { LoginUserInterface } from '../interfaces/login-user-interface';
+import { LoginResponseInterface } from '../interfaces/login-response-interface';
+import { FavouriteRequestInterface } from '../interfaces/favourite-request-interface';
+import { FavouriteResponseInterface } from '../interfaces/favourite-response-interface';
+import { UpdateProfileRequestInterface } from '../interfaces/update-profile-request-interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -43,10 +22,10 @@ export class BackendService {
   private favouriteUrl: string = 'http://localhost:5227/api/Users/Favourite';
   private checkFavouriteUrl: string =
     'http://localhost:5227/api/Users/CheckFavourite';
-  private validateTokenUrl: string =
-    'http://localhost:5227/api/Users/ValidateToken';
+  private updateUserProfileUrl: string =
+    'http://localhost:5227/api/Users/UpdateProfile';
 
-  register(registerRequestBody: RegisterUserBody) {
+  register(registerRequestBody: RegisterUserBodyInterface) {
     const body = {
       username: registerRequestBody.username,
       email: registerRequestBody.email,
@@ -54,19 +33,19 @@ export class BackendService {
       profileImage: registerRequestBody.profileImage,
     };
 
-    return this.http.post<RegisterResponse>(this.registerUrl, body);
+    return this.http.post<RegisterResponseInterface>(this.registerUrl, body);
   }
 
-  login(loginRequestBody: LoginUserBody) {
+  login(loginRequestBody: LoginUserInterface) {
     const body = {
       email: loginRequestBody.email,
       password: loginRequestBody.password,
     };
 
-    return this.http.post<LoginResponse>(this.loginUrl, body);
+    return this.http.post<LoginResponseInterface>(this.loginUrl, body);
   }
 
-  favouriteHandler(favouriteRequest: FavourteRequest) {
+  favouriteHandler(favouriteRequest: FavouriteRequestInterface) {
     const header = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${favouriteRequest.token}`,
@@ -76,7 +55,7 @@ export class BackendService {
     };
     console.log('log from backend handler:', body);
 
-    return this.http.post<FavourteResponse>(this.favouriteUrl, body, {
+    return this.http.post<FavouriteResponseInterface>(this.favouriteUrl, body, {
       headers: header,
     });
   }
@@ -93,5 +72,22 @@ export class BackendService {
     return await firstValueFrom(
       this.http.post(this.checkFavouriteUrl, body, { headers: header })
     );
+  }
+
+  updateProfile(updateProfile: UpdateProfileRequestInterface) {
+    const header = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${updateProfile.token}`,
+    };
+    const body = {
+      email: updateProfile.email,
+      username: updateProfile.username,
+      password: updateProfile.password,
+      profilePicture: updateProfile.profilePicture,
+    };
+    console.log('log from backend service: ', body);
+    return this.http.patch(this.updateUserProfileUrl, body, {
+      headers: header,
+    });
   }
 }

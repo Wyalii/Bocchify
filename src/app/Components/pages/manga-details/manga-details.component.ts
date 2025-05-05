@@ -5,10 +5,8 @@ import { JikanService } from '../../../services/jikan.service';
 import { ThemeService } from '../../../services/theme.service';
 import { CookieServiceService } from '../../../services/cookie-service.service';
 import { ToastrService } from 'ngx-toastr';
-import {
-  BackendService,
-  FavourteRequest,
-} from '../../../services/backend.service';
+import { BackendService } from '../../../services/backend.service';
+import { FavouriteRequestInterface } from '../../../interfaces/favourite-request-interface';
 
 @Component({
   selector: 'app-manga-details',
@@ -50,7 +48,7 @@ export class MangaDetailsComponent implements OnInit {
       return this.toastr.error('Please login first.', 'Error');
     }
 
-    const request: FavourteRequest = {
+    const request: FavouriteRequestInterface = {
       token: token,
       mal_id: mal_id,
     };

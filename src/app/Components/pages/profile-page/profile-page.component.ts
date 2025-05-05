@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { CommonModule } from '@angular/common';
+import { ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -12,11 +13,13 @@ import { CommonModule } from '@angular/common';
 export class ProfilePageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    public themeService: ThemeService
   ) {}
   username: string = '';
   profilePicture: string | null = null;
   selectedPage: string = 'Profile';
+  email: string = 'someomeail@gmail.com';
   ngOnInit(): void {
     this.username = this.route.snapshot.paramMap.get('username')!;
     this.profilePicture = this.userService.getProfileImage();

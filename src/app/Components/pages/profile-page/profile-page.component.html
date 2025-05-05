@@ -1,14 +1,18 @@
 <main class="user-info-container">
     <aside>
         <h1>Profile</h1>
-        <h1>Favourites</h1>
         <h1>Settings</h1>
     </aside>
     <hr>
         <section class="user-info-section" *ngIf="selectedPage === 'Profile'">
-            <header>
-                <img src="/Pfp.jpeg" *ngIf="!profilePicture" class="pfp">
-                <img [src]="profilePicture" *ngIf="profilePicture" class="pfp">
+            <h1>Public Profile</h1>
+            <header class="user-header">
+                <div class="image-container">
+                   <img src="/black-camera.png" class="camera">
+                   <img src="/Pfp.jpeg" *ngIf="!profilePicture" class="pfp">
+                   <img [src]="profilePicture" *ngIf="profilePicture" class="pfp">
+                </div>
+                <button [ngClass]="themeService.themeSignal()" class="change-pfp-btn">Upload Profile Picture</button>
             </header>
         </section>
 </main>
