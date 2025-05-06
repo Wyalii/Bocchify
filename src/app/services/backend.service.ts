@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieServiceService } from './cookie-service.service';
 import { firstValueFrom } from 'rxjs';
 import { RegisterUserBodyInterface } from '../interfaces/register-user-body-interface';
 import { RegisterResponseInterface } from '../interfaces/register-response-interface';
@@ -13,10 +12,7 @@ import { UpdateProfileRequestInterface } from '../interfaces/update-profile-requ
   providedIn: 'root',
 })
 export class BackendService {
-  constructor(
-    private http: HttpClient,
-    private cookieService: CookieServiceService
-  ) {}
+  constructor(private http: HttpClient) {}
   private registerUrl: string = 'http://localhost:5227/api/Users/Register';
   private loginUrl: string = 'http://localhost:5227/api/Users/Login';
   private favouriteUrl: string = 'http://localhost:5227/api/Users/Favourite';

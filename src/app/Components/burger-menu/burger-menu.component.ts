@@ -1,7 +1,7 @@
 import { Component, effect, OnInit } from '@angular/core';
 import { ThemeBtn } from '../ThemeBtn/ThemeBtn.component';
 import { ThemeService } from '../../services/theme.service';
-import { BurgerServiceService } from '../../services/burger-service.service';
+import { BlurService } from '../../services/blur.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CookieServiceService } from '../../services/cookie-service.service';
@@ -19,7 +19,7 @@ export class BurgerMenuComponent implements OnInit {
   username: string | null = null;
   constructor(
     public themeService: ThemeService,
-    public burgerMenuService: BurgerServiceService,
+    public blurService: BlurService,
     private cookieService: CookieServiceService,
     private userService: UserService
   ) {}

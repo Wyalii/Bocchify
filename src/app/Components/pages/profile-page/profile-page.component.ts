@@ -3,10 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../../services/theme.service';
-
+import { WebcamModule } from 'ngx-webcam';
+import { BlurService } from '../../../services/blur.service';
 @Component({
   selector: 'app-profile-page',
-  imports: [CommonModule],
+  imports: [CommonModule, WebcamModule],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss',
 })
@@ -14,7 +15,8 @@ export class ProfilePageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    public themeService: ThemeService
+    public themeService: ThemeService,
+    public blurService: BlurService
   ) {}
   username: string = '';
   profilePicture: string | null = null;
@@ -23,5 +25,8 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit(): void {
     this.username = this.route.snapshot.paramMap.get('username')!;
     this.profilePicture = this.userService.getProfileImage();
+  }
+  handleCamMenu() {
+    this.blurService.toggleCamMenu();
   }
 }

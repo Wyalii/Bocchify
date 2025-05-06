@@ -1,5 +1,5 @@
 <header>
-    <div *ngIf="burgerMenuService.burgerMenu() === false" class="box1" routerLink="/">
+    <div *ngIf="blurService.blur() === false" class="box1" routerLink="/">
       <img [src]="'/Bochi.jpeg'" alt="Bocchify" class="logo" > 
       <h1>Bocchify.</h1>
     </div>
@@ -28,9 +28,9 @@
       </div>
     </ng-template>
 
-    <img *ngIf="burgerMenuService.burgerMenu() === false" (click)="toggleMenu()" class="burger-menu-img" src="/menu.png" alt="menu-img">
+    <img *ngIf="blurService.blur() === false" (click)="toggleMenu()" class="burger-menu-img" src="/menu.png" alt="menu-img">
 
-    <div *ngIf="burgerMenuService.burgerMenu() === false" class="mode-container">
+    <div *ngIf="blurService.blur() === false" class="mode-container">
       <input class="slide" [ngClass]="themeService.themeSignal()"readonly disabled>
       <Theme-Button class="theme-btn" [ngClass]="slideClass" (click)="handleAnimation()"></Theme-Button>
     </div>

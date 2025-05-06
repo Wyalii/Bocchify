@@ -2,7 +2,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { ThemeBtn } from '../ThemeBtn/ThemeBtn.component';
 import { ThemeService } from '../../services/theme.service';
 import { CommonModule } from '@angular/common';
-import { BurgerServiceService } from '../../services/burger-service.service';
+import { BlurService } from '../../services/blur.service';
 import { FormsModule } from '@angular/forms';
 import { JikanService } from '../../services/jikan.service';
 import { Router } from '@angular/router';
@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public themeService: ThemeService,
-    public burgerMenuService: BurgerServiceService,
+    public blurService: BlurService,
     public animeService: JikanService,
     private router: Router,
     private cookieService: CookieServiceService,
@@ -66,6 +66,6 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu() {
-    this.burgerMenuService.toggleMenu();
+    this.blurService.toggleBurgerMenu();
   }
 }

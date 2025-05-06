@@ -8,7 +8,7 @@
             <h1>Public Profile</h1>
             <header class="user-header">
                 <div class="image-container">
-                   <img src="/black-camera.png" class="camera">
+                   <img src="/black-camera.png" class="camera" (click)="handleCamMenu()">
                    <img src="/Pfp.jpeg" *ngIf="!profilePicture" class="pfp">
                    <img [src]="profilePicture" *ngIf="profilePicture" class="pfp">
                 </div>

@@ -1,8 +1,9 @@
 <main class="main" [ngClass]="themeService.themeSignal()">
-  <app-header class="header" [ngClass]="burgerMenuService.burgerMenu() ? 'blured': ''"></app-header>
-  <app-burger-menu @slideIn *ngIf="burgerMenuService.burgerMenu() === true" ></app-burger-menu>
+  <app-header class="header" [ngClass]="blurService.blur() ? 'blured': ''"></app-header>
+  <app-burger-menu @slideIn *ngIf="blurService.burgerMenu()" ></app-burger-menu>
+  <app-webcam-menu *ngIf="blurService.camMenu()"></app-webcam-menu>
   <div  [ngClass]="[
-     burgerMenuService.burgerMenu() ? 'blured' : '',
+     blurService.blur() ? 'blured' : '',
      isOnMainRoute() ? 'scrollable' : '']"  
      class="router-outlet-container">
     <router-outlet></router-outlet>

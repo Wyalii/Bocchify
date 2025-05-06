@@ -10,11 +10,18 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './Components/header/header.component';
 import { CookieService } from 'ngx-cookie-service';
 import { BurgerMenuComponent } from './Components/burger-menu/burger-menu.component';
-import { BurgerServiceService } from './services/burger-service.service';
 import { trigger, style, transition, animate } from '@angular/animations';
+import { BlurService } from './services/blur.service';
+import { WebcamMenuComponent } from './Components/webcam-menu/webcam-menu.component';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, HeaderComponent, BurgerMenuComponent],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    HeaderComponent,
+    BurgerMenuComponent,
+    WebcamMenuComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   encapsulation: ViewEncapsulation.None,
@@ -43,7 +50,7 @@ export class AppComponent {
 
   constructor(
     public themeService: ThemeService,
-    public burgerMenuService: BurgerServiceService,
+    public blurService: BlurService,
     public router: Router
   ) {}
 

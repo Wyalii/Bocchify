@@ -55,6 +55,7 @@ export class LoginComponent {
         this.toastr.success(`${response.message}`);
         this.cookieService.setToken(response.newToken);
         this.userService.setUser(response.name, response.profileImage);
+        this.router.navigate(['/']);
       },
       error: (error) => {
         this.toastr.error(`${error.error.message}`, 'Error');

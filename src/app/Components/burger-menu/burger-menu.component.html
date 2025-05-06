@@ -24,6 +24,6 @@
         <input class="slide"  readonly disabled [ngClass]="themeService.themeSignal()">
         <Theme-Button class="theme-btn" [ngClass]="slideClass" (click)="handleAnimation()"></Theme-Button>
     </section>
-    <button class="closeBtn" (click)="burgerMenuService.toggleMenu()" >Close</button>
+    <button class="closeBtn" (click)="blurService.toggleBurgerMenu()" >Close</button>
 </footer>
 
