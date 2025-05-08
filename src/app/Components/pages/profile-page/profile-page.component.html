@@ -9,8 +9,7 @@
             <header class="user-header">
                 <div class="image-container">
                    <img src="/black-camera.png" class="camera" (click)="handleCamMenu()">
-                   <img src="/Pfp.jpeg" *ngIf="!profilePicture" class="pfp">
-                   <img [src]="profilePicture" *ngIf="profilePicture" class="pfp">
+                   <img [src]="capturedImage || profilePicture || '/Pfp.jpeg'" class="pfp" alt="Profile Picture">                   
                 </div>
                 <button [ngClass]="themeService.themeSignal()" class="change-pfp-btn">Upload Profile Picture</button>
             </header>

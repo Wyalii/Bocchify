@@ -1,13 +1,30 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  constructor() {}
   private usernameKey = 'username';
   private profileImageKey = 'profileImage';
-  public capturedImage: string = '';
-  constructor() {}
+  private profileImageSubject = new BehaviorSubject<string>('');
+  profileImage$ = this.profileImageSubject.asObservable();
+
+  setCapturedImage(url: string) {
+    this.profileImageSubject.next(url);
+  }
+
+  getCapturedImage(): string {
+    console.log(
+      'log from get caputed image user service:',
+      this.profileImageSubject.value
+    );
+    return this.profileImageSubject.value;
+  }
+  clearCapturedImage() {
+    this.profileImageSubject.next('');
+  }
 
   setUser(username: string, profileImage: string): void {
     localStorage.setItem(this.usernameKey, username);

@@ -36,8 +36,11 @@ export class WebcamMenuComponent {
         next: (response) => {
           console.log('Upload Success:', response);
           const url = response.secure_url;
-          this.userService.capturedImage = url;
-          console.log('captured image log:', this.userService.capturedImage);
+          this.userService.setCapturedImage(url);
+          console.log(
+            'captured image log:',
+            this.userService.getCapturedImage()
+          );
         },
         error: (err) => {
           console.error('Upload Failed', err);
