@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class UserService {
   private usernameKey = 'username';
   private profileImageKey = 'profileImage';
-
+  public capturedImage: string = '';
   constructor() {}
 
   setUser(username: string, profileImage: string): void {

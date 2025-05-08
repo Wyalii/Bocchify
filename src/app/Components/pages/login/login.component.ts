@@ -56,6 +56,9 @@ export class LoginComponent {
         this.cookieService.setToken(response.newToken);
         this.userService.setUser(response.name, response.profileImage);
         this.router.navigate(['/']);
+        setTimeout(() => {
+          window.location.reload();
+        }, 200);
       },
       error: (error) => {
         this.toastr.error(`${error.error.message}`, 'Error');

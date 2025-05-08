@@ -1,4 +1,3 @@
-<webcam class="webcam"></webcam>
-<button [ngClass]="themeService.themeSignal()" class="close-btn">Capture</button>
+<webcam class="webcam" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+<button [ngClass]="themeService.themeSignal()" class="close-btn" (click)="takePhoto()">Capture</button>
 <button [ngClass]="themeService.themeSignal()" class="capture-btn" (click)="closeWebCam()">Close</button>
-<p>testing</p>
