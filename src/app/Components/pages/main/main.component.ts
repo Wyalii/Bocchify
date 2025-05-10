@@ -31,7 +31,10 @@ export class MainComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.loadAnimes(1);
-    this.loadMangas(1);
+    setTimeout(() => {
+      this.loadMangas(1);
+    }, 1500);
+    1;
   }
 
   loadAnimes(page: number) {
