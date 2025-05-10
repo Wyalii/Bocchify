@@ -98,8 +98,6 @@ export class JikanService {
         return result;
       }),
       catchError((err) => {
-        this.toastr.error('Failed to fetch top animes.', 'Error');
-        console.error('Top Animes Error:', err);
         return throwError(() => err);
       }),
       finalize(() => this.isLoadingAnimes.set(false))
@@ -126,8 +124,6 @@ export class JikanService {
         return result;
       }),
       catchError((err) => {
-        this.toastr.error('Failed to fetch top mangas.', 'Error');
-        console.error('Top Mangas Error:', err);
         return throwError(() => err);
       }),
       finalize(() => this.isLoadingMangas.set(false))

@@ -11,7 +11,10 @@
                    <img src="/black-camera.png" class="camera" (click)="handleCamMenu()">
                    <img [src]="capturedImage || profilePicture || '/Pfp.jpeg'" class="pfp" alt="Profile Picture">                   
                 </div>
-                <button [ngClass]="themeService.themeSignal()" class="change-pfp-btn">Upload Profile Picture</button>
+                <form>
+                   <input #fileUpload type="file" accept="image/*" id="fileUpload" hidden (change)="onImageSelected($event)">
+                   <input [ngClass]="themeService.themeSignal()" class="change-pfp-btn" type="button" value="Upload File" (click)="triggerFileUpload()">
+                </form>
             </header>
         </section>
 </main>
