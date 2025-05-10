@@ -1,17 +1,6 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './Components/pages/main/main.component';
-import { AnimeDetailsComponent } from './Components/pages/anime-details/anime-details.component';
-import { MangaDetailsComponent } from './Components/pages/manga-details/manga-details.component';
-import { SearchResultsComponent } from './Components/pages/search-results/search-results.component';
-import { TopAnimeListComponent } from './Components/pages/top-anime-list/top-anime-list.component';
-import { TopMangaListComponent } from './Components/pages/top-manga-list/top-manga-list.component';
-import { AnimeSearchComponent } from './Components/pages/anime-search/anime-search.component';
-import { MangaSearchComponent } from './Components/pages/manga-search/manga-search.component';
-import { RegisterComponent } from './Components/pages/register/register.component';
-import { LoginComponent } from './Components/pages/login/login.component';
-import { VerifiedSuccessComponent } from './Components/pages/verified-success/verified-success.component';
 import { loginGuardGuard } from './guards/login-guard.guard';
-import { ProfilePageComponent } from './Components/pages/profile-page/profile-page.component';
 import { authGuard } from './guards/auth.guard';
 export const routes: Routes = [
   {
@@ -21,49 +10,82 @@ export const routes: Routes = [
   {
     path: 'anime/:id',
     title: 'AnimeDetails',
-    component: AnimeDetailsComponent,
+    loadComponent: () =>
+      import('./Components/pages/anime-details/anime-details.component').then(
+        (m) => m.AnimeDetailsComponent
+      ),
   },
   {
     path: 'manga/:id',
     title: 'MangaDetails',
-    component: MangaDetailsComponent,
+    loadComponent: () =>
+      import('./Components/pages/manga-details/manga-details.component').then(
+        (m) => m.MangaDetailsComponent
+      ),
   },
   {
     path: 'profile/:username',
-    component: ProfilePageComponent,
+    loadComponent: () =>
+      import('./Components/pages/profile-page/profile-page.component').then(
+        (m) => m.ProfilePageComponent
+      ),
     canActivate: [authGuard],
   },
   {
     path: 'search',
-    component: SearchResultsComponent,
+    loadComponent: () =>
+      import('./Components/pages/search-results/search-results.component').then(
+        (m) => m.SearchResultsComponent
+      ),
   },
   {
     path: 'topAnimes',
-    component: TopAnimeListComponent,
+    loadComponent: () =>
+      import('./Components/pages/top-anime-list/top-anime-list.component').then(
+        (m) => m.TopAnimeListComponent
+      ),
   },
   {
     path: 'topMangas',
-    component: TopMangaListComponent,
+    loadComponent: () =>
+      import('./Components/pages/top-manga-list/top-manga-list.component').then(
+        (m) => m.TopMangaListComponent
+      ),
   },
   {
     path: 'animeSearch',
-    component: AnimeSearchComponent,
+    loadComponent: () =>
+      import('./Components/pages/anime-search/anime-search.component').then(
+        (m) => m.AnimeSearchComponent
+      ),
   },
   {
     path: 'mangaSearch',
-    component: MangaSearchComponent,
+    loadComponent: () =>
+      import('./Components/pages/manga-search/manga-search.component').then(
+        (m) => m.MangaSearchComponent
+      ),
   },
   {
     path: 'register',
-    component: RegisterComponent,
+    loadComponent: () =>
+      import('./Components/pages/register/register.component').then(
+        (m) => m.RegisterComponent
+      ),
   },
   {
     path: 'login',
-    component: LoginComponent,
+    loadComponent: () =>
+      import('./Components/pages/login/login.component').then(
+        (m) => m.LoginComponent
+      ),
     canActivate: [loginGuardGuard],
   },
   {
     path: 'verified-success',
-    component: VerifiedSuccessComponent,
+    loadComponent: () =>
+      import(
+        './Components/pages/verified-success/verified-success.component'
+      ).then((m) => m.VerifiedSuccessComponent),
   },
 ];
