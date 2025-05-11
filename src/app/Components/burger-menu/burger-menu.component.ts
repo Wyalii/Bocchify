@@ -1,4 +1,4 @@
-import { Component, effect, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThemeBtn } from '../ThemeBtn/ThemeBtn.component';
 import { ThemeService } from '../../services/theme.service';
 import { BlurService } from '../../services/blur.service';

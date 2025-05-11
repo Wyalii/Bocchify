@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { WebcamImage, WebcamModule } from 'ngx-webcam';
 import { ThemeService } from '../../services/theme.service';
 import { CommonModule } from '@angular/common';

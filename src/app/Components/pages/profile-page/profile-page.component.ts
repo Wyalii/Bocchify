@@ -6,7 +6,6 @@ import { ThemeService } from '../../../services/theme.service';
 import { WebcamModule } from 'ngx-webcam';
 import { BlurService } from '../../../services/blur.service';
 import { ImageUploadService } from '../../../services/image-upload.service';
-import { read } from 'fs';
 @Component({
   selector: 'app-profile-page',
   imports: [CommonModule, WebcamModule],
@@ -18,8 +17,7 @@ export class ProfilePageComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     public themeService: ThemeService,
-    public blurService: BlurService,
-    private imageUploadService: ImageUploadService
+    public blurService: BlurService
   ) {}
   @ViewChild('fileUpload', { static: false })
   fileUploadInput!: ElementRef<HTMLInputElement>;
