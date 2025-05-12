@@ -1,16 +1,36 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { CookieServiceService } from './cookie-service.service';
+import { BackendService } from './backend.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor() {}
+  constructor(
+    private cookieService: CookieServiceService,
+    private backendService: BackendService
+  ) {}
   private usernameKey = 'username';
   private profileImageKey = 'profileImage';
+  private emailSubject = new BehaviorSubject<string>('');
+  email$ = this.emailSubject.asObservable();
   private profileImageSubject = new BehaviorSubject<string>('');
   profileImage$ = this.profileImageSubject.asObservable();
 
+  getUserInfo() {
+    const token = this.cookieService.getToken();
+    this.backendService.decodeToken(token).subscribe(
+      (response) => {
+        console.log(response);
+        this.emailSubject.next(response.email);
+        return response;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
   setCapturedImage(url: string) {
     this.profileImageSubject.next(url);
   }
@@ -43,6 +63,9 @@ export class UserService {
       return localStorage.getItem('profileImage');
     }
     return null;
+  }
+  getUserEmail() {
+    return this.emailSubject.value;
   }
 
   clearUser(): void {

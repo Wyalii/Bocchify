@@ -8,6 +8,8 @@ import { LoginResponseInterface } from '../interfaces/login-response-interface';
 import { FavouriteRequestInterface } from '../interfaces/favourite-request-interface';
 import { FavouriteResponseInterface } from '../interfaces/favourite-response-interface';
 import { UpdateProfileRequestInterface } from '../interfaces/update-profile-request-interface';
+import { DecodeTokenResponse } from '../interfaces/decodeToken-response-interface';
+import { UpdateProfileResponeInterface } from '../interfaces/update-profile-response-interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -20,6 +22,8 @@ export class BackendService {
     'http://localhost:5227/api/Users/CheckFavourite';
   private updateUserProfileUrl: string =
     'http://localhost:5227/api/Users/UpdateProfile';
+  private decodeTokenUrl: string =
+    'http://localhost:5227/api/Users/DecodeToken';
 
   register(registerRequestBody: RegisterUserBodyInterface) {
     const body = {
@@ -82,8 +86,24 @@ export class BackendService {
       profilePicture: updateProfile.profilePicture,
     };
     console.log('log from backend service: ', body);
-    return this.http.patch(this.updateUserProfileUrl, body, {
-      headers: header,
-    });
+    return this.http.patch<UpdateProfileResponeInterface>(
+      this.updateUserProfileUrl,
+      body,
+      {
+        headers: header,
+      }
+    );
+  }
+
+  decodeToken(token: string) {
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+    return this.http.post<DecodeTokenResponse>(
+      this.decodeTokenUrl,
+      {},
+      { headers }
+    );
   }
 }

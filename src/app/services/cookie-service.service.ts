@@ -13,7 +13,7 @@ export class CookieServiceService {
     this.cookieService.set('token', token, 1, '/');
   }
   deleteToken(): void {
-    this.cookieService.delete('token');
+    this.cookieService.delete('token', '/');
   }
   isTokenExpired(): boolean {
     const token = this.getToken();

@@ -11,10 +11,19 @@
                    <img src="/black-camera.png" class="camera" (click)="handleCamMenu()">
                    <img [src]="capturedImage || profilePicture || '/Pfp.jpeg'" class="pfp" alt="Profile Picture">                   
                 </div>
-                <form>
-                   <input #fileUpload type="file" accept="image/*" id="fileUpload" hidden (change)="onImageSelected($event)">
-                   <input [ngClass]="themeService.themeSignal()" class="change-pfp-btn" type="button" value="Upload File" (click)="triggerFileUpload()">
-                </form>
+                <input [ngClass]="themeService.themeSignal()" class="change-pfp-btn" accept="image/*" type="file" (change)="onImageSelected($event)">
             </header>
+            <section class="user-creds-container">
+                <div class="email-input-container">
+                    <input type="email" [value]="email" class="email-input" readonly>
+                </div>
+                <div class="username-input-container">
+                    <input type="text" name="test" class="username-input"[(ngModel)]="username" [readOnly]="isReadOnly">
+                    <p *ngIf="!isReadOnly" class="action-msg">Updating Username</p>
+                    <img src="/edit-text.png" class="editable" (click)="handleReadOnly()">
+                </div>
+                <p>forgot your password?</p>
+            </section>
+            <button [ngClass]="themeService.themeSignal()" class="save-changes-btn" (click)="updateProfile()">Save Changes</button>
         </section>
 </main>
