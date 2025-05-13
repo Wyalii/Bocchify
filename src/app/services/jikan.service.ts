@@ -114,7 +114,6 @@ export class JikanService {
     this.isLoadingMangas.set(true);
     const url = `https://api.jikan.moe/v4/top/manga?page=${page}`;
     return this.http.get<any>(url).pipe(
-      delay(1000),
       map((response) => {
         const result = {
           data: response.data,

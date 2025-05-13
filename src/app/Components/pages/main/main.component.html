@@ -3,10 +3,13 @@
   <img [src]="themeService.bgImage" class="bgImage">
   <h1>Welcome To Bocchify.</h1>
 </div>
-<div class="box2">  
+<div class="loading-container" *ngIf="isLoadingAnimes || isLoadingMangas">
+  <img [src]="this.themeService.loadingImage" class="loading">  
+  <p>loading... heheheh</p>
+</div>
+<div class="box2" *ngIf="!isLoadingAnimes && !isLoadingMangas">  
   <div class="top-anime-container">
     <h2 (click)="navigateToTopAnimeList()">View Top Animes:</h2>
-    <div *ngIf="jikanService.isLoadingAnimes() === true">loading top animes...</div>
     <swiper-container slides-per-view="1" space-between="20" [breakpoints]="{
       '1020': { 'slidesPerView': 2 },
       '1520':{'slidesPerView': 3}
@@ -20,7 +23,7 @@
   
   <div class="top-manga-container">
     <h2 (click)="navigateToTopMangaList()">View Top Mangas:</h2>
-    <div *ngIf="jikanService.isLoadingMangas() === true">loading top mangas...</div>
+    
     <swiper-container slides-per-view="1" space-between="20" [breakpoints]="{
       '1020': { 'slidesPerView': 2 },
       '1520':{'slidesPerView': 3}

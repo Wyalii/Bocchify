@@ -8,9 +8,10 @@ import { ToastrService } from 'ngx-toastr';
 import { CookieServiceService } from '../../../services/cookie-service.service';
 import { UserService } from '../../../services/user.service';
 import { LoginUserInterface } from '../../../interfaces/login-user-interface';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   animations: [
@@ -34,14 +35,17 @@ export class LoginComponent {
   ) {}
   emailInput: string = '';
   passwordInput: string = '';
+  isLoading: boolean = false;
   validateEmail(email: string): boolean {
     const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
     return emailPattern.test(email) && email.length <= 50;
   }
 
   loginFunc() {
+    this.isLoading = true;
     if (!this.validateEmail(this.emailInput)) {
       this.toastr.error('invalid email input.', 'Error');
+      this.isLoading = false;
       return;
     }
 
@@ -55,12 +59,14 @@ export class LoginComponent {
         this.toastr.success(`${response.message}`);
         this.cookieService.setToken(response.newToken);
         this.userService.setUser(response.name, response.profileImage);
+        this.isLoading = false;
         this.router.navigate(['/']);
         setTimeout(() => {
           window.location.reload();
         }, 200);
       },
       error: (error) => {
+        this.isLoading = false;
         this.toastr.error(`${error.error.message}`, 'Error');
         console.error('Register error:', error);
       },

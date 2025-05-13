@@ -23,7 +23,8 @@ import { JikanService } from '../../../services/jikan.service';
 export class MainComponent implements OnInit {
   topAnimes: any[] = [];
   topMangas: any[] = [];
-
+  isLoadingAnimes: boolean = false;
+  isLoadingMangas: boolean = false;
   constructor(
     public themeService: ThemeService,
     public jikanService: JikanService,
@@ -38,14 +39,32 @@ export class MainComponent implements OnInit {
   }
 
   loadAnimes(page: number) {
-    this.jikanService.getTopAnimes(page).subscribe((response) => {
-      this.topAnimes = response.data;
+    this.isLoadingAnimes = true;
+    this.jikanService.getTopAnimes(page).subscribe({
+      next: (response) => {
+        console.log('Animes loaded', response);
+        this.topAnimes = response.data;
+        this.isLoadingAnimes = false;
+      },
+      error: (err) => {
+        console.error('Error loading animes', err);
+        this.isLoadingAnimes = false;
+      },
     });
   }
 
   loadMangas(page: number) {
-    this.jikanService.getTopMangas(page).subscribe((response) => {
-      this.topMangas = response.data;
+    this.isLoadingMangas = true;
+    this.jikanService.getTopMangas(page).subscribe({
+      next: (response) => {
+        console.log('Mangas loaded', response);
+        this.topMangas = response.data;
+        this.isLoadingMangas = false;
+      },
+      error: (err) => {
+        console.error('Error loading animes', err);
+        this.isLoadingMangas = false;
+      },
     });
   }
 

@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class ThemeService {
   private CookieService = inject(CookieService);
   public bgImage: string = '';
+  public loadingImage: string = '';
   private themes = ['bocchi', 'ryo', 'nikija', 'ikuyo'];
   themeSignal = signal<string>(this.getStoredTheme());
 
@@ -15,18 +16,22 @@ export class ThemeService {
     switch (userTheme) {
       case 'bocchi':
         this.bgImage = 'bocchi-landing.png';
+        this.loadingImage = 'loading-pink.svg';
         break;
 
       case 'ryo':
         this.bgImage = 'ryo-landing.png';
+        this.loadingImage = 'loading-blue.svg';
         break;
 
       case 'nikija':
         this.bgImage = 'nikija-landing.png';
+        this.loadingImage = 'loading-yellow.svg';
         break;
 
       case 'ikuyo':
         this.bgImage = 'ikuyo-landing.png';
+        this.loadingImage = 'loading-red.svg';
         break;
 
       default:
@@ -52,18 +57,22 @@ export class ThemeService {
       switch (newTheme) {
         case 'bocchi':
           this.bgImage = 'bocchi-landing.png';
+          this.loadingImage = 'loading-pink.svg';
           break;
 
         case 'ryo':
           this.bgImage = 'ryo-landing.png';
+          this.loadingImage = 'loading-blue.svg';
           break;
 
         case 'nikija':
           this.bgImage = 'nikija-landing.png';
+          this.loadingImage = 'loading-yellow.svg';
           break;
 
         case 'ikuyo':
           this.bgImage = 'ikuyo-landing.png';
+          this.loadingImage = 'loading-red.svg';
           break;
 
         default:
