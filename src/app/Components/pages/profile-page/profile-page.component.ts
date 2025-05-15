@@ -110,4 +110,7 @@ export class ProfilePageComponent implements OnInit {
       },
     });
   }
+  goToForgotPassword() {
+    this.router.navigate(['/forgot-password']);
+  }
 }

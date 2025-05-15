@@ -88,4 +88,19 @@ export const routes: Routes = [
         './Components/pages/verified-success/verified-success.component'
       ).then((m) => m.VerifiedSuccessComponent),
   },
+  {
+    path: 'forgot-password',
+    loadComponent: () =>
+      import(
+        './Components/pages/forgot-password/forgot-password.component'
+      ).then((m) => m.ForgotPasswordComponent),
+  },
+
+  {
+    path: 'change-password',
+    loadComponent: () =>
+      import(
+        './Components/pages/change-password/change-password.component'
+      ).then((m) => m.ChangePasswordComponent),
+  },
 ];

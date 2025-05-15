@@ -22,7 +22,7 @@
                     <p *ngIf="!isReadOnly" class="action-msg">Updating Username</p>
                     <img src="/edit-text.png" class="editable" (click)="handleReadOnly()">
                 </div>
-                <p>forgot your password?</p>
+                <p (click)="goToForgotPassword()" class="forgot-password">forgot your password?</p>
             </section>
             <button [ngClass]="themeService.themeSignal()" class="save-changes-btn" (click)="updateProfile()">Save Changes</button>
         </section>
