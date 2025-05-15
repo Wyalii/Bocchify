@@ -10,6 +10,8 @@ import { FavouriteResponseInterface } from '../interfaces/favourite-response-int
 import { UpdateProfileRequestInterface } from '../interfaces/update-profile-request-interface';
 import { DecodeTokenResponse } from '../interfaces/decodeToken-response-interface';
 import { UpdateProfileResponeInterface } from '../interfaces/update-profile-response-interface';
+import { forgotPasswordResponseInterface } from '../interfaces/forgotPassword-response-interface';
+import { resetPasswordInterface } from '../interfaces/resetPassword-response-interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,6 +26,10 @@ export class BackendService {
     'http://localhost:5227/api/Users/UpdateProfile';
   private decodeTokenUrl: string =
     'http://localhost:5227/api/Users/DecodeToken';
+  private forgotPasswordUrl: string =
+    'http://localhost:5227/api/Users/ForgotPassword';
+  private resetPasswordUrl: string =
+    'http://localhost:5227/api/Users/ResetPassword';
 
   register(registerRequestBody: RegisterUserBodyInterface) {
     const body = {
@@ -105,5 +111,22 @@ export class BackendService {
       {},
       { headers }
     );
+  }
+
+  forgotPassword(email: string) {
+    const body = {
+      Email: email,
+    };
+    return this.http.post<forgotPasswordResponseInterface>(
+      this.forgotPasswordUrl,
+      body
+    );
+  }
+  resetPassword(email: string, newPassword: string) {
+    const body = {
+      email: email,
+      newPassword: newPassword,
+    };
+    return this.http.post<resetPasswordInterface>(this.resetPasswordUrl, body);
   }
 }

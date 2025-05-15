@@ -8,6 +8,7 @@
        <input placeholder="Password" type="password" class="input" [(ngModel)]="passwordInput">
        <button class="login-btn" (click)="loginFunc()">login</button>
        <a class="register-link" routerLink="/register">registration page</a>
+       <a class="forgot-password-link" routerLink="/forgot-password">forgot password</a>
     </div>
     <img *ngIf="isLoading" [src]="themeService.loadingImage">
 </section>
