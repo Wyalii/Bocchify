@@ -1,3 +1,8 @@
-<webcam class="webcam" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
-<button [ngClass]="themeService.themeSignal()" class="close-btn" (click)="takePhoto()">Capture</button>
-<button [ngClass]="themeService.themeSignal()" class="capture-btn" (click)="closeWebCam()">Close</button>
+<div class="loading-container" *ngIf="isLoading">
+    <img [src]="this.themeService.loadingImage" class="loading">  
+</div>
+<ng-container *ngIf="!isLoading">
+  <webcam class="webcam" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+  <button [ngClass]="themeService.themeSignal()" class="close-btn" (click)="takePhoto()">Capture</button>
+  <button [ngClass]="themeService.themeSignal()" class="capture-btn" (click)="closeWebCam()">Close</button>
+</ng-container>

@@ -39,7 +39,7 @@ export class ProfilePageComponent implements OnInit {
   selectedImageFile: File | null = null;
   selectedImageUrl: string | null = null;
   isReadOnly: boolean = true;
-
+  isLoading: boolean = false;
   ngOnInit(): void {
     this.userService.getUserInfo();
     this.userService.email$.subscribe((email) => {
@@ -79,6 +79,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   updateProfile() {
+    this.isLoading = true;
     const token = this.cookieService.getToken();
     const profilePicture = this.userService.getCapturedImage() ?? undefined;
     console.log(profilePicture);
@@ -99,6 +100,7 @@ export class ProfilePageComponent implements OnInit {
           response.user.username,
           response.user.profileImage
         );
+        this.isLoading = false;
         this.router.navigate(['/']);
         setTimeout(() => {
           window.location.reload();
@@ -106,6 +108,7 @@ export class ProfilePageComponent implements OnInit {
         this.toastr.success(`${response.message}`);
       },
       error: (err) => {
+        this.isLoading = false;
         console.log(err);
       },
     });

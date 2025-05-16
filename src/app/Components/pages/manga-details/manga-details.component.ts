@@ -18,6 +18,7 @@ export class MangaDetailsComponent implements OnInit {
   mangaId: string | null = null;
   mangaDetails: any = {};
   favourited: boolean = false;
+  isLoading: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private jikanService: JikanService,
@@ -42,9 +43,11 @@ export class MangaDetailsComponent implements OnInit {
   }
 
   addToFavouritesFunc(mal_id: number) {
+    this.isLoading = true;
     console.log(mal_id);
     const token = this.cookieService.getToken();
     if (token === '' || null) {
+      this.isLoading = false;
       return this.toastr.error('Please login first.', 'Error');
     }
 
@@ -55,10 +58,12 @@ export class MangaDetailsComponent implements OnInit {
 
     return this.backendService.favouriteHandler(request).subscribe(
       (data) => {
+        this.isLoading = false;
         console.log(data);
         this.getMangaDetailsFunc();
       },
       (error) => {
+        this.isLoading = false;
         console.log(error);
       }
     );

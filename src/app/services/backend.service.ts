@@ -122,9 +122,10 @@ export class BackendService {
       body
     );
   }
-  resetPassword(email: string, newPassword: string) {
+  resetPassword(email: string, token: string, newPassword: string) {
     const body = {
       email: email,
+      token: token,
       newPassword: newPassword,
     };
     return this.http.post<resetPasswordInterface>(this.resetPasswordUrl, body);

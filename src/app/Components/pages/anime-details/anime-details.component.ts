@@ -20,6 +20,7 @@ export class AnimeDetailsComponent implements OnInit {
   animeId: string | null = null;
   animeDetails: any = {};
   favourited: boolean = false;
+  isLoading: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private jikanService: JikanService,
@@ -53,9 +54,11 @@ export class AnimeDetailsComponent implements OnInit {
   }
 
   addToFavouritesFunc(mal_id: number) {
+    this.isLoading = true;
     console.log(mal_id);
     const token = this.cookieService.getToken();
     if (!token) {
+      this.isLoading = false;
       return this.toastr.error('Please login first.', 'Error');
     }
 
@@ -65,10 +68,12 @@ export class AnimeDetailsComponent implements OnInit {
     };
     return this.backendService.favouriteHandler(request).subscribe(
       (data) => {
+        this.isLoading = false;
         console.log(data);
         this.getAnimeDetailsFunc();
       },
       (error) => {
+        this.isLoading = false;
         console.log(error);
       }
     );

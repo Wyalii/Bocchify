@@ -1,15 +1,19 @@
 <main class="user-info-container">
     <aside>
         <h1>Profile</h1>
-        <h1>Settings</h1>
+        <h1>Favourites</h1>
     </aside>
     <hr>
         <section class="user-info-section" *ngIf="selectedPage === 'Profile'">
-            <h1>Public Profile</h1>
-            <header class="user-header">
+            <div class="loading-container" *ngIf="isLoading">
+              <img [src]="this.themeService.loadingImage" class="loading">  
+            </div>
+            <ng-container *ngIf="!isLoading">
+              <h1>Public Profile</h1>
+              <header class="user-header">
                 <div class="image-container">
-                   <img src="/black-camera.png" class="camera" (click)="handleCamMenu()">
-                   <img [src]="capturedImage || profilePicture || '/Pfp.jpeg'" class="pfp" alt="Profile Picture">                   
+                    <img src="/black-camera.png" class="camera" (click)="handleCamMenu()">
+                    <img [src]="capturedImage || profilePicture || '/Pfp.jpeg'" class="pfp" alt="Profile Picture">                   
                 </div>
                 <input [ngClass]="themeService.themeSignal()" class="change-pfp-btn" accept="image/*" type="file" (change)="onImageSelected($event)">
             </header>
@@ -25,5 +29,7 @@
                 <p (click)="goToForgotPassword()" class="forgot-password">forgot your password?</p>
             </section>
             <button [ngClass]="themeService.themeSignal()" class="save-changes-btn" (click)="updateProfile()">Save Changes</button>
+
+            </ng-container>
         </section>
 </main>

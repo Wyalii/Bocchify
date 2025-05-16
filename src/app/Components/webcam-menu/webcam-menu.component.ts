@@ -21,11 +21,13 @@ export class WebcamMenuComponent {
     private userService: UserService
   ) {}
 
+  isLoading: boolean = false;
   webcamImage: WebcamImage | null = null;
   private trigger: Subject<void> = new Subject<void>();
   triggerObservable = this.trigger.asObservable();
 
   takePhoto() {
+    this.isLoading = true;
     this.trigger.next();
   }
   handleImage(webcamImage: WebcamImage): void {
@@ -37,12 +39,10 @@ export class WebcamMenuComponent {
           console.log('Upload Success:', response);
           const url = response.secure_url;
           this.userService.setCapturedImage(url);
-          console.log(
-            'captured image log:',
-            this.userService.getCapturedImage()
-          );
+          this.isLoading = false;
         },
         error: (err) => {
+          this.isLoading = false;
           console.error('Upload Failed', err);
         },
       });

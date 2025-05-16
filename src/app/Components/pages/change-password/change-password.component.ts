@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { BackendService } from '../../../services/backend.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
-import { UpdateProfileRequestInterface } from '../../../interfaces/update-profile-request-interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CookieServiceService } from '../../../services/cookie-service.service';
 
 @Component({
   selector: 'app-change-password',
@@ -18,15 +18,20 @@ export class ChangePasswordComponent {
     public themeService: ThemeService,
     private backendService: BackendService,
     private toastr: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private cookieService: CookieServiceService
   ) {}
   newPassword: string = '';
   newPasswordRetry: string = '';
   errorTextMessage: string = '';
   email: string = '';
+  token: string = '';
+  isLoading: boolean = false;
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       this.email = params['email'];
+      this.token = params['token'];
     });
   }
 
@@ -41,18 +46,43 @@ export class ChangePasswordComponent {
     return true;
   }
 
-  resetPassword() {
+  isPasswordValid() {
     if (!this.checkPasswordMatch()) {
+      return false;
+    }
+    if (this.newPassword.length < 4) {
+      this.toastr.error(
+        'Password must contain more than 4 characters.',
+        'Error'
+      );
+      return false;
+    }
+    return true;
+  }
+
+  resetPassword() {
+    this.isLoading = true;
+    if (!this.isPasswordValid()) {
+      this.isLoading = false;
       return;
     }
     console.log(this.email);
-    this.backendService.resetPassword(this.email, this.newPassword).subscribe(
-      (response) => {
-        this.toastr.success(`${response.message}`, 'Success');
-      },
-      (error) => {
-        this.toastr.error(`${error.message}`, 'Error');
-      }
-    );
+    this.backendService
+      .resetPassword(this.email, this.token, this.newPassword)
+      .subscribe(
+        (response) => {
+          this.isLoading = false;
+          this.toastr.success(`${response.message}`, 'Success');
+          this.cookieService.deleteToken();
+          this.router.navigate(['/login']);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        },
+        (error) => {
+          this.isLoading = false;
+          this.toastr.error(`${error.error.message}`, 'Error');
+        }
+      );
   }
 }
