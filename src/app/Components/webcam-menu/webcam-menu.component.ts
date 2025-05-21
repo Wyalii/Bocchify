@@ -6,6 +6,7 @@ import { BlurService } from '../../services/blur.service';
 import { ImageUploadService } from '../../services/image-upload.service';
 import { Subject } from 'rxjs';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-webcam-menu',
   imports: [WebcamModule, CommonModule],
@@ -18,7 +19,8 @@ export class WebcamMenuComponent {
     public themeService: ThemeService,
     private blurService: BlurService,
     private imageUploadService: ImageUploadService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   isLoading: boolean = false;
@@ -40,6 +42,7 @@ export class WebcamMenuComponent {
           const url = response.secure_url;
           this.userService.setCapturedImage(url);
           this.isLoading = false;
+          this.closeWebCam();
         },
         error: (err) => {
           this.isLoading = false;

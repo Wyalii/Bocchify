@@ -17,19 +17,20 @@ import { resetPasswordInterface } from '../interfaces/resetPassword-response-int
 })
 export class BackendService {
   constructor(private http: HttpClient) {}
-  private registerUrl: string = 'http://localhost:5227/api/Users/Register';
-  private loginUrl: string = 'http://localhost:5227/api/Users/Login';
-  private favouriteUrl: string = 'http://localhost:5227/api/Users/Favourite';
+  private registerUrl: string = 'http://localhost:5227/api/Auth/Register';
+  private loginUrl: string = 'http://localhost:5227/api/Auth/Login';
+  private favouriteUrl: string =
+    'http://localhost:5227/api/Favourite/Favourite';
   private checkFavouriteUrl: string =
-    'http://localhost:5227/api/Users/CheckFavourite';
+    'http://localhost:5227/api/Favourite/CheckFavourite';
   private updateUserProfileUrl: string =
     'http://localhost:5227/api/Users/UpdateProfile';
   private decodeTokenUrl: string =
     'http://localhost:5227/api/Users/DecodeToken';
   private forgotPasswordUrl: string =
-    'http://localhost:5227/api/Users/ForgotPassword';
+    'http://localhost:5227/api/Password/ForgotPassword';
   private resetPasswordUrl: string =
-    'http://localhost:5227/api/Users/ResetPassword';
+    'http://localhost:5227/api/Password/ResetPassword';
 
   register(registerRequestBody: RegisterUserBodyInterface) {
     const body = {

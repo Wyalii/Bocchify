@@ -1,9 +1,10 @@
 <main class="user-info-container">
     <aside>
-        <h1>Profile</h1>
-        <h1>Favourites</h1>
+        <h1 (click)="selectedPage = 'Profile'">Profile</h1>
+        <h1 (click)="selectedPage = 'Favourite'">Favourites</h1>
     </aside>
     <hr>
+        <app-favourites-list *ngIf="selectedPage === 'Favourite'"></app-favourites-list>
         <section class="user-info-section" *ngIf="selectedPage === 'Profile'">
             <div class="loading-container" *ngIf="isLoading">
               <img [src]="this.themeService.loadingImage" class="loading">  
@@ -12,7 +13,7 @@
               <h1>Public Profile</h1>
               <header class="user-header">
                 <div class="image-container">
-                    <img src="/black-camera.png" class="camera" (click)="handleCamMenu()">
+                    <img [src]="themeService.cameraColor" class="camera" (click)="handleCamMenu()">
                     <img [src]="capturedImage || profilePicture || '/Pfp.jpeg'" class="pfp" alt="Profile Picture">                   
                 </div>
                 <input [ngClass]="themeService.themeSignal()" class="change-pfp-btn" accept="image/*" type="file" (change)="onImageSelected($event)">

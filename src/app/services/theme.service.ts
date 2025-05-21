@@ -8,6 +8,7 @@ export class ThemeService {
   private CookieService = inject(CookieService);
   public bgImage: string = '';
   public loadingImage: string = '';
+  public cameraColor: string = '';
   private themes = ['bocchi', 'ryo', 'nikija', 'ikuyo'];
   themeSignal = signal<string>(this.getStoredTheme());
 
@@ -17,21 +18,25 @@ export class ThemeService {
       case 'bocchi':
         this.bgImage = 'bocchi-landing.png';
         this.loadingImage = 'loading-pink.svg';
+        this.cameraColor = 'pink-camera.png';
         break;
 
       case 'ryo':
         this.bgImage = 'ryo-landing.png';
         this.loadingImage = 'loading-blue.svg';
+        this.cameraColor = 'blue-camera.png';
         break;
 
       case 'nikija':
         this.bgImage = 'nikija-landing.png';
         this.loadingImage = 'loading-yellow.svg';
+        this.cameraColor = 'yellow-camera.png';
         break;
 
       case 'ikuyo':
         this.bgImage = 'ikuyo-landing.png';
         this.loadingImage = 'loading-red.svg';
+        this.cameraColor = 'red-camera.png';
         break;
 
       default:
@@ -58,21 +63,25 @@ export class ThemeService {
         case 'bocchi':
           this.bgImage = 'bocchi-landing.png';
           this.loadingImage = 'loading-pink.svg';
+          this.cameraColor = 'pink-camera.png';
           break;
 
         case 'ryo':
           this.bgImage = 'ryo-landing.png';
           this.loadingImage = 'loading-blue.svg';
+          this.cameraColor = 'blue-camera.png';
           break;
 
         case 'nikija':
           this.bgImage = 'nikija-landing.png';
           this.loadingImage = 'loading-yellow.svg';
+          this.cameraColor = 'yellow-camera.png';
           break;
 
         case 'ikuyo':
           this.bgImage = 'ikuyo-landing.png';
           this.loadingImage = 'loading-red.svg';
+          this.cameraColor = 'red-camera.png';
           break;
 
         default:

@@ -11,9 +11,10 @@ import { BackendService } from '../../../services/backend.service';
 import { CookieServiceService } from '../../../services/cookie-service.service';
 import { UpdateProfileRequestInterface } from '../../../interfaces/update-profile-request-interface';
 import { ToastrService } from 'ngx-toastr';
+import { FavouritesListComponent } from '../../favourites-list/favourites-list.component';
 @Component({
   selector: 'app-profile-page',
-  imports: [CommonModule, WebcamModule, FormsModule],
+  imports: [CommonModule, WebcamModule, FormsModule, FavouritesListComponent],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss',
 })
