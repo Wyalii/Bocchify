@@ -80,12 +80,11 @@ hr{
     border-radius: 8px;
     width: 100%;
 }
-
 .email-input
 {
-    width: 250px;
-    padding: 13px;
-    border-radius: 8px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .editable
 {
@@ -148,17 +147,26 @@ h1{
 
 @media (max-width:640px) {
 
+    .menu
+    {
+        font-size: large;
+    }    
+    .user-info-container
+    {
+        gap: 0;
+    }
     .user-creds-container
     {
         align-items: center;
         justify-content: center;
     }
-    .username-input-container
+    .username-input-container,.email-input-container
     {
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
     }
    .user-header,.user-info-section
    {
@@ -170,11 +178,6 @@ h1{
    {
     width: 55%;
    }
-   .email-input
-    {
-      width: 55%;
-      text-wrap: auto;
-    }
     .username-input
     {
         width: 55%;
@@ -182,6 +185,50 @@ h1{
     }
     .editable
     {
+        right: 70px;
+    }
+}
+@media (max-width:540px) {
+    .editable
+    {
+        right: 60px;
+    }
+}
+
+@media (max-width:500px) {
+    .editable
+    {
+        right: 50px;
+    }
+}
+@media (max-width:450px) {
+    .email-input
+    {
+        font-size: small;
+    }
+}
+
+@media (max-width:445px) {
+    .editable
+    {
+        right: 40px;
+    }
+}
+
+@media (max-width:410px) {
+    .editable
+    {
+        top: 11px;
         right: 45px;
+        width: 20px;
+        height: 20px;
+    }
+    .menu
+    {
+        font-size: small;
+    } 
+    .email-input
+    {
+        font-size: x-small;
     }
 }

@@ -13,27 +13,29 @@ import { UpdateProfileResponeInterface } from '../interfaces/update-profile-resp
 import { forgotPasswordResponseInterface } from '../interfaces/forgotPassword-response-interface';
 import { resetPasswordInterface } from '../interfaces/resetPassword-response-interface';
 import { fetchUserFavouritesInterface } from '../interfaces/fetchUserFavourites-interface';
+import { environment } from '../../environments/environment.development';
 @Injectable({
   providedIn: 'root',
 })
 export class BackendService {
   constructor(private http: HttpClient) {}
-  private registerUrl: string = 'http://localhost:5227/api/Auth/Register';
-  private loginUrl: string = 'http://localhost:5227/api/Auth/Login';
+  private baseUrl:string = environment.baseUrl;
+  private registerUrl: string = `${this.baseUrl}/api/Auth/Register`;
+  private loginUrl: string = `${this.baseUrl}/api/Auth/Login`;
   private favouriteUrl: string =
-    'http://localhost:5227/api/Favourite/Favourite';
+    `${this.baseUrl}/api/Favourite/Favourite`;
   private checkFavouriteUrl: string =
-    'http://localhost:5227/api/Favourite/CheckFavourite';
+    `${this.baseUrl}/api/Favourite/CheckFavourite`;
   private updateUserProfileUrl: string =
-    'http://localhost:5227/api/Users/UpdateProfile';
+    `${this.baseUrl}/api/Users/UpdateProfile`;
   private decodeTokenUrl: string =
-    'http://localhost:5227/api/Users/DecodeToken';
+    `${this.baseUrl}/api/Users/DecodeToken`;
   private forgotPasswordUrl: string =
-    'http://localhost:5227/api/Password/ForgotPassword';
+    `${this.baseUrl}/api/Password/ForgotPassword`;
   private resetPasswordUrl: string =
-    'http://localhost:5227/api/Password/ResetPassword';
+    `${this.baseUrl}/api/Password/ResetPassword`;
   private getFavouritesUrl: string =
-    'http://localhost:5227/api/Favourite/GetFavourites';
+    `${this.baseUrl}/api/Favourite/GetFavourites`;
 
   register(registerRequestBody: RegisterUserBodyInterface) {
     const body = {

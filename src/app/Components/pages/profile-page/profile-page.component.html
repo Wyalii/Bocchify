@@ -1,7 +1,7 @@
 <main class="user-info-container">
     <aside>
-        <h1 (click)="selectedPage = 'Profile'">Profile</h1>
-        <h1 (click)="selectedPage = 'Favourite'">Favourites</h1>
+        <h1 (click)="selectedPage = 'Profile'" class="menu">Profile</h1>
+        <h1 (click)="selectedPage = 'Favourite'" class="menu">Favourites</h1>
     </aside>
     <hr>
         <app-favourites-list *ngIf="selectedPage === 'Favourite'"></app-favourites-list>
@@ -19,7 +19,10 @@
                 <input [ngClass]="themeService.themeSignal()" class="change-pfp-btn" accept="image/*" type="file" (change)="onImageSelected($event)">
             </header>
             <section class="user-creds-container">
-                <textarea class="email-input" readonly>{{ email }}</textarea>
+                <div class="email-input-container">
+                   <p>Email:</p>
+                   <p class="email-input">{{ email }}</p>
+                </div>
                 <div class="username-input-container">
                     <textarea name="test" class="username-input" [(ngModel)]="username" [readonly]="isReadOnly"></textarea>
                     <p *ngIf="!isReadOnly" class="action-msg">Updating Username</p>
