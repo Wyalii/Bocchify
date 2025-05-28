@@ -19,11 +19,9 @@
                 <input [ngClass]="themeService.themeSignal()" class="change-pfp-btn" accept="image/*" type="file" (change)="onImageSelected($event)">
             </header>
             <section class="user-creds-container">
-                <div class="email-input-container">
-                    <input type="email" [value]="email" class="email-input" readonly>
-                </div>
+                <textarea class="email-input" readonly>{{ email }}</textarea>
                 <div class="username-input-container">
-                    <input type="text" name="test" class="username-input"[(ngModel)]="username" [readOnly]="isReadOnly">
+                    <textarea name="test" class="username-input" [(ngModel)]="username" [readonly]="isReadOnly"></textarea>
                     <p *ngIf="!isReadOnly" class="action-msg">Updating Username</p>
                     <img src="/edit-text.png" class="editable" (click)="handleReadOnly()">
                 </div>

@@ -54,6 +54,7 @@ export class MangaDetailsComponent implements OnInit {
     const request: FavouriteRequestInterface = {
       token: token,
       mal_id: mal_id,
+      type: 'manga',
     };
 
     return this.backendService.favouriteHandler(request).subscribe(

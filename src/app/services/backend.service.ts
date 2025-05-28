@@ -12,6 +12,7 @@ import { DecodeTokenResponse } from '../interfaces/decodeToken-response-interfac
 import { UpdateProfileResponeInterface } from '../interfaces/update-profile-response-interface';
 import { forgotPasswordResponseInterface } from '../interfaces/forgotPassword-response-interface';
 import { resetPasswordInterface } from '../interfaces/resetPassword-response-interface';
+import { fetchUserFavouritesInterface } from '../interfaces/fetchUserFavourites-interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -31,6 +32,8 @@ export class BackendService {
     'http://localhost:5227/api/Password/ForgotPassword';
   private resetPasswordUrl: string =
     'http://localhost:5227/api/Password/ResetPassword';
+  private getFavouritesUrl: string =
+    'http://localhost:5227/api/Favourite/GetFavourites';
 
   register(registerRequestBody: RegisterUserBodyInterface) {
     const body = {
@@ -59,6 +62,7 @@ export class BackendService {
     };
     const body = {
       MalId: favouriteRequest.mal_id,
+      Type: favouriteRequest.type,
     };
     console.log('log from backend handler:', body);
 
@@ -130,5 +134,18 @@ export class BackendService {
       newPassword: newPassword,
     };
     return this.http.post<resetPasswordInterface>(this.resetPasswordUrl, body);
+  }
+
+  getFavourites(token: string) {
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+    return this.http.get<fetchUserFavouritesInterface[]>(
+      this.getFavouritesUrl,
+      {
+        headers,
+      }
+    );
   }
 }

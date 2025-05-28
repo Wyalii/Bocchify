@@ -44,8 +44,9 @@ hr{
 {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:start;
     gap: 20px;
+    width: 100%;
 }
 .image-container
 {
@@ -65,7 +66,35 @@ hr{
     border: none;
     padding: 15px;
     border-radius: 8px;
-    width: 200px;
+    width: 50%;
+    text-wrap: wrap;
+}
+.username-input-container
+{
+    position: relative;
+    width: 250px;
+}
+.username-input
+{
+    padding: 13px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.email-input
+{
+    width: 250px;
+    padding: 13px;
+    border-radius: 8px;
+}
+.editable
+{
+    cursor: pointer;
+    top: 9px;
+    right: 6px;
+    position: absolute;
+    width: 25px;
+    height: 25px;
 }
 .camera
 {
@@ -87,40 +116,7 @@ h1{
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-.username-input-container
-{
-    position: relative;
-    width: 230px;
-}
-
-.email-input-container
-{
-    position: relative;
-}
-
-.username-input
-{
-    padding: 13px;
-    border-radius: 8px;
-    width: 200px;
-}
-.email-input
-{
-    width: 200px;
-    max-width: 200px;
-
-    padding: 13px;
-    border-radius: 8px;
-}
-.editable
-{
-    cursor: pointer;
-    top: 9px;
-    right: 6px;
-    position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 100%;
 }
 .action-msg
 {
@@ -148,4 +144,44 @@ h1{
 .loading{
     width: 200px;
     height: 200px;
+}
+
+@media (max-width:640px) {
+
+    .user-creds-container
+    {
+        align-items: center;
+        justify-content: center;
+    }
+    .username-input-container
+    {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+   .user-header,.user-info-section
+   {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   }
+   .change-pfp-btn
+   {
+    width: 55%;
+   }
+   .email-input
+    {
+      width: 55%;
+      text-wrap: auto;
+    }
+    .username-input
+    {
+        width: 55%;
+        text-wrap: auto;
+    }
+    .editable
+    {
+        right: 45px;
+    }
 }

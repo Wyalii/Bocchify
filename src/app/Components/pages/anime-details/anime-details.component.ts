@@ -65,6 +65,7 @@ export class AnimeDetailsComponent implements OnInit {
     const request: FavouriteRequestInterface = {
       token: token,
       mal_id: mal_id,
+      type: 'anime',
     };
     return this.backendService.favouriteHandler(request).subscribe(
       (data) => {
