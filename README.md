@@ -4,17 +4,18 @@ This is a web application that allows users to browse anime and manga, view deta
 
 ## 🔍 Features
 
-- 🔎 Browse anime and manga details
-- ❤️ Add favourites (stored per user)
-- 🌙 Dark/light theme support
-- 🔗 External links to MyAnimeList for deeper info
+- 🔎 Browse detailed info about anime and manga using the Jikan API
+- ❤️ Add and manage favourites
+- 🔐 User authentication (register, login, and protected routes) 
+- 🌙 Theme support inspired by anime characters
+- 🔗 Direct links to MyAnimeList for a deeper look at each title
 
 ## 🧩 Technologies Used
 
 - **Angular** (frontend framework)
 - **Jikan API** (data source)
 - **Neon Console** (for storing user favourites)
-- **Dotnet Web Api** (backend service)
+- **.NET Web API** – [Backend Repository](https://github.com/Wyalii/Bocchify-Api.git)
 - **JWT + Cookies** (for user authentication)
 - **SCSS** for styling
 
@@ -23,6 +24,8 @@ This is a web application that allows users to browse anime and manga, view deta
 _Add screenshots or GIFs showing key parts of the UI here:
 ![Screenshot from 2025-05-29 17-06-27](https://github.com/user-attachments/assets/d53d58be-e48f-454e-b018-22f95da2ddd4)
 ![Screenshot from 2025-05-29 17-04-16](https://github.com/user-attachments/assets/f8e4a21f-b49d-40d6-bb67-e9e8dfb7e6bd)
+![Screenshot from 2025-05-29 17-11-29](https://github.com/user-attachments/assets/15bf9e21-9baf-4f50-a0fc-f6e9282ee767)
+
 
 
 
