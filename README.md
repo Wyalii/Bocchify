@@ -1,59 +1,28 @@
-# Bocchify
+# Anime & Manga Favourites App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+This is a web application that allows users to browse anime and manga, view detailed information, and save their favourites. The app uses the [Jikan API](https://jikan.moe/) to fetch data from MyAnimeList.
 
-## Development server
+## 🔍 Features
 
-To start a local development server, run:
+- 🔎 Browse anime and manga details
+- ❤️ Add favourites (stored per user)
+- 🌙 Dark/light theme support
+- 🔗 External links to MyAnimeList for deeper info
 
-```bash
-ng serve
-```
+## 🧩 Technologies Used
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Angular** (frontend framework)
+- **Jikan API** (data source)
+- **Neon Console** (for storing user favourites)
+- **Dotnet Web Api** (backend service)
+- **JWT + Cookies** (for user authentication)
+- **SCSS** for styling
 
-## Code scaffolding
+## 📸 Screenshots
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+_Add screenshots or GIFs showing key parts of the UI here:
+![Screenshot from 2025-05-29 17-06-27](https://github.com/user-attachments/assets/d53d58be-e48f-454e-b018-22f95da2ddd4)
+![Screenshot from 2025-05-29 17-04-16](https://github.com/user-attachments/assets/f8e4a21f-b49d-40d6-bb67-e9e8dfb7e6bd)
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
