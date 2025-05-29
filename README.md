@@ -20,8 +20,6 @@ This is a web application that allows users to browse anime and manga, view deta
 - **SCSS** for styling
 
 ## 📸 Screenshots
-
-_Add screenshots or GIFs showing key parts of the UI here:
 ![Screenshot from 2025-05-29 17-06-27](https://github.com/user-attachments/assets/d53d58be-e48f-454e-b018-22f95da2ddd4)
 ![Screenshot from 2025-05-29 17-04-16](https://github.com/user-attachments/assets/f8e4a21f-b49d-40d6-bb67-e9e8dfb7e6bd)
 ![Screenshot from 2025-05-29 17-11-29](https://github.com/user-attachments/assets/15bf9e21-9baf-4f50-a0fc-f6e9282ee767)
