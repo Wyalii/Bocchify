@@ -1,4 +1,4 @@
-# Anime & Manga Favourites App
+# Bocchify | Anime & Manga Favourites App
 
 This is a web application that allows users to browse anime and manga, view detailed information, and save their favourites. The app uses the [Jikan API](https://jikan.moe/) to fetch data from MyAnimeList.
 
