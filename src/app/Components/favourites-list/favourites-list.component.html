@@ -1,1 +1,12 @@
-<p>favourites-list works!</p>
+<h1>Favourites:</h1>
+<div class="loading-container" *ngIf="isLoading">
+    <img [src]="this.themeService.loadingImage" class="loading">  
+</div>
+<div *ngFor="let favourite of favourites">
+    <hr>
+    <h1>{{favourite.data.title_japanese}}</h1>
+    <h2>
+      {{favourite.data.title}}
+   </h2>
+   <img [src]="favourite.data.images.jpg.image_url" class="image" (click)="navigateToDetails(favourite)">
+</div>

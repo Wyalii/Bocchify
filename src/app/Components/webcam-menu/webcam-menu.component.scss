@@ -19,3 +19,10 @@
 {
   border-radius: 50%;
 }
+
+@media (max-width:550px) {
+  ::ng-deep webcam video
+  {
+    width: 200px;
+  }
+}

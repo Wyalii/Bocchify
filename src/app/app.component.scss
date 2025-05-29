@@ -163,4 +163,17 @@ app-change-password,app-forgot-password
     justify-content: center;
     padding: 5px;
 }
+app-favourites-list
+{
+   width: 100%;
+   height: 100%;
+   overflow-y: scroll;
+}
+
+@media (max-width:550px) {
+    app-webcam-menu
+    {
+        width: 300px;
+    }
+}
 
