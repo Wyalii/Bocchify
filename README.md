@@ -4,11 +4,12 @@ This is a web application that allows users to browse anime and manga, view deta
 
 ## 🔍 Features
 
-- 🔎 Browse detailed info about anime and manga using the Jikan API
+- 🔎 Search and browse anime and manga
 - ❤️ Add and manage favourites
 - 🔐 User authentication (register, login, and protected routes) 
 - 🌙 Theme support inspired by anime characters
-- 🔗 Direct links to MyAnimeList for a deeper look at each title
+- 🔗 External links to MyAnimeList for deeper info
+- 🧩 Integration with Jikan API
 
 ## 🧩 Technologies Used
 
