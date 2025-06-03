@@ -1,9 +1,13 @@
+ <aside class="aside-small">
+         <h1 (click)="selectedPage = 'Profile'" class="menu">Profile</h1>
+        <h1 (click)="selectedPage = 'Favourite'" class="menu">Favourites</h1>
+</aside>
 <main class="user-info-container">
-    <aside>
+    <aside class="aside">
         <h1 (click)="selectedPage = 'Profile'" class="menu">Profile</h1>
         <h1 (click)="selectedPage = 'Favourite'" class="menu">Favourites</h1>
     </aside>
-    <hr>
+    <hr class="hr">
         <app-favourites-list *ngIf="selectedPage === 'Favourite'"></app-favourites-list>
         <section class="user-info-section" *ngIf="selectedPage === 'Profile'">
             <div class="loading-container" *ngIf="isLoading">
@@ -23,9 +27,9 @@
                    <p>Email:</p>
                    <p class="email-input">{{ email }}</p>
                 </div>
+                <p *ngIf="!isReadOnly" class="action-msg">Updating Username</p>
                 <div class="username-input-container">
                     <textarea name="test" class="username-input" [(ngModel)]="username" [readonly]="isReadOnly"></textarea>
-                    <p *ngIf="!isReadOnly" class="action-msg">Updating Username</p>
                     <img src="/edit-text.png" class="editable" (click)="handleReadOnly()">
                 </div>
                 <p (click)="goToForgotPassword()" class="forgot-password">forgot your password?</p>

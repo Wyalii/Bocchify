@@ -25,6 +25,10 @@
     height: 100%;
     padding: 3px;
     gap: 10px;
+    overflow-y: scroll;
+}
+.aside-small{
+    display: none;
 }
 hr{
     height: 100%;
@@ -71,14 +75,22 @@ hr{
 }
 .username-input-container
 {
-    position: relative;
-    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    @media (min-width:640px) {
+        width: 250px;
+    }
+
 }
 .username-input
 {
     padding: 13px;
     border-radius: 8px;
-    width: 100%;
+    width: 200px;
+    text-wrap: wrap;
+    max-width: 300px;
 }
 .email-input
 {
@@ -89,11 +101,9 @@ hr{
 .editable
 {
     cursor: pointer;
-    top: 9px;
-    right: 6px;
-    position: absolute;
     width: 25px;
     height: 25px;
+    
 }
 .camera
 {
@@ -147,20 +157,37 @@ h1{
 
 @media (max-width:640px) {
 
+    .camera{
+      right: 20px;
+      width: 45px;
+      height: 45px;
+    }
+    .pfp{
+        width: 200px;
+        height: 200px;
+    }
+    .aside-small
+    {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 9px;
+        padding: 3px;
+    }
+    .aside,.hr{
+        display: none;
+    }
     .menu
     {
         font-size: large;
     }    
-    .user-info-container
-    {
-        gap: 0;
-    }
     .user-creds-container
     {
         align-items: center;
         justify-content: center;
     }
-    .username-input-container,.email-input-container
+    .email-input-container
     {
         width: 100%;
         display: flex;
@@ -178,29 +205,9 @@ h1{
    {
     width: 55%;
    }
-    .username-input
-    {
-        width: 55%;
-        text-wrap: auto;
-    }
-    .editable
-    {
-        right: 70px;
-    }
-}
-@media (max-width:540px) {
-    .editable
-    {
-        right: 60px;
-    }
+    
 }
 
-@media (max-width:500px) {
-    .editable
-    {
-        right: 50px;
-    }
-}
 @media (max-width:450px) {
     .email-input
     {
@@ -208,21 +215,8 @@ h1{
     }
 }
 
-@media (max-width:445px) {
-    .editable
-    {
-        right: 40px;
-    }
-}
 
 @media (max-width:410px) {
-    .editable
-    {
-        top: 11px;
-        right: 45px;
-        width: 20px;
-        height: 20px;
-    }
     .menu
     {
         font-size: small;

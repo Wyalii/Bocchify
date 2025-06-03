@@ -2,11 +2,19 @@
 <div class="loading-container" *ngIf="isLoading">
     <img [src]="this.themeService.loadingImage" class="loading">  
 </div>
-<div *ngFor="let favourite of favourites">
-    <hr>
-    <h1>{{favourite.data.title_japanese}}</h1>
-    <h2>
+<div *ngFor="let favourite of favourites" class="favourite">
+    <hr [class]="themeService.themeSignal()">
+    <h1 class="anime-title-japanese">{{favourite.data.title_japanese}}</h1>
+    <h2 class="anime-title-english">
       {{favourite.data.title}}
    </h2>
-   <img [src]="favourite.data.images.jpg.image_url" class="image" (click)="navigateToDetails(favourite)">
+    <picture class="picture">
+    <source media="(max-width: 640px)" [srcset]="favourite.data.images.webp.large_image_url"/>
+  <img
+    [src]="favourite.data.images.webp.image_url"
+    alt="Description"
+    class="favourite-img"
+    (click)="navigateToDetails(favourite)"
+  />
+</picture>
 </div>

@@ -1,10 +1,40 @@
-.image
+.bocchi
 {
-    width: 200px;
-    height: 300px;
-    border-radius: 8px;
-    cursor: pointer;
-    object-fit: fill;
+    background-color: #f5a2b5;
+}
+.ryo
+{
+    background-color: #0675c9;
+}
+.nikija
+{
+    background-color: #e8e805;
+}
+.ikuyo
+{
+    background-color: #e80c05;
+}
+.favourite-img
+{
+  border-radius: 9px;
+}
+hr{
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+}
+.favourite{
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+.picture
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .loading-container
 {
@@ -17,4 +47,33 @@
 .loading
 {   
   border-radius: 50%;
+}
+.anime-title-english
+{
+  @media (max-width:1080px) {
+    font-size: x-large;
+  }
+
+  @media (max-width:855px) {
+    font-size: large;
+  }
+  
+}
+
+.anime-title-japanese
+{
+  @media (max-width:1080px) {
+    font-size: large;
+  }
+  @media (max-width:855px) {
+    font-size: medium;
+  }
+  
+}
+
+@media (max-width:640px) {
+  .favourite-img
+  {
+    width: 80%;
+  }
 }
