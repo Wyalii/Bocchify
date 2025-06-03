@@ -24,6 +24,12 @@
     font-size: small;
   }
 }
+.loading{
+  border-radius: 50%;
+  position: absolute;
+  left: auto;
+  top: 300px;
+}
 .anime-details-header
 {
     width: 90%;
@@ -179,9 +185,4 @@ hr {
   width: 25px;
   cursor: pointer;
   height: 25px;
-}
-.loading
-{
-    width: 40px;
-    height: 40px;
 }

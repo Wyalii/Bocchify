@@ -7,10 +7,10 @@ import { CookieServiceService } from '../../../services/cookie-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { BackendService } from '../../../services/backend.service';
 import { FavouriteRequestInterface } from '../../../interfaces/favourite-request-interface';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-manga-details',
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './manga-details.component.html',
   styleUrl: './manga-details.component.scss',
 })
@@ -18,7 +18,7 @@ export class MangaDetailsComponent implements OnInit {
   mangaId: string | null = null;
   mangaDetails: any = {};
   favourited: boolean = false;
-  isLoading: boolean = false;
+  isFetchingDetails: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private jikanService: JikanService,
@@ -34,20 +34,22 @@ export class MangaDetailsComponent implements OnInit {
   }
 
   getMangaDetailsFunc() {
+    this.isFetchingDetails = true;
     if (this.mangaId) {
       this.jikanService.getMangaDetails(this.mangaId).subscribe((response) => {
         this.mangaDetails = response.data;
         this.favourited = response.isFavourited;
+        this.isFetchingDetails = false;
       });
     }
   }
 
   addToFavouritesFunc(mal_id: number) {
-    this.isLoading = true;
+    this.isFetchingDetails = true;
     console.log(mal_id);
     const token = this.cookieService.getToken();
     if (token === '' || null) {
-      this.isLoading = false;
+      this.isFetchingDetails = false;
       return this.toastr.error('Please login first.', 'Error');
     }
 
@@ -59,12 +61,12 @@ export class MangaDetailsComponent implements OnInit {
 
     return this.backendService.favouriteHandler(request).subscribe(
       (data) => {
-        this.isLoading = false;
+        this.isFetchingDetails = true;
         console.log(data);
         this.getMangaDetailsFunc();
       },
       (error) => {
-        this.isLoading = false;
+        this.isFetchingDetails = false;
         console.log(error);
       }
     );

@@ -1,4 +1,6 @@
-<header class="manga-details-header">
+<img *ngIf="isFetchingDetails" [src]="themeService.loadingImage" class="loading">
+<ng-container *ngIf="!isFetchingDetails">
+  <header class="manga-details-header">
     <h1 class="manga-title-english">English Title: {{mangaDetails.title_english}}</h1>
     <h2 class="manga-title-japanese">Japanese Title: {{mangaDetails.title_japanese}}</h2>
 </header>
@@ -15,10 +17,10 @@
     <section class="manga-information-mobile">
       <div class="box1">
         <p class="title">Information</p>
-        <div class="loading-container" *ngIf="isLoading">
+        <div class="loading-container" *ngIf="isFetchingDetails">
           <img [src]="this.themeService.loadingImage" class="loading">  
         </div>
-        <img *ngIf="!isLoading" [src]="favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc(mangaDetails.mal_id)">
+        <img *ngIf="!isFetchingDetails" [src]="favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc(mangaDetails.mal_id)">
        </div>
        <hr>
       <p>Type: {{mangaDetails.type}}</p>
@@ -42,10 +44,10 @@
     <section class="manga-information">
        <div class="box1">
         <p class="title">Information</p>
-        <div class="loading-container" *ngIf="isLoading">
+        <div class="loading-container" *ngIf="isFetchingDetails">
           <img [src]="this.themeService.loadingImage" class="loading">  
         </div>
-        <img *ngIf="!isLoading" [src]="favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc(mangaDetails.mal_id)">
+        <img *ngIf="!isFetchingDetails" [src]="favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'" class="star" (click)="addToFavouritesFunc(mangaDetails.mal_id)">
        </div>
        <hr>
        <p>Type: {{mangaDetails.type}}</p>
@@ -96,3 +98,5 @@
     <p class="synopsis">{{mangaDetails.synopsis}}</p>
   </section>
 </main>
+
+</ng-container>
