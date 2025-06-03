@@ -1,3 +1,29 @@
+.anime-title-english
+{
+  @media (max-width:1080px) {
+    font-size: x-large;
+  }
+
+  @media (max-width:855px) {
+    font-size: large;
+  }
+  @media (max-width:670px) {
+    font-size: medium;
+  }
+}
+
+.anime-title-japanese
+{
+  @media (max-width:1080px) {
+    font-size: large;
+  }
+  @media (max-width:855px) {
+    font-size: medium;
+  }
+  @media (max-width:670px) {
+    font-size: small;
+  }
+}
 .anime-details-header
 {
     width: 90%;
@@ -59,7 +85,9 @@
 .anime-img
 {
     border-radius: 9px;
-   
+    @media (max-width:500px) {
+        width: 100%;
+    }
 }
 
 .anime-information,.anime-statistics
@@ -127,6 +155,7 @@ hr {
 }
 .anime-information-mobile
 {
+    width: 100%;
     display: none;
     overflow-y: scroll;
     height: 300px;

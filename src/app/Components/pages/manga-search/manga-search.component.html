@@ -1,7 +1,7 @@
 
 <section class="manga-list-container">
     <section *ngFor="let manga of searchMangas" class="manga-list">
-        <img [src]="manga.images.jpg.image_url" (click)="navigateToMangaDetails(manga.mal_id)">
+        <img [src]="manga.images.jpg.image_url" (click)="navigateToMangaDetails(manga.mal_id)" class="manga-img">
          <section class="manga-info">
           <h2>{{manga.title}}</h2>
           <h3>Rank #{{manga.rank}}</h3>

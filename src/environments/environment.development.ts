@@ -1,4 +1,4 @@
 export const environment = {
     production:false,
-    baseUrl:"https://bocchifyapi.onrender.com"
+    baseUrl:"http://localhost:5227"
 };

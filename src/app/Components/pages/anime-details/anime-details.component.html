@@ -1,11 +1,18 @@
 <header class="anime-details-header" >
-    <h1>English Title: {{animeDetails.title_english}}</h1>
-    <h2>Japaneese Title: {{animeDetails.title_japanese}}</h2>
+    <h1 class="anime-title-english">English Title: {{animeDetails.title_english}}</h1>
+    <h2 class="anime-title-japanese">Japaneese Title: {{animeDetails.title_japanese}}</h2>
 </header>
 
 <main class="anime-details-main">
   <aside class="anime-sidebar">
-    <img [src]="animeDetails.images.jpg.image_url" class="anime-img" alt="anime image">
+    <picture>
+    <source media="(max-width: 500px)" [srcset]="animeDetails.images.webp.large_image_url"/>
+  <img
+    [src]="animeDetails.images.webp.image_url"
+    alt="Description"
+    class="anime-img"
+  />
+</picture>
     <section class="anime-information-mobile">
       <div class="box1">
         <p class="title">Information</p>
