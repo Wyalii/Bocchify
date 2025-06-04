@@ -4,6 +4,8 @@ import express from 'express';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import bootstrap from './main.server';
+import { USER_THEME } from './app/tokens/user-theme.token';
+
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -40,6 +42,7 @@ app.get(
  */
 app.get('**', (req, res, next) => {
   const { protocol, originalUrl, baseUrl, headers } = req;
+  const userTheme = req.cookies['user-theme'] || 'bocchi';
 
   commonEngine
     .render({
@@ -47,7 +50,9 @@ app.get('**', (req, res, next) => {
       documentFilePath: indexHtml,
       url: `${protocol}://${headers.host}${originalUrl}`,
       publicPath: browserDistFolder,
-      providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+      providers: [{ provide: APP_BASE_HREF, useValue: baseUrl },
+        { provide: USER_THEME, useValue: userTheme },
+      ],
     })
     .then((html) => res.send(html))
     .catch((err) => next(err));

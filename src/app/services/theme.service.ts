@@ -1,10 +1,12 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { USER_THEME } from '../tokens/user-theme.token';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
+  private ssrTheme = inject(USER_THEME, { optional: true });
   private CookieService = inject(CookieService);
   public bgImage: string = '';
   public loadingImage: string = '';
@@ -13,7 +15,7 @@ export class ThemeService {
   themeSignal = signal<string>(this.getStoredTheme());
 
   private getStoredTheme(): string {
-    const userTheme = this.CookieService.get('user-theme') || 'bocchi';
+    const userTheme = this.ssrTheme || this.CookieService.get('user-theme') || 'bocchi';
     switch (userTheme) {
       case 'bocchi':
         this.bgImage = 'bocchi-landing.png';
