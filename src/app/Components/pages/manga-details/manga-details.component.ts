@@ -46,7 +46,6 @@ export class MangaDetailsComponent implements OnInit {
 
   addToFavouritesFunc(mal_id: number) {
     this.isFetchingDetails = true;
-    console.log(mal_id);
     const token = this.cookieService.getToken();
     if (token === '' || null) {
       this.isFetchingDetails = false;
@@ -62,7 +61,6 @@ export class MangaDetailsComponent implements OnInit {
     return this.backendService.favouriteHandler(request).subscribe(
       (data) => {
         this.isFetchingDetails = true;
-        console.log(data);
         this.getMangaDetailsFunc();
       },
       (error) => {

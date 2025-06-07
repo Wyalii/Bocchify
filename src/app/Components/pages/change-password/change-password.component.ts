@@ -38,11 +38,9 @@ export class ChangePasswordComponent {
   checkPasswordMatch() {
     if (this.newPassword != this.newPasswordRetry) {
       this.errorTextMessage = "Passwords Doesn't Match.";
-      console.log(this.errorTextMessage);
       return false;
     }
     this.errorTextMessage = '';
-    console.log(this.errorTextMessage);
     return true;
   }
 
@@ -66,7 +64,6 @@ export class ChangePasswordComponent {
       this.isLoading = false;
       return;
     }
-    console.log(this.email);
     this.backendService
       .resetPassword(this.email, this.token, this.newPassword)
       .subscribe(

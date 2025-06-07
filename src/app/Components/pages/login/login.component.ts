@@ -55,7 +55,6 @@ export class LoginComponent {
     };
     this.backendService.login(loginRequestBody).subscribe({
       next: (response) => {
-        console.log(response);
         this.toastr.success(`${response.message}`);
         this.cookieService.setToken(response.newToken);
         this.userService.setUser(response.name, response.profileImage);
@@ -68,7 +67,6 @@ export class LoginComponent {
       error: (error) => {
         this.isLoading = false;
         this.toastr.error(`${error.error.message}`, 'Error');
-        console.error('Register error:', error);
       },
     });
   }

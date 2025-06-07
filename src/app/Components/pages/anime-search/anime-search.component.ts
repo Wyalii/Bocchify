@@ -32,7 +32,6 @@ export class AnimeSearchComponent implements OnInit {
     this.jikanService
       .AnimeSearch(this.jikanService.searchInput(), page)
       .subscribe((response) => {
-        console.log(response);
         this.searchAnimes = response.data;
         this.currentPage = response.pagination.current_page;
         this.totalPages = response.pagination.last_visible_page;

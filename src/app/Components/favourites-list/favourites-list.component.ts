@@ -75,7 +75,6 @@ export class FavouritesListComponent implements OnInit {
         this.isLoading = false;
       },
     });
-    console.log(this.favourites)
   }
 
 navigateToDetails(favourite: any) {

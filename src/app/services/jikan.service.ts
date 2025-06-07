@@ -43,7 +43,6 @@ export class JikanService {
     let url = `https://api.jikan.moe/v4/anime?q=${search}&page=${page}`;
     return this.http.get<any>(url).pipe(
       map((response) => {
-        console.log('anime search result:', response);
         this.animeSearchResults = response;
         return this.animeSearchResults;
       }),
@@ -64,7 +63,6 @@ export class JikanService {
     return this.http.get<any>(url).pipe(
       delay(1000),
       map((response) => {
-        console.log(' manga search result:', response);
         this.mangaSearchResults = response;
         return this.mangaSearchResults;
       }),
@@ -82,7 +80,6 @@ export class JikanService {
   getTopAnimes(page: number = 1) {
     const cacheKey = `top-animes-page-${page}`;
     const cached = this.cacheService.get(cacheKey);
-
     if (cached) {
       return of(cached);
     }
@@ -107,7 +104,6 @@ export class JikanService {
   getTopMangas(page: number = 1) {
     const cacheKey = `top-mangas-page-${page}`;
     const cached = this.cacheService.get(cacheKey);
-
     if (cached) {
       return of(cached);
     }
@@ -136,12 +132,7 @@ export class JikanService {
         switchMap((response) =>
           from(this.backendService.checkFavourite(id, token)).pipe(
             map((isFavourited) => {
-              console.log(
-                'Anime Details',
-                response.data,
-                'Is Favourite:',
-                isFavourited
-              );
+              
               return {
                 data: response.data,
                 isFavourited: isFavourited.isFavourited,
@@ -158,7 +149,7 @@ export class JikanService {
     } else {
       return this.http.get<any>(url).pipe(
         map((response) => {
-          console.log('log from jikan service:', response);
+          
           return response;
         }),
         catchError((err) => {
@@ -178,12 +169,7 @@ export class JikanService {
         switchMap((response) =>
           from(this.backendService.checkFavourite(id, token)).pipe(
             map((isFavourited) => {
-              console.log(
-                'Manga Details',
-                response.data,
-                'Is Favourite:',
-                isFavourited
-              );
+              
               return {
                 data: response.data,
                 isFavourited: isFavourited.isFavourited,

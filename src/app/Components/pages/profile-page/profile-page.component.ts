@@ -65,10 +65,8 @@ export class ProfilePageComponent implements OnInit {
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
       this.selectedImageFile = file;
-      console.log('selected image file:', this.selectedImageFile);
       this.imageUploadService.uploadImage(file).subscribe({
         next: (response) => {
-          console.log(response);
           this.userService.setCapturedImage(response.secure_url);
         },
       });
@@ -83,7 +81,6 @@ export class ProfilePageComponent implements OnInit {
     this.isLoading = true;
     const token = this.cookieService.getToken();
     const profilePicture = this.userService.getCapturedImage() ?? undefined;
-    console.log(profilePicture);
     const request: UpdateProfileRequestInterface = {
       token: token,
       username: this.username,
@@ -93,10 +90,8 @@ export class ProfilePageComponent implements OnInit {
     };
     this.backendService.updateProfile(request).subscribe({
       next: (response) => {
-        console.log(response);
         this.cookieService.deleteToken();
         this.cookieService.setToken(response.token);
-        console.log(response.user);
         this.userService.setUser(
           response.user.username,
           response.user.profileImage

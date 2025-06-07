@@ -47,7 +47,6 @@ export class AnimeDetailsComponent implements OnInit {
           (data: any) => {
           this.animeDetails = data.data;
           this.favourited = data.isFavourited;
-          console.log('log from ng on init:', this.animeDetails, data);
           if (this.animeDetails.trailer?.embed_url) {
             this.safeTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
               this.animeDetails.trailer.embed_url
@@ -67,7 +66,6 @@ export class AnimeDetailsComponent implements OnInit {
 
   addToFavouritesFunc(mal_id: number) {
     this.isFetchingDetails = true;
-    console.log(mal_id);
     const token = this.cookieService.getToken();
     if (!token) {
       this.isFetchingDetails = false;
@@ -82,7 +80,6 @@ export class AnimeDetailsComponent implements OnInit {
     return this.backendService.favouriteHandler(request).subscribe(
       (data) => {
         this.isFetchingDetails = true;
-        console.log(data);
         this.getAnimeDetailsFunc();
       },
       (error) => {

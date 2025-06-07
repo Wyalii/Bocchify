@@ -66,7 +66,7 @@ export class BackendService {
       MalId: favouriteRequest.mal_id,
       Type: favouriteRequest.type,
     };
-    console.log('log from backend handler:', body);
+    
 
     return this.http.post<FavouriteResponseInterface>(this.favouriteUrl, body, {
       headers: header,
@@ -98,7 +98,7 @@ export class BackendService {
       password: updateProfile.password,
       profilePicture: updateProfile.profilePicture,
     };
-    console.log('log from backend service: ', body);
+    
     return this.http.patch<UpdateProfileResponeInterface>(
       this.updateUserProfileUrl,
       body,

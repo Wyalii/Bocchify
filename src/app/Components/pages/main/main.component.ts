@@ -42,7 +42,6 @@ export class MainComponent implements OnInit {
     this.isLoadingAnimes = true;
     this.jikanService.getTopAnimes(page).subscribe({
       next: (response) => {
-        console.log('Animes loaded', response);
         this.topAnimes = response.data;
         this.isLoadingAnimes = false;
       },
@@ -57,7 +56,6 @@ export class MainComponent implements OnInit {
     this.isLoadingMangas = true;
     this.jikanService.getTopMangas(page).subscribe({
       next: (response) => {
-        console.log('Mangas loaded', response);
         this.topMangas = response.data;
         this.isLoadingMangas = false;
       },

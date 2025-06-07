@@ -97,7 +97,7 @@ export class RegisterComponent {
           };
           this.backendService.register(registerRequestBody).subscribe({
             next: (response) => {
-              console.log(response);
+
               this.toastr.success('Registration successful!', 'Success');
               this.router.navigate(['/login']);
             },
@@ -125,7 +125,6 @@ export class RegisterComponent {
       };
       this.backendService.register(registerRequestBody).subscribe({
         next: (response) => {
-          console.log(response);
           this.toastr.success('Registration successful!', 'Success');
         },
         error: (error) => {

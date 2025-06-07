@@ -27,7 +27,6 @@ export class TopAnimeListComponent implements OnInit {
   }
   loadAnimes(page: number) {
     this.jikanService.getTopAnimes(page).subscribe((response) => {
-      console.log(response);
       this.topAnimes = response.data;
       this.currentPage = response.pagination.current_page;
       this.totalPages = response.pagination.last_visible_page;

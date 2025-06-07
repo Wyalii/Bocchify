@@ -22,7 +22,6 @@ export class UserService {
     const token = this.cookieService.getToken();
     this.backendService.decodeToken(token).subscribe(
       (response) => {
-        console.log(response);
         this.emailSubject.next(response.email);
         return response;
       },
@@ -36,10 +35,6 @@ export class UserService {
   }
 
   getCapturedImage(): string {
-    console.log(
-      'log from get caputed image user service:',
-      this.profileImageSubject.value
-    );
     return this.profileImageSubject.value;
   }
   clearCapturedImage() {
