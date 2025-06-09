@@ -38,7 +38,6 @@ export class WebcamMenuComponent {
       .uploadDataUrl(webcamImage.imageAsDataUrl)
       .subscribe({
         next: (response) => {
-          console.log('Upload Success:', response);
           const url = response.secure_url;
           this.userService.setCapturedImage(url);
           this.isLoading = false;

@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../../services/theme.service';
@@ -12,6 +12,7 @@ import { CookieServiceService } from '../../../services/cookie-service.service';
 import { UpdateProfileRequestInterface } from '../../../interfaces/update-profile-request-interface';
 import { ToastrService } from 'ngx-toastr';
 import { FavouritesListComponent } from '../../favourites-list/favourites-list.component';
+import { ShowPictureComponent } from '../../show-picture/show-picture.component';
 @Component({
   selector: 'app-profile-page',
   imports: [CommonModule, WebcamModule, FormsModule, FavouritesListComponent],
@@ -21,14 +22,15 @@ import { FavouritesListComponent } from '../../favourites-list/favourites-list.c
 export class ProfilePageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService,
+    public userService: UserService,
     public themeService: ThemeService,
     public blurService: BlurService,
     private imageUploadService: ImageUploadService,
     private backendService: BackendService,
     private cookieService: CookieServiceService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    
   ) {}
   @ViewChild('fileUpload', { static: false })
   fileUploadInput!: ElementRef<HTMLInputElement>;
@@ -41,6 +43,7 @@ export class ProfilePageComponent implements OnInit {
   selectedImageUrl: string | null = null;
   isReadOnly: boolean = true;
   isLoading: boolean = false;
+
   ngOnInit(): void {
     this.userService.getUserInfo();
     this.userService.email$.subscribe((email) => {
@@ -59,6 +62,7 @@ export class ProfilePageComponent implements OnInit {
   handleCamMenu() {
     this.blurService.toggleCamMenu();
   }
+
 
   onImageSelected(event: Event) {
     const input = event.target as HTMLInputElement;

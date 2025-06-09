@@ -18,7 +18,7 @@
               <header class="user-header">
                 <div class="image-container">
                     <img [src]="themeService.cameraColor" class="camera" (click)="handleCamMenu()">
-                    <img [src]="capturedImage || profilePicture || '/Pfp.jpeg'" class="pfp" alt="Profile Picture">                   
+                    <img [src]="capturedImage || profilePicture || '/Pfp.jpeg'" class="pfp" alt="Profile Picture" (click)="blurService.showImageHandler()">                   
                 </div>
                 <input [ngClass]="themeService.themeSignal()" class="change-pfp-btn" accept="image/*" type="file" (change)="onImageSelected($event)">
             </header>
@@ -39,3 +39,4 @@
             </ng-container>
         </section>
 </main>
+

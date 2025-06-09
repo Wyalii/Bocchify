@@ -7,6 +7,7 @@ export class BlurService {
   blur = signal(false);
   burgerMenu = signal(false);
   camMenu = signal(false);
+  showImage = signal(false)
   toggleBurgerMenu() {
     this.camMenu.set(false);
     this.burgerMenu.set(!this.burgerMenu());
@@ -23,5 +24,20 @@ export class BlurService {
     this.blur.set(false);
     this.camMenu.set(false);
   }
+
+  showImageHandler()
+  {
+    this.burgerMenu.set(false);
+    this.blur.set(!this.blur());
+    this.showImage.set(!this.showImage())
+  }
+
+  closeShowImageHandler()
+  {
+    this.burgerMenu.set(false);
+    this.blur.set(false);
+    this.showImage.set(false)
+  }
+ 
   constructor() {}
 }

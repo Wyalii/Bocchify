@@ -2,6 +2,10 @@
   <app-header class="header" [ngClass]="blurService.blur() ? 'blured': ''"></app-header>
   <app-burger-menu @slideIn *ngIf="blurService.burgerMenu()" ></app-burger-menu>
   <app-webcam-menu *ngIf="blurService.camMenu()"></app-webcam-menu>
+  <app-show-picture *ngIf="blurService.showImage()" >
+    <img [src]="profilePicture">
+    <button [ngClass]="themeService.themeSignal()" (click)="blurService.closeShowImageHandler()">Close</button>
+  </app-show-picture>
   <div  [ngClass]="[
      blurService.blur() ? 'blured' : '',
      isOnMainRoute() ? 'scrollable' : '']"  
