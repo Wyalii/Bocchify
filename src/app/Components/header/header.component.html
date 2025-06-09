@@ -26,6 +26,7 @@
         <img src="/Pfp.jpeg" *ngIf="!profilePicture" class="pfp" [routerLink]="['/profile', username]">
         <p [routerLink]="['/profile', username]">{{username}}</p>
       </div>
+      <button [ngClass]="themeService.themeSignal()" class="logoutBtn" (click)="logout()">Logout</button>
     </ng-template>
 
     <img *ngIf="blurService.blur() === false" (click)="toggleMenu()" class="burger-menu-img" src="/menu.png" alt="menu-img">

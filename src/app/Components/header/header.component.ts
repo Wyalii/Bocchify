@@ -68,4 +68,10 @@ export class HeaderComponent implements OnInit {
   toggleMenu() {
     this.blurService.toggleBurgerMenu();
   }
+  logout()
+  {
+    this.userService.clearUser();
+    this.cookieService.deleteToken()
+    window.location.reload()
+  }
 }

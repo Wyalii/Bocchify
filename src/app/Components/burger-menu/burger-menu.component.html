@@ -17,6 +17,7 @@
     <img src="/Pfp.jpeg" *ngIf="!profilePicture" class="pfp" [routerLink]="['/profile', username]">
     <img [src]="profilePicture" *ngIf="profilePicture" class="pfp" [routerLink]="['/profile', username]">
     <p class="username" [routerLink]="['/profile', username]">{{username}}</p>
+    <button [ngClass]="themeService.themeSignal()" class="logoutBtn" (click)="logout()">Logout</button>
 </section>
 
 <footer>

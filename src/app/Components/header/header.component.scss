@@ -1,13 +1,14 @@
 header{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    gap: clamp(10px, 5vw, 40px);
+    justify-content: center;
     width: 100%;
     height: 60px;
     padding: 10px;
     background-color: white;
     font-family: monospace;
-    @media (max-width:1000px) {
+    @media (max-width:1028px) {
         width: 100%;
         justify-content: space-between;
     };
@@ -48,7 +49,7 @@ header{
     align-items: center;
     justify-content: center;
     gap: 30px;
-    @media (max-width:970px) {
+    @media (max-width:1028px) {
         display: none;
     }
 }
@@ -58,7 +59,7 @@ header{
     height: 50px;
     width: 50px;
     display: none;
-    @media (max-width:970px) {
+    @media (max-width:1028px) {
         display: block;
     }
 }
@@ -151,7 +152,7 @@ a{
 .mode-container
 {
     position: relative;
-    @media (max-width:970px) {
+    @media (max-width:1028px) {
         display: none;
     }
 }
@@ -223,7 +224,7 @@ input::placeholder {
     display: flex;
     align-items: center;
     gap: 15px;
-    @media (max-width:970px) {
+    @media (max-width:1028px) {
         display: none;
     }
 }
@@ -249,7 +250,7 @@ input::placeholder {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    @media (max-width:970px) {
+    @media (max-width:1028px) {
         display: none;
     }
 }
@@ -260,4 +261,14 @@ input::placeholder {
     border-radius: 50%;
     cursor: pointer;
     object-fit: cover;
+}
+.logoutBtn
+{
+    padding: 13px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    @media (max-width:1028px) {
+        display: none;
+    }
 }

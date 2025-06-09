@@ -40,4 +40,11 @@ export class BurgerMenuComponent implements OnInit {
     }
     return false;
   }
+
+  logout()
+  {
+    this.userService.clearUser();
+    this.cookieService.deleteToken()
+    window.location.reload()
+  }
 }
