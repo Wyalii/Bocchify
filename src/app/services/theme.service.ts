@@ -60,7 +60,6 @@ export class ThemeService {
       const newTheme = this.themes[nextIndex];
       this.CookieService.set('user-theme', newTheme, 365);
       localStorage.setItem('user-theme', newTheme);
-      console.log(newTheme);
       switch (newTheme) {
         case 'bocchi':
           this.bgImage = 'bocchi-landing.png';
