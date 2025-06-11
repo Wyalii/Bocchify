@@ -45,6 +45,6 @@ export class BurgerMenuComponent implements OnInit {
   {
     this.userService.clearUser();
     this.cookieService.deleteToken()
-    window.location.reload()
+    window.location.href = '/';
   }
 }

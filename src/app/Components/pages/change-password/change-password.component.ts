@@ -48,9 +48,9 @@ export class ChangePasswordComponent {
     if (!this.checkPasswordMatch()) {
       return false;
     }
-    if (this.newPassword.length < 4) {
+    if (this.newPassword.length < 5) {
       this.toastr.error(
-        'Password must contain more than 4 characters.',
+        'Password must contain more than 5 characters.',
         'Error'
       );
       return false;
