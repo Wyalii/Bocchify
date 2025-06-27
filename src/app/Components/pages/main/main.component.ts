@@ -21,6 +21,21 @@ import { JikanService } from '../../../services/jikan.service';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class MainComponent implements OnInit {
+  swiperConfig = {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    breakpoints: {
+      1020: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+      1520: {
+        slidesPerView: 3,
+        spaceBetween: 15,
+      },
+    },
+  };
+
   topAnimes: any[] = [];
   topMangas: any[] = [];
   isLoadingAnimes: boolean = false;

@@ -1,234 +1,214 @@
-.main{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    gap: 30px;   
-    transition: 0.5s;
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 30px;
+  transition: 0.5s;
 }
-.bocchi
-{
-    background-color: #f5a2b5;
+.bocchi {
+  background-color: #f5a2b5;
 }
-.ryo
-{
-    background-color: #0675c9;
+.ryo {
+  background-color: #0675c9;
 }
-.nikija
-{
-    background-color: #e8e805;
+.nikija {
+  background-color: #e8e805;
 }
-.ikuyo
-{
-    background-color: #e80c05;
+.ikuyo {
+  background-color: #e80c05;
 }
-.blured
-{
-    filter: blur(10px);
+.blured {
+  filter: blur(10px);
 }
 
-app-main
-{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
+app-main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.router-outlet-container
-{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    overflow-y: hidden;
-    overflow-x: hidden;
+.router-outlet-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
-.scrollable
-{
-    overflow-y: scroll;
+.scrollable {
+  overflow-y: scroll;
 }
-app-burger-menu
-{
-    position: absolute;
-    background-color: rgb(197, 197, 197);
-    top: 0px;
-    right: 0px;
-    height: 100%;
-    width: 50%;
-    z-index: 99999;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    gap: 30px;
-    backdrop-filter: blur(10px);
-    @media (max-width:500px) {
-      width: 70%;
-    }
+app-burger-menu {
+  position: absolute;
+  background-color: rgb(197, 197, 197);
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 50%;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 30px;
+  backdrop-filter: blur(10px);
+  @media (max-width: 500px) {
+    width: 70%;
+  }
+}
+app-anime-details,
+app-manga-details {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  overflow-y: scroll;
+}
+app-search-results {
+  overflow-y: scroll;
+  width: 90%;
+  height: 100%;
+}
+app-anime-search,
+app-manga-search {
+  height: 100%;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+app-top-anime-list,
+app-top-manga-list {
+  height: 100%;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+app-register,
+app-login {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-app-anime-details,app-manga-details
-{
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    gap: 10px;
-    overflow-y: scroll;
-    
+app-verified-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-app-search-results
-{
-    overflow-y: scroll;
-    width: 90%;
-    height: 100%;
-    
-}
-app-anime-search,app-manga-search
-{
-    height: 100%;
+app-profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 700px;
+  width: 80%;
+  height: 100%;
+  @media (max-width: 800px) {
     width: 95%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    
+  }
+  @media (max-width: 640px) {
+    align-items: normal;
+    justify-content: start;
+  }
 }
-app-top-anime-list,app-top-manga-list
-{
-    
-    height: 100%;
-    width: 95%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+app-webcam-menu {
+  z-index: 9999999;
+  width: 500px;
+  height: 500px;
+  top: 20%;
+  left: auto;
+  position: absolute;
+  background-color: rgb(197, 197, 197);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
 }
-.header
-{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-app-register,app-login
-{
-    width: 90%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-app-verified-success
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-app-profile-page
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    max-width: 700px;
-    width: 80%;
-    height:100%;
-    @media (max-width:800px) {
-        width: 95%;
-    }
-    @media (max-width:640px) {
-        align-items: normal;
-        justify-content: start;
-    }
-}
-app-webcam-menu
-{
-    z-index: 9999999;
-    width: 500px;
-    height: 500px;
-    top: 20%;
-    left: auto;
-    position: absolute;
-    background-color: rgb(197, 197, 197);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border-radius: 8px;
-    backdrop-filter: blur(10px);
-}
-app-show-picture
-{   z-index: 9999999;
-    width: 500px;
-    height: 500px;
-    top: 20%;
-    left: auto;
-    position: absolute;
-    background-color: rgb(197, 197, 197);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border-radius: 8px;
-    backdrop-filter: blur(10px);
-    @media (max-width:620px) {
-        width: 300px;
-        height: 300px;
-        padding: 15px;
-        top: 30%;
-    }
-
-     @media (max-width:620px) {
-        width: 250px;
-        
-    }
-}
-app-show-picture img{
-    width: 90%;
-    height: 400px;
-    object-fit: contain;
-    border-radius: 8px;
-}
-app-show-picture button{
-    cursor: pointer;
-    border: none;
+app-show-picture {
+  z-index: 9999999;
+  width: 500px;
+  height: 500px;
+  top: 20%;
+  left: auto;
+  position: absolute;
+  background-color: rgb(197, 197, 197);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  @media (max-width: 620px) {
+    width: 300px;
+    height: 300px;
     padding: 15px;
-    width: 100px;
-    border-radius: 8px;
+    top: 30%;
+  }
+
+  @media (max-width: 620px) {
+    width: 250px;
+  }
+}
+app-show-picture img {
+  width: 90%;
+  height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+app-show-picture button {
+  cursor: pointer;
+  border: none;
+  padding: 15px;
+  width: 100px;
+  border-radius: 8px;
 }
 
-app-change-password,app-forgot-password
-{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
+app-change-password,
+app-forgot-password {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
 }
-app-favourites-list
-{
-   width: 100%;
-   height: 100%;
-   display: flex;
-   flex-direction: column;
-   gap: 10px;
-}
-
-@media (max-width:550px) {
-    app-webcam-menu
-    {
-        width: 300px;
-    }
+app-favourites-list {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
+app-anime-card {
+  width: 100%;
+}
+
+@media (max-width: 550px) {
+  app-webcam-menu {
+    width: 300px;
+  }
+}

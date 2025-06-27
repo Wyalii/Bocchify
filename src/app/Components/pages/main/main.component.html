@@ -1,33 +1,25 @@
-
 <div class="box1">
-  <img [src]="themeService.bgImage" class="bgImage">
+  <img [src]="themeService.bgImage" class="bgImage" />
   <h1>Welcome To Bocchify.</h1>
 </div>
 <div class="loading-container" *ngIf="isLoadingAnimes || isLoadingMangas">
-  <img [src]="this.themeService.loadingImage" class="loading">  
+  <img [src]="this.themeService.loadingImage" class="loading" />
   <p>loading... heheheh</p>
 </div>
-<div class="box2" *ngIf="!isLoadingAnimes && !isLoadingMangas">  
+<div class="box2" *ngIf="!isLoadingAnimes && !isLoadingMangas">
   <div class="top-anime-container">
     <h2 (click)="navigateToTopAnimeList()">View Top Animes:</h2>
-    <swiper-container slides-per-view="1" space-between="20" [breakpoints]="{
-      '1020': { 'slidesPerView': 2 },
-      '1520':{'slidesPerView': 3}
-    }">
-      <swiper-slide *ngFor="let anime of topAnimes" >
+    <swiper-container [config]="swiperConfig">
+      <swiper-slide *ngFor="let anime of topAnimes">
         <app-anime-card [anime]="anime"></app-anime-card>
       </swiper-slide>
     </swiper-container>
   </div>
-  
-  
+
   <div class="top-manga-container">
     <h2 (click)="navigateToTopMangaList()">View Top Mangas:</h2>
-    
-    <swiper-container slides-per-view="1" space-between="20" [breakpoints]="{
-      '1020': { 'slidesPerView': 2 },
-      '1520':{'slidesPerView': 3}
-    }">
+
+    <swiper-container [config]="swiperConfig">
       <swiper-slide *ngFor="let manga of topMangas">
         <app-manga-card [manga]="manga"></app-manga-card>
       </swiper-slide>
