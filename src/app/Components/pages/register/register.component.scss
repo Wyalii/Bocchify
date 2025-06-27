@@ -1,66 +1,115 @@
 .container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  background-color: white;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 8px;
-  height: 500px;
-  width: 50%;
-  min-width: 300px;
-  max-width: 700px;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  min-width: 310px;
+  color: #f1f1f1;
 }
+
 .loading {
-  border-radius: 50%;
-  position: absolute;
-  left: auto;
-  top: 300px;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
 }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .register-container {
+  background-color: #1e1e1e;
+  padding: 32px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  gap: 10px;
+  gap: 16px;
+  position: relative;
 }
-.input {
-  height: 50px;
-  width: 50%;
-  border-radius: 8px;
-  border: 1px solid black;
-  max-width: 300px;
+
+header {
+  text-align: center;
+  margin-bottom: 12px;
 }
-.register-btn {
-  width: 51%;
-  height: 35px;
-  cursor: pointer;
-  background-color: pink;
-  border: 1px solid black;
-  border-radius: 8px;
-  max-width: 300px;
-}
-.login-link {
-  width: 50%;
-  cursor: pointer;
-  max-width: 300px;
-}
+
 .bgImage {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
 }
+
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.input {
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+}
+
 .selected-image-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-.selected-image {
+  justify-content: space-between;
+  background-color: #2a2a2a;
+  padding: 8px 12px;
+  border-radius: 8px;
   cursor: pointer;
+}
+
+.selected-image-container p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.selected-image {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.register-btn {
+  padding: 10px 0;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.register-btn:hover {
+  background-color: #2563eb;
+}
+
+.login-link {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #90cdf4;
+  text-decoration: none;
+  margin-top: 4px;
+}
+
+.login-link:hover {
+  text-decoration: underline;
 }

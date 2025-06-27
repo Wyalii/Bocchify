@@ -1,8 +1,27 @@
-@use 'ngx-toastr/toastr';
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
-html, body { height: 100%; margin: 0; padding: 0;}
-body {font-family: monospace; }
-app-root
-{
-    overflow: hidden;
+@use "ngx-toastr/toastr";
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: monospace;
+}
+app-root {
+  overflow: hidden;
+}
+
+.ikuyo {
+  background-color: #e80c05;
+}
+.bocchi {
+  background-color: #f5a2b5;
+}
+.ryo {
+  background-color: #0675c9;
+}
+.nikija {
+  background-color: #e8e805;
 }

@@ -38,7 +38,13 @@
       hidden
       (change)="onImageSelect($event)"
     />
-    <button class="register-btn" (click)="registerFunc()">Register</button>
+    <button
+      class="register-btn"
+      [ngClass]="themeService.themeSignal()"
+      (click)="registerFunc()"
+    >
+      Register
+    </button>
     <a class="login-link" routerLink="/login">login page</a>
   </div>
 </section>

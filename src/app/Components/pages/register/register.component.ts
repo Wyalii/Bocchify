@@ -100,23 +100,23 @@ export class RegisterComponent {
           };
           this.backendService.register(registerRequestBody).subscribe({
             next: (response) => {
-              this.isLoading = false;
               this.toastr.success('Registration successful!', 'Success');
+              this.isLoading = false;
               this.router.navigate(['/login']);
             },
             error: (error) => {
-              this.isLoading = false;
               this.toastr.error(
                 'Registration failed. Please try again.',
                 'Error'
               );
+              this.isLoading = false;
               console.error('Register error:', error);
             },
           });
         },
         error: (error) => {
-          this.isLoading = false;
           this.toastr.error('Image upload failed. Please try again.', 'Error');
+          this.isLoading = false;
           console.error('Image upload error:', error);
         },
       });
@@ -130,16 +130,16 @@ export class RegisterComponent {
       };
       this.backendService.register(registerRequestBody).subscribe({
         next: (response) => {
-          this.isLoading = false;
           this.toastr.success('Registration successful!', 'Success');
+          this.isLoading = false;
+          this.router.navigate(['/login']);
         },
         error: (error) => {
-          this.isLoading = false;
           this.toastr.error('Registration failed. Please try again.', 'Error');
+          this.isLoading = false;
           console.error('Register error:', error);
         },
       });
-      this.router.navigate(['/login']);
     }
   }
 }
