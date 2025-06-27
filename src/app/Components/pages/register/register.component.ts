@@ -7,9 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ImageUploadService } from '../../../services/image-upload.service';
 import { RegisterUserBodyInterface } from '../../../interfaces/register-user-body-interface';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-register',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CommonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
   animations: [
@@ -31,6 +32,7 @@ export class RegisterComponent {
     private imageUploadService: ImageUploadService
   ) {}
 
+  isLoading: boolean = false;
   usernameInput: string = '';
   emailInput: string = '';
   passwordInput: string = '';
@@ -71,6 +73,7 @@ export class RegisterComponent {
   }
 
   registerFunc() {
+    this.isLoading = true;
     let profileImageUrl: string | null = null;
 
     if (!this.validateUsername(this.usernameInput)) {
@@ -97,11 +100,12 @@ export class RegisterComponent {
           };
           this.backendService.register(registerRequestBody).subscribe({
             next: (response) => {
-
+              this.isLoading = false;
               this.toastr.success('Registration successful!', 'Success');
               this.router.navigate(['/login']);
             },
             error: (error) => {
+              this.isLoading = false;
               this.toastr.error(
                 'Registration failed. Please try again.',
                 'Error'
@@ -111,6 +115,7 @@ export class RegisterComponent {
           });
         },
         error: (error) => {
+          this.isLoading = false;
           this.toastr.error('Image upload failed. Please try again.', 'Error');
           console.error('Image upload error:', error);
         },
@@ -125,9 +130,11 @@ export class RegisterComponent {
       };
       this.backendService.register(registerRequestBody).subscribe({
         next: (response) => {
+          this.isLoading = false;
           this.toastr.success('Registration successful!', 'Success');
         },
         error: (error) => {
+          this.isLoading = false;
           this.toastr.error('Registration failed. Please try again.', 'Error');
           console.error('Register error:', error);
         },
