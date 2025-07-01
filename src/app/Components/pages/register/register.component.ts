@@ -55,12 +55,14 @@ export class RegisterComponent {
 
   validatePassword(password: string): boolean {
     if (password.length < 5) {
+      this.isLoading = false;
       this.toastr.error(
         'password must contain more than 5 characters.',
         'error'
       );
       return false;
     }
+    this.isLoading = false;
     return true;
   }
 
@@ -77,14 +79,17 @@ export class RegisterComponent {
     let profileImageUrl: string | null = null;
 
     if (!this.validateUsername(this.usernameInput)) {
+      this.isLoading = false;
       this.toastr.error('invalid username input.', 'Error');
       return;
     }
     if (!this.validateEmail(this.emailInput)) {
+      this.isLoading = false;
       this.toastr.error('invalid email input.', 'Error');
       return;
     }
     if (!this.validatePassword(this.passwordInput)) {
+      this.isLoading = false;
       this.toastr.error('invalid password input.', 'Error');
       return;
     }

@@ -132,7 +132,6 @@ export class JikanService {
         switchMap((response) =>
           from(this.backendService.checkFavourite(id, token)).pipe(
             map((isFavourited) => {
-              
               return {
                 data: response.data,
                 isFavourited: isFavourited.isFavourited,
@@ -149,7 +148,6 @@ export class JikanService {
     } else {
       return this.http.get<any>(url).pipe(
         map((response) => {
-          
           return response;
         }),
         catchError((err) => {
@@ -169,7 +167,6 @@ export class JikanService {
         switchMap((response) =>
           from(this.backendService.checkFavourite(id, token)).pipe(
             map((isFavourited) => {
-              
               return {
                 data: response.data,
                 isFavourited: isFavourited.isFavourited,

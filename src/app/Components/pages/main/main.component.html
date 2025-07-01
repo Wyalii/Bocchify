@@ -4,7 +4,6 @@
 </div>
 <div class="loading-container" *ngIf="isLoadingAnimes || isLoadingMangas">
   <img [src]="this.themeService.loadingImage" class="loading" />
-  <p>loading... heheheh</p>
 </div>
 <div class="box2" *ngIf="!isLoadingAnimes && !isLoadingMangas">
   <div class="top-anime-container">

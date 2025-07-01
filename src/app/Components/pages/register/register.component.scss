@@ -11,16 +11,7 @@
 .loading {
   width: 60px;
   height: 60px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  border-radius: 50%;
 }
 
 .register-container {
@@ -97,11 +88,6 @@ header h1 {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-
-.register-btn:hover {
-  background-color: #2563eb;
-}
-
 .login-link {
   text-align: center;
   font-size: 0.85rem;

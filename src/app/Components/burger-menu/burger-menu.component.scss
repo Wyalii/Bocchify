@@ -1,145 +1,139 @@
-.mode-container
-{
-    position: relative;
+.burger-menu-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  background-color: var(--bg);
 }
 
-.burger-menu-header
-{
-    
-    padding: 5px;
-}
-.title
-{
-    @media (max-width:500px) {
-        font-size: large;
-    }
-}
-footer{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    @media (max-width:600px) {
-        flex-direction: column;
-        gap: 30px;
-    }
-    
-}
-.closeBtn
-{
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    height: 45px;
-    width: 100px;
-}
-footer button{
-    cursor: pointer;
-}
-.slide
-{
-    width: 100px;
-    height: 45px;
-    border-radius: 15px;
-    border:none;
-    
+.burger-menu-header .box1 {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.75rem;
 }
 
-.theme-btn
-{
-    position: absolute;
-    top: 3px;
-    left: 5px;
-    
+.logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
 
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.registration-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.registration-login-container button {
+  width: 100%;
+  max-width: 200px;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.user-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+.pfp {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.username {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.logoutBtn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+footer {
+  margin-top: auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ccc;
+}
+
+.mode-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.slide {
+  width: 100px;
+  height: 45px;
+  border-radius: 15px;
+  border: none;
+}
+.theme-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 3px;
+  left: 5px;
+}
 @keyframes SlideRight {
-    from{left: 5px;}
-    to {left: 60px}
+  from {
+    left: 5px;
+  }
+  to {
+    left: 60px;
+  }
 }
 
 @keyframes SlideLeft {
-    from{left: 50px;}
-    to{left: 5px}
+  from {
+    left: 50px;
+  }
+  to {
+    left: 5px;
+  }
 }
 
-.slide-right
-{
-    animation-name: SlideRight;
-    animation-duration: 1.5s;
-    animation-fill-mode: forwards;
+.slide-right {
+  animation-name: SlideRight;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
 }
-.slide-left
-{
-    animation-name: SlideLeft;
-    animation-duration: 1.5s;
-    animation-fill-mode: forwards;
-}
-.logo
-{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    cursor: pointer;
+.slide-left {
+  animation-name: SlideLeft;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
 }
 
-
-.registration-login-container
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-    gap: 15px;
-    @media (max-width:600px) {
-        flex-direction: column;
-    }
-   
-}
-
-.register,.login
-{
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    width: 100px;
-    height: 43px;
-    cursor: pointer;
-}
-
-.box1
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    
-}
-.user-profile-container
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-.pfp
-{
-    cursor: pointer;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-.username
-{
-    font-size: larger;
-}
-.logoutBtn
-{
-    padding: 13px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    
+.closeBtn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #e74c3c;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
 }
