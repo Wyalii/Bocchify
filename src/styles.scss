@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Pixelify Sans";
+  src: url("/fonts/PixelifySans-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
 html,
 body {
   width: 100%;
@@ -10,6 +17,7 @@ body {
 app-root {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 100%;
   padding: 0;
@@ -21,4 +29,17 @@ app-root {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .pixel-font {
+  font-family: "Pixelify Sans", sans-serif;
+}
+.bocchi {
+  background: #f5a2b5;
+}
+.ryo {
+  background: #0675c9;
+}
+.ikuyo {
+  background: #e80c05;
+}
+.nikija {
+  background: #e8e805;
 }
