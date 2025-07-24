@@ -1,13 +1,6 @@
 import { computed, Injectable, signal } from '@angular/core';
-
-type ThemeMode = 'bocchi' | 'ryo' | 'ikuyo' | 'nikija';
-interface ThemeData {
-  backgroundColor: string;
-  backgroundImage: string;
-  backgroundImagePixel: string;
-  smallImage: string;
-  smallImagePixel: string;
-}
+import { ThemeMode } from '../interfaces/theme-mode';
+import { ThemeData } from '../interfaces/theme-data';
 @Injectable({
   providedIn: 'root',
 })

@@ -26,6 +26,7 @@ header {
   width: 400px;
   height: 40px;
   border-radius: 25px;
+  border: none;
 }
 .search-logo {
   position: absolute;
@@ -35,11 +36,13 @@ header {
 }
 .login-btn {
   background: #f5a2b5;
-  width: 100px;
+  width: 90px;
   height: 50px;
   cursor: pointer;
   border-radius: 10%;
   border: none;
+  margin: 0;
+  padding: 0;
 }
 .user-pfp {
   width: 50px;

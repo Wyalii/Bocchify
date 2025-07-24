@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
+import { ThemeService } from './services/theme-service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,6 @@ import { Header } from './components/header/header';
 })
 export class App {
   protected title = 'Bocchify';
+  themeService: ThemeService = inject(ThemeService);
+  currentTheme = this.themeService.theme;
 }
