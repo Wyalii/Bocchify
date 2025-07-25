@@ -1,2 +1,4 @@
-<app-header></app-header>
-<router-outlet />
+<app-header
+  [ngClass]="isPixelArt() ? 'pixel-font' : 'normal-font' "
+></app-header>
+<router-outlet [ngClass]="isPixelArt() ? 'pixel-font' : 'normal-font' " />

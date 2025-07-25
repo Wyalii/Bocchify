@@ -34,12 +34,18 @@
     <button
       class="login-btn"
       [style.backgroundColor]="currentTheme().backgroundColor"
+      [ngStyle]="{
+      'font-family': isPixelArt() ? 'Pixelify Sans, sans-serif' : 'Gill Sans, sans-serif'
+      }"
     >
       Login
     </button>
     <button
       class="community-btn"
       [style.backgroundColor]="currentTheme().backgroundColor"
+      [ngStyle]="{
+      'font-family': isPixelArt() ? 'Pixelify Sans, sans-serif' : 'Gill Sans, sans-serif'
+      }"
     >
       Community
     </button>

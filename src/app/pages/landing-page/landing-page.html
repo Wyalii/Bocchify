@@ -1,15 +1,29 @@
 <div
   class="landing-container"
-  [style.backgroundColor]="currentTheme.backgroundColor"
+  [style.backgroundColor]="currentTheme().backgroundColor"
 >
+  <div class="landing-header">
+    <img
+      [src]="isPixelArt() 
+        ? currentTheme().smallImagePixel 
+        : currentTheme().smallImage"
+      class="theme-btn"
+      (click)="themeService.cycleTheme()"
+    />
+    <img
+      [src]="isPixelArt() ? '/PixelArt/power-pixel.png': '/PixelArt/poweroff-pixel.png'"
+      class="pixel-art-btn"
+      (click)="themeService.togglePixelMode()"
+    />
+  </div>
   <div class="box1">
     <img
-      [src]="currentTheme.backgroundImage"
+      [src]="currentTheme().backgroundImage"
       *ngIf="!isPixelArt()"
       class="landing-image"
     />
     <img
-      [src]="currentTheme.backgroundImagePixel"
+      [src]="currentTheme().backgroundImagePixel"
       *ngIf="isPixelArt()"
       class="landing-image"
     />
@@ -26,5 +40,4 @@
       </h2>
     </div>
   </div>
-  <div class="box2"></div>
 </div>
