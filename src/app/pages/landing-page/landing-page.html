@@ -1,0 +1,30 @@
+<div
+  class="landing-container"
+  [style.backgroundColor]="currentTheme.backgroundColor"
+>
+  <div class="box1">
+    <img
+      [src]="currentTheme.backgroundImage"
+      *ngIf="!isPixelArt()"
+      class="landing-image"
+    />
+    <img
+      [src]="currentTheme.backgroundImagePixel"
+      *ngIf="isPixelArt()"
+      class="landing-image"
+    />
+
+    <div class="headings-box">
+      <h1 class="hero-heading">
+        <span>Welcome To</span>
+        <span>Bocchify!</span>
+      </h1>
+      <hr />
+      <h2 class="sub-hero-heading">
+        <span>anime/manga</span>
+        <span>community.</span>
+      </h2>
+    </div>
+  </div>
+  <div class="box2"></div>
+</div>

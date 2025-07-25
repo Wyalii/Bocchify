@@ -14,7 +14,12 @@
       class="search-input"
       [style.backgroundColor]="currentTheme().backgroundColor"
     />
-    <img src="search-logo.png" class="search-logo" />
+    <img src="search-logo.png" class="search-logo" *ngIf="!isPixelArt()" />
+    <img
+      src="/PixelArt/search-logo-pixel.png"
+      class="search-logo-pixel"
+      *ngIf="isPixelArt()"
+    />
   </div>
   <div class="user-box">
     <p>username</p>
@@ -25,10 +30,19 @@
       *ngIf="isPixelArt()"
     />
   </div>
-  <button
-    class="login-btn"
-    [style.backgroundColor]="currentTheme().backgroundColor"
-  >
-    Login
-  </button>
+  <div class="box3">
+    <button
+      class="login-btn"
+      [style.backgroundColor]="currentTheme().backgroundColor"
+    >
+      Login
+    </button>
+    <button
+      class="community-btn"
+      [style.backgroundColor]="currentTheme().backgroundColor"
+    >
+      Community
+    </button>
+  </div>
+  <img src="burger-menu.png" class="burger-menu-logo" *ngIf="!isPixelArt()" />
 </header>

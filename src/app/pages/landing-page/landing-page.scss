@@ -1,0 +1,44 @@
+.landing-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+.box1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(100% - 1000px);
+}
+.headings-box {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.hero-heading,
+.sub-hero-heading {
+  text-align: center;
+  width: 100%;
+}
+
+.hero-heading span {
+  display: block;
+  font-size: 50px;
+}
+.sub-hero-heading span {
+  display: block;
+  font-size: 30px;
+}
+hr {
+  width: 90%;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+.landing-image {
+}
