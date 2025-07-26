@@ -1,0 +1,16 @@
+<div class="swiper-container">
+  <div
+    class="swiper-wrapper"
+    [style.transform]="transform"
+    [style.transition]="transition"
+  >
+    <app-swiper-slide
+      *ngFor="let item of data[0]"
+      [item]="item"
+    ></app-swiper-slide>
+  </div>
+  <div class="btn-wrapper">
+    <button (click)="prev()" class="swiper-btn">←</button>
+    <button (click)="next()" class="swiper-btn">→</button>
+  </div>
+</div>
