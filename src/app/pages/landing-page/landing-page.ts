@@ -19,8 +19,10 @@ export class LandingPage implements OnInit {
   currentTheme = this.themeService.theme;
   themeOptions = ['bocchi', 'ryo', 'ikuyo', 'nikija'] as const;
   animeData: any[] = [];
+  mangaData: any[] = [];
   ngOnInit(): void {
     this.fetchTopAnimes();
+    this.fetchTopMangas();
   }
   fetchTopAnimes() {
     this.jikanApiService.getTopAnimes().subscribe({
@@ -34,6 +36,22 @@ export class LandingPage implements OnInit {
       complete: () => {
         console.log('succesfully fetched data.');
         console.log(this.animeData);
+      },
+    });
+  }
+
+  fetchTopMangas() {
+    this.jikanApiService.getTopMangas().subscribe({
+      next: (res) => {
+        console.log(res.get(1));
+        this.mangaData.push(res.get(1).data);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('succesfully fetched data.');
+        console.log(this.mangaData);
       },
     });
   }

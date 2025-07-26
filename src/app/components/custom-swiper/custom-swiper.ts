@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { SwiperSlide } from '../swiper-slide/swiper-slide';
 
 @Component({
@@ -10,26 +18,38 @@ import { SwiperSlide } from '../swiper-slide/swiper-slide';
 })
 export class CustomSwiper implements OnInit {
   @Input() data: any;
+  @ViewChildren('slideRef', { read: ElementRef })
+  slideRefs!: QueryList<ElementRef>;
   currentIndex = 0;
-  slideWidth = 300;
-  transition = 'transform 0.3s ease';
+  transform = 'translateX(0px)';
+  transition = 'transform 0.5s ease';
   ngOnInit(): void {
     console.log('data from custom swiper:');
     console.log(this.data);
   }
-
-  get transform() {
-    return `translateX(-${this.currentIndex * this.slideWidth}px)`;
-  }
   next() {
-    if (this.currentIndex < (this.data?.length ?? 0) - 1) {
+    const slides = this.slideRefs.toArray();
+    if (this.currentIndex < slides.length - 5) {
       this.currentIndex++;
+      this.updateTransform();
     }
   }
 
   prev() {
     if (this.currentIndex > 0) {
       this.currentIndex--;
+      this.updateTransform();
     }
+  }
+
+  updateTransform() {
+    const slides = this.slideRefs.toArray();
+    let offset = 0;
+
+    for (let i = 0; i < this.currentIndex; i++) {
+      offset += slides[i].nativeElement.offsetWidth;
+    }
+
+    this.transform = `translateX(-${offset}px)`;
   }
 }

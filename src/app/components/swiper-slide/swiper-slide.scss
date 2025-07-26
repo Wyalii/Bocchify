@@ -5,6 +5,12 @@
   border-radius: 6%;
   overflow: hidden;
   flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.swiper-slide:hover {
+  transform: scale(1.05);
+  z-index: 10;
 }
 
 .item-img {
@@ -25,9 +31,12 @@
   font-weight: 600;
   color: #fff;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
 }
 
-.episode-number {
+.rank {
   position: absolute;
   bottom: 5px;
   left: 5px;
