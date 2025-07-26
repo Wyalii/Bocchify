@@ -28,4 +28,10 @@ export class App {
       this.isPixelArt() ? 'pixel-font' : 'normal-font'
     );
   });
+
+  private backgroundEffect = effect(() => {
+    const body = document.body;
+    const bgColor = this.currentTheme().backgroundColor;
+    this.renderer.setStyle(body, 'background-color', bgColor);
+  });
 }

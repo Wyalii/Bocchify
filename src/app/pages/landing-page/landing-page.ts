@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { ThemeMode } from '../../interfaces/theme-mode';
 import { FormsModule } from '@angular/forms';
 import { JikanApiService } from '../../services/jikan-api-service';
+import { TopsSlider } from '../../components/tops-slider/tops-slider';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TopsSlider],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',
 })
