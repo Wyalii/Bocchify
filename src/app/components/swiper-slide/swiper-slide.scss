@@ -8,6 +8,7 @@
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .swiper-slide:hover {
   transform: scale(1.05);
   z-index: 10;
@@ -42,5 +43,5 @@
   left: 5px;
   font-size: 1rem;
   font-weight: bold;
-  color: #facc15;
+  color: black;
 }

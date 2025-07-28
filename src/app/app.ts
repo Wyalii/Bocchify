@@ -34,4 +34,14 @@ export class App {
     const bgColor = this.currentTheme().backgroundColor;
     this.renderer.setStyle(body, 'background-color', bgColor);
   });
+
+  private pixelEffect = effect(() => {
+    const body = document.body;
+    const pixelBg = this.currentTheme().pixelBackground;
+    this.renderer.setStyle(
+      body,
+      'background-image',
+      this.isPixelArt() ? `url(${pixelBg})` : ''
+    );
+  });
 }

@@ -6,7 +6,6 @@
   justify-content: start;
   align-items: center;
   color: white;
-  padding-top: 20px;
 }
 .box1 {
   width: 100%;
@@ -61,4 +60,20 @@ hr {
 .landing-image {
   width: 450px;
   border-radius: 25%;
+}
+h3 {
+  display: flex;
+  align-self: self-end;
+  cursor: pointer;
+}
+.swiper-container {
+  width: 99%;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 900px) {
+  .pixel-art-btn,
+  .theme-btn {
+    display: none;
+  }
 }

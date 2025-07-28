@@ -4,6 +4,13 @@
     class="swiper-wrapper"
     [style.transform]="transform"
     [style.transition]="transition"
+    (mousedown)="onMouseDown($event)"
+    (mousemove)="onMouseMove($event)"
+    (mouseup)="onMouseUp($event)"
+    (mouseleave)="onMouseUp($event)"
+    (touchstart)="onTouchStart($event)"
+    (touchmove)="onTouchMove($event)"
+    (touchend)="onTouchEnd($event)"
   >
     <app-swiper-slide
       #slideRef
@@ -13,6 +20,14 @@
   </div>
 </div>
 <div class="btn-wrapper">
-  <button (click)="next()" class="swiper-btn">→</button>
-  <button (click)="prev()" class="swiper-btn">←</button>
+  <img
+    [src]="isPixelArt() ? '/PixelArt/right-arrow-pixel.png' : 'right-arrow.png'"
+    (click)="next()"
+    class="swiper-btn"
+  />
+  <img
+    [src]="isPixelArt() ? '/PixelArt/left-arrow-pixel.png' : 'left-arrow.png'"
+    (click)="prev()"
+    class="swiper-btn"
+  />
 </div>

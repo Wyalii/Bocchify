@@ -15,6 +15,7 @@ export class ThemeService {
       backgroundImagePixel: '/PixelArt/bocchi-landing-pixel.png',
       smallImage: 'bocchi.jpeg',
       smallImagePixel: '/PixelArt/bocchi-pixel.png',
+      pixelBackground: '/PixelArt/pink-bg-pixel.png',
     },
     ryo: {
       backgroundColor: '#0675c9',
@@ -22,6 +23,7 @@ export class ThemeService {
       backgroundImagePixel: '/PixelArt/ryo-landing-pixel.png',
       smallImage: 'ryo.jpg',
       smallImagePixel: '/PixelArt/ryo-pixel.png',
+      pixelBackground: '/PixelArt/blue-bg-pixel.png',
     },
     ikuyo: {
       backgroundColor: '#e80c05',
@@ -29,6 +31,7 @@ export class ThemeService {
       backgroundImagePixel: '/PixelArt/ikuyo-landing-pixel.png',
       smallImage: 'ikuyo.jpg',
       smallImagePixel: '/PixelArt/ikuyo-pixel.png',
+      pixelBackground: '/PixelArt/red-bg-pixel.jpg',
     },
     nikija: {
       backgroundColor: '#e8e805',
@@ -36,6 +39,7 @@ export class ThemeService {
       backgroundImagePixel: '/PixelArt/nikija-landing-pixel.png',
       smallImage: 'nikija.jpg',
       smallImagePixel: '/PixelArt/nikija-pixel.png',
+      pixelBackground: '/PixelArt/yellow-bg-pixel.jpg',
     },
   };
 
