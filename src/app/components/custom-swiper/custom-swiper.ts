@@ -23,7 +23,6 @@ export class CustomSwiper implements OnInit, AfterViewInit {
   @Input() data: any;
   @ViewChildren('slideRef', { read: ElementRef })
   slideRefs!: QueryList<ElementRef>;
-  currentIndex = 0;
   transform = 'translateX(0px)';
   transition = 'transform 0.5s ease';
   themeService: ThemeService = inject(ThemeService);
@@ -40,6 +39,16 @@ export class CustomSwiper implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.wrapper = this.wrapperRef.nativeElement;
+  }
+
+  private clampOffset() {
+    const slides = this.slideRefs.toArray();
+    const slideWidth = slides[0]?.nativeElement.offsetWidth || 0;
+    const minOffset = 0;
+    const maxOffset = -((slides.length - 1) * slideWidth);
+    if (this.initialOffset > minOffset) this.initialOffset = minOffset;
+    if (this.initialOffset < maxOffset) this.initialOffset = maxOffset;
+    this.transform = `translateX(${this.initialOffset}px)`;
   }
 
   onTouchStart(event: TouchEvent) {
@@ -64,6 +73,7 @@ export class CustomSwiper implements OnInit, AfterViewInit {
     const endX = event.changedTouches[0].clientX;
     const deltaX = endX - this.startX;
     this.initialOffset += deltaX;
+    this.clampOffset();
     this.transition = 'transform 0.5s ease';
   }
 
@@ -90,34 +100,38 @@ export class CustomSwiper implements OnInit, AfterViewInit {
     console.log('wrapper offset width:', this.wrapper.offsetWidth);
     if (!this.isDragging) return;
     this.isDragging = false;
-
     const endX = event.clientX;
     const deltaX = endX - this.startX;
     this.initialOffset += deltaX;
+    this.clampOffset();
     this.transition = 'transform 0.5s ease';
   }
   next() {
     const slides = this.slideRefs.toArray();
-    if (this.currentIndex < slides.length - 2) {
-      this.currentIndex++;
-      this.updateTransform();
+    const slideWidth = slides[0]?.nativeElement.offsetWidth;
+    const maxOffset = (slides.length - 1) * slideWidth;
+    const newOffset = this.initialOffset - slideWidth;
+    if (Math.abs(newOffset) <= maxOffset) {
+      this.initialOffset = newOffset;
+    } else {
+      this.initialOffset = -maxOffset;
     }
+
+    this.transform = `translateX(${this.initialOffset}px)`;
+    this.transition = 'transform 0.5s ease';
+    console.log(this.transform);
   }
 
   prev() {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-      this.updateTransform();
+    const slideWidth = this.slideRefs.toArray()[0]?.nativeElement.offsetWidth;
+    const newOffset = this.initialOffset + slideWidth;
+    if (newOffset <= 0) {
+      this.initialOffset = newOffset;
+    } else {
+      this.initialOffset = 0;
     }
-  }
-
-  updateTransform() {
-    const slides = this.slideRefs.toArray();
-    let offset = 0;
-
-    for (let i = 0; i < this.currentIndex; i++) {
-      offset += slides[i].nativeElement.offsetWidth;
-    }
-    this.transform = `translateX(-${offset}px)`;
+    this.transform = `translateX(${this.initialOffset}px)`;
+    this.transition = 'transform 0.5s ease';
+    console.log(this.transform);
   }
 }
