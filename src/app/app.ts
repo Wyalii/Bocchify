@@ -44,4 +44,16 @@ export class App {
       this.isPixelArt() ? `url(${pixelBg})` : ''
     );
   });
+
+  private inputEffect = effect(() => {
+    const body = document.body;
+    const theme = this.currentTheme().name + '-inputs';
+    body.classList.remove(
+      'ikuyo-inputs',
+      'ryo-inputs',
+      'nikija-inputs',
+      'bocchi-inputs'
+    );
+    this.renderer.addClass(body, theme);
+  });
 }

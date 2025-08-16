@@ -1,0 +1,92 @@
+<div
+  *ngIf="themeService.showModal()"
+  class="overlay"
+  [ngStyle]="{ background: currentTheme().backgroundRgba }"
+></div>
+<section class="container">
+  <div class="close-btn" (click)="closeModal()">Close</div>
+  <div class="register-header">
+    <img
+      [src]="isPixelArt() ? currentTheme().backgroundImagePixel : currentTheme().backgroundImage"
+      class="landing-image"
+    />
+    <h1>Bocchify Registration.</h1>
+  </div>
+  <form [formGroup]="registrationForm" class="form">
+    <div class="input-box">
+      <label for="username">Your Name</label>
+      <input
+        [style.backgroundColor]="currentTheme().backgroundColor"
+        id="username"
+        type="text"
+        formControlName="username"
+        class="input"
+        placeholder="Your Name"
+      />
+    </div>
+
+    <div class="input-box">
+      <label for="email">Your Email</label>
+      <input
+        [style.backgroundColor]="currentTheme().backgroundColor"
+        id="email"
+        type="email"
+        formControlName="email"
+        class="input"
+        placeholder="Your Email"
+      />
+    </div>
+
+    <div class="input-box">
+      <label for="password">Password</label>
+      <input
+        [style.backgroundColor]="currentTheme().backgroundColor"
+        id="password"
+        type="password"
+        formControlName="password"
+        class="input"
+        placeholder="Password"
+      />
+    </div>
+
+    <div class="input-box">
+      <label for="password">Confirm Password</label>
+      <input
+        [style.backgroundColor]="currentTheme().backgroundColor"
+        id="confirmPassword"
+        type="password"
+        formControlName="confirmPassword"
+        class="input"
+        placeholder="Confirm Password"
+      />
+    </div>
+
+    <label for="fileUpload" class="selected-image-container">
+      <p>select profile image.</p>
+      <img
+        *ngIf="isPixelArt()"
+        [src]="selectedImage || 'guest-pfp-pixel.png'"
+        alt="Profile Image"
+        class="selected-image"
+      />
+      <img
+        *ngIf="!isPixelArt()"
+        [src]="selectedImage || 'guest-pfp.jpg'"
+        alt="Profile Image"
+        class="selected-image"
+      />
+    </label>
+    <input
+      type="file"
+      accept="image/*"
+      id="fileUpload"
+      hidden
+      (change)="onImageSelect($event)"
+    />
+    <button class="register-btn">Register</button>
+    <div class="register-footer">
+      <p>have an account?</p>
+      <p>login</p>
+    </div>
+  </form>
+</section>

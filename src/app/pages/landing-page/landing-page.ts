@@ -5,10 +5,11 @@ import { ThemeMode } from '../../interfaces/theme-mode';
 import { FormsModule } from '@angular/forms';
 import { JikanApiService } from '../../services/jikan-api-service';
 import { CustomSwiper } from '../../components/custom-swiper/custom-swiper';
+import { ThemeControlComponent } from '../../components/theme-control-component/theme-control-component';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [CommonModule, FormsModule, CustomSwiper],
+  imports: [CommonModule, FormsModule, CustomSwiper, ThemeControlComponent],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',
 })

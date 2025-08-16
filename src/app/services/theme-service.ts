@@ -7,10 +7,13 @@ import { ThemeData } from '../interfaces/theme-data';
 export class ThemeService {
   userTheme = signal<ThemeMode>('bocchi');
   pixelMode = signal<boolean>(false);
+  showModal = signal<boolean>(true);
 
   private themeMap: Record<ThemeMode, ThemeData> = {
     bocchi: {
+      name: 'bocchi',
       backgroundColor: '#f5a2b5',
+      backgroundRgba: 'rgba(245, 162, 181, 0.3)',
       backgroundImage: 'bocchi-landing.png',
       backgroundImagePixel: '/PixelArt/bocchi-landing-pixel.png',
       smallImage: 'bocchi.jpeg',
@@ -18,7 +21,9 @@ export class ThemeService {
       pixelBackground: '/PixelArt/pink-bg-pixel.png',
     },
     ryo: {
+      name: 'ryo',
       backgroundColor: '#0675c9',
+      backgroundRgba: 'rgba(6, 117, 201, 0.3)',
       backgroundImage: 'ryo-landing.png',
       backgroundImagePixel: '/PixelArt/ryo-landing-pixel.png',
       smallImage: 'ryo.jpg',
@@ -26,7 +31,9 @@ export class ThemeService {
       pixelBackground: '/PixelArt/blue-bg-pixel.png',
     },
     ikuyo: {
+      name: 'ikuyo',
       backgroundColor: '#e80c05',
+      backgroundRgba: 'rgba(232, 12, 5, 0.3)',
       backgroundImage: 'ikuyo-landing.png',
       backgroundImagePixel: '/PixelArt/ikuyo-landing-pixel.png',
       smallImage: 'ikuyo.jpg',
@@ -34,7 +41,9 @@ export class ThemeService {
       pixelBackground: '/PixelArt/red-bg-pixel.jpg',
     },
     nikija: {
+      name: 'nikija',
       backgroundColor: '#e8e805',
+      backgroundRgba: 'rgba(232, 232, 5, 0.3)',
       backgroundImage: 'nikija-landing.png',
       backgroundImagePixel: '/PixelArt/nikija-landing-pixel.png',
       smallImage: 'nikija.jpg',
@@ -62,5 +71,8 @@ export class ThemeService {
 
   togglePixelMode() {
     this.pixelMode.set(!this.pixelMode());
+  }
+  toggleModal() {
+    this.showModal.set(!this.showModal());
   }
 }

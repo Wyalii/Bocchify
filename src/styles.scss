@@ -41,6 +41,18 @@ app-landing-page {
   height: auto;
   max-width: 1000px;
   gap: 30px;
+  margin-bottom: 30px;
+}
+app-register-page {
+  position: absolute;
+  top: 20%;
+  width: 600px;
+  max-width: 600px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 app-custom-swiper {
@@ -54,6 +66,9 @@ app-custom-swiper {
 }
 app-swiper-slide {
   height: 100%;
+}
+app-theme-control-component {
+  width: 100%;
 }
 
 .normal-font {
@@ -73,4 +88,20 @@ app-swiper-slide {
 }
 .nikija {
   background: #e8e805;
+}
+
+.ikuyo-inputs input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #e80c05 inset !important;
+}
+
+.ryo-inputs input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #0675c9 inset !important;
+}
+
+.nikija-inputs input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #e8e805 inset !important;
+}
+
+.bocchi-inputs input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #f5a2b5 inset !important;
 }

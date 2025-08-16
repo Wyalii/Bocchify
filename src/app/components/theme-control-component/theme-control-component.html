@@ -1,0 +1,14 @@
+<div class="landing-header">
+  <img
+    [src]="isPixelArt() 
+        ? currentTheme().smallImagePixel
+        : currentTheme().smallImage"
+    class="theme-btn"
+    (click)="themeService.cycleTheme()"
+  />
+  <img
+    [src]="isPixelArt() ? '/PixelArt/power-pixel.png': '/PixelArt/poweroff-pixel.png'"
+    class="pixel-art-btn"
+    (click)="themeService.togglePixelMode()"
+  />
+</div>
