@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ThemeService } from '../../services/theme-service';
 import { CommonModule } from '@angular/common';
 import { ThemeMode } from '../../interfaces/theme-mode';
@@ -19,8 +19,8 @@ export class LandingPage implements OnInit {
   isPixelArt = this.themeService.pixelMode;
   currentTheme = this.themeService.theme;
   themeOptions = ['bocchi', 'ryo', 'ikuyo', 'nikija'] as const;
-  animeData: any[] = [];
-  mangaData: any[] = [];
+  animeData = signal<any[]>([]);
+  mangaData = signal<any[]>([]);
   ngOnInit(): void {
     this.fetchTopAnimes();
     this.fetchTopMangas();
@@ -29,7 +29,8 @@ export class LandingPage implements OnInit {
     this.jikanApiService.getTopAnimes().subscribe({
       next: (res) => {
         console.log(res.get(1));
-        this.animeData.push(res.get(1).data);
+        const response = res.get(1);
+        this.animeData.set([...response.data]);
       },
       error: (err) => {
         console.log(err);
@@ -45,7 +46,8 @@ export class LandingPage implements OnInit {
     this.jikanApiService.getTopMangas().subscribe({
       next: (res) => {
         console.log(res.get(1));
-        this.mangaData.push(res.get(1).data);
+        const response = res.get(1);
+        this.mangaData.set([...response.data]);
       },
       error: (err) => {
         console.log(err);

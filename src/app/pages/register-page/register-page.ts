@@ -3,6 +3,7 @@ import { ThemeService } from '../../services/theme-service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ThemeControlComponent } from '../../components/theme-control-component/theme-control-component';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './register-page.scss',
 })
 export class RegisterPage {
+  router: Router = inject(Router);
   selectedImage: any;
   themeService: ThemeService = inject(ThemeService);
   isPixelArt = this.themeService.pixelMode;
@@ -25,8 +27,12 @@ export class RegisterPage {
 
   closeModal() {
     this.themeService.toggleModal();
+    this.router.navigate(['/']);
   }
   onImageSelect($event: Event) {
     throw new Error('Method not implemented.');
+  }
+  goToLogin() {
+    this.router.navigate(['/login']);
   }
 }
