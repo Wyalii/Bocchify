@@ -1,5 +1,5 @@
 <section class="anime-list-container">
-  <section *ngFor="let anime of topAnimes.data" class="anime-list">
+  <section *ngFor="let anime of topAnimes()?.data" class="anime-list">
     <img
       [src]="anime.images.jpg.image_url"
       (click)="navigateToAnimeDetails(anime.mal_id)"
@@ -16,9 +16,7 @@
   </section>
 </section>
 <footer class="pagination">
-  <button (click)="prevPage()" [disabled]="currentPage === 1" class="nav-btn">
-    Previous
-  </button>
+  <button (click)="prevPage()" class="nav-btn">Previous</button>
 
   <span>Page</span>
   <input
@@ -30,7 +28,5 @@
   />
   <span>of {{ totalPages }}</span>
 
-  <button (click)="nextPage()" [disabled]="!hasNextPage" class="nav-btn">
-    Next
-  </button>
+  <button (click)="nextPage()" class="nav-btn">Next</button>
 </footer>

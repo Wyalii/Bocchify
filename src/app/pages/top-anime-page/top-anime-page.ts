@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { JikanApiService } from '../../services/jikan-api-service';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../services/theme-service';
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './top-anime-page.scss',
 })
 export class TopAnimePage {
-  topAnimes: any;
+  topAnimes: any = signal(null);
   currentPage: number = 1;
   totalPages: number = 1;
   hasNextPage: boolean = false;
@@ -26,11 +26,11 @@ export class TopAnimePage {
   }
   loadAnimes(page: number) {
     this.jikanApiService.getTopAnimes(page).subscribe((response) => {
-      console.log('log from top anime list:');
+      this.currentPage = page;
       console.log(response.get(1));
-      this.topAnimes = response.get(1);
+      this.topAnimes.set(response.get(page));
       console.log('top animes list :::');
-      console.log(this.topAnimes);
+      console.log(this.topAnimes());
     });
   }
 
@@ -45,11 +45,8 @@ export class TopAnimePage {
   }
 
   nextPage() {
-    console.log('pressed next');
-    if (this.hasNextPage) {
-      this.loadAnimes(this.currentPage + 1);
-      console.log(this.loadAnimes(this.currentPage + 1));
-    }
+    this.loadAnimes(this.currentPage + 1);
+    console.log(this.loadAnimes(this.currentPage + 1));
   }
 
   navigateToAnimeDetails(AnimeId: number) {
