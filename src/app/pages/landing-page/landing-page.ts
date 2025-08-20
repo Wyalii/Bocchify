@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { JikanApiService } from '../../services/jikan-api-service';
 import { CustomSwiper } from '../../components/custom-swiper/custom-swiper';
 import { ThemeControlComponent } from '../../components/theme-control-component/theme-control-component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -14,6 +15,7 @@ import { ThemeControlComponent } from '../../components/theme-control-component/
   styleUrl: './landing-page.scss',
 })
 export class LandingPage implements OnInit {
+  router: Router = inject(Router);
   themeService: ThemeService = inject(ThemeService);
   jikanApiService: JikanApiService = inject(JikanApiService);
   isPixelArt = this.themeService.pixelMode;
@@ -60,5 +62,11 @@ export class LandingPage implements OnInit {
   }
   setTheme(newTheme: ThemeMode) {
     this.themeService.setTheme(newTheme);
+  }
+  goToTopAnimePage() {
+    this.router.navigate(['/topAnimesPage']);
+  }
+  goToTopMangaPage() {
+    this.router.navigate(['/topMangasPage']);
   }
 }
