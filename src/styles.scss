@@ -12,6 +12,7 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  transition: 1s;
 }
 
 img {
@@ -71,7 +72,8 @@ app-theme-control-component {
   width: 100%;
 }
 app-top-anime-page,
-app-top-manga-page {
+app-top-manga-page,
+app-anime-search {
   width: 90%;
   max-width: 900px;
 }

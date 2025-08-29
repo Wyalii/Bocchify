@@ -1,10 +1,16 @@
 <header>
   <div class="box1">
-    <img src="/Bochi.jpeg" class="logo" *ngIf="!isPixelArt()" />
+    <img
+      src="/Bochi.jpeg"
+      class="logo"
+      *ngIf="!isPixelArt()"
+      (click)="goToMain()"
+    />
     <img
       src="/PixelArt/bocchi-logo-pixel.png"
       class="logo"
       *ngIf="isPixelArt()"
+      (click)="goToMain()"
     />
     <p>Bocchify</p>
   </div>
@@ -12,13 +18,21 @@
     <input
       type="search"
       class="search-input"
+      [(ngModel)]="searchQuery"
+      (keydown.enter)="search()"
       [style.backgroundColor]="currentTheme().backgroundColor"
     />
-    <img src="search-logo.png" class="search-logo" *ngIf="!isPixelArt()" />
+    <img
+      src="search-logo.png"
+      class="search-logo"
+      *ngIf="!isPixelArt()"
+      (click)="search()"
+    />
     <img
       src="/PixelArt/search-logo-pixel.png"
       class="search-logo-pixel"
       *ngIf="isPixelArt()"
+      (click)="search()"
     />
   </div>
   <div class="user-box">

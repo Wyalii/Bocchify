@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { JikanApiService } from '../../services/jikan-api-service';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../services/theme-service';
@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './top-anime-page.html',
   styleUrl: './top-anime-page.scss',
 })
-export class TopAnimePage {
+export class TopAnimePage implements OnInit {
   topAnimes: any = signal(null);
   currentPage: number = 1;
   totalPages: number = 1;

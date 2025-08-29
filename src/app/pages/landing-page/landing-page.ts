@@ -39,7 +39,6 @@ export class LandingPage implements OnInit {
       },
       complete: () => {
         console.log('succesfully fetched data.');
-        console.log(this.animeData);
       },
     });
   }
@@ -56,7 +55,6 @@ export class LandingPage implements OnInit {
       },
       complete: () => {
         console.log('succesfully fetched data.');
-        console.log(this.mangaData);
       },
     });
   }

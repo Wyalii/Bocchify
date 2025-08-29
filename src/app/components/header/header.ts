@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ThemeMode } from '../../interfaces/theme-mode';
 import { Router } from '@angular/router';
+import { JikanApiService } from '../../services/jikan-api-service';
 
 @Component({
   selector: 'app-header',
@@ -13,14 +14,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.scss'],
 })
 export class Header {
+  searchQuery: string = '';
+  jikanApiService: JikanApiService = inject(JikanApiService);
   themeService: ThemeService = inject(ThemeService);
   router: Router = inject(Router);
   currentTheme = this.themeService.theme;
   isPixelArt = this.themeService.pixelMode;
+  search() {
+    this.jikanApiService.searchQuery.set(this.searchQuery);
+    this.router.navigate(['/animeSearchResults']);
+  }
   setTheme(newTheme: ThemeMode) {
     this.themeService.setTheme(newTheme);
   }
   goToLoginPage() {
     this.router.navigate(['/login']);
+  }
+  goToMain() {
+    this.router.navigate(['']);
   }
 }

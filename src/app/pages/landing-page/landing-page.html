@@ -26,11 +26,11 @@
   </div>
 </div>
 <div class="swiper-container" *ngIf="mangaData().length">
-  <h3>&lt;--- View Top Mangas</h3>
+  <h3 (click)="goToTopMangaPage()">&lt;--- View Top Mangas</h3>
   <app-custom-swiper [data]="mangaData()"></app-custom-swiper>
 </div>
 
 <div class="swiper-container" *ngIf="animeData().length">
-  <h3>&lt;--- View Top Animes</h3>
+  <h3 (click)="goToTopAnimePage()">&lt;--- View Top Animes</h3>
   <app-custom-swiper [data]="animeData()"></app-custom-swiper>
 </div>

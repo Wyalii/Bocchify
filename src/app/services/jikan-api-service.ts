@@ -9,10 +9,16 @@ import { CacheService } from './cache-service';
 export class JikanApiService {
   http: HttpClient = inject(HttpClient);
   cacheService: CacheService = inject(CacheService);
-  animeSearchResults = new Map();
-  mangaSearchResults = new Map();
+  animeSearchResults: any;
+  mangaSearchResults: any;
+  searchQuery = signal<string>('');
+  Search(search: string) {
+    this.AnimeSearch(search, 1).subscribe();
+    this.MangaSearch(search, 1).subscribe();
+  }
 
   AnimeSearch(search: string, page: number) {
+    this.searchQuery.set(search);
     let url = `https://api.jikan.moe/v4/anime?q=${search}&page=${page}`;
     return this.http.get<any>(url).pipe(
       map((response) => {
@@ -27,6 +33,7 @@ export class JikanApiService {
   }
 
   MangaSearch(search: string, page: number) {
+    this.searchQuery.set(search);
     let url = `https://api.jikan.moe/v4/manga?q=${search}&page=${page}`;
     return this.http.get<any>(url).pipe(
       map((response) => {
