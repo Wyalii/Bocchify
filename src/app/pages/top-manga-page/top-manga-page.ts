@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { JikanApiService } from '../../services/jikan-api-service';
 import { ThemeService } from '../../services/theme-service';
@@ -21,6 +21,12 @@ export class TopMangaPage {
   router: Router = inject(Router);
   themeService: ThemeService = inject(ThemeService);
 
+  private _searchEffect = effect(() => {
+    const query = this.jikanApiService.searchQuery();
+    if (query) {
+      this.loadMangas(1);
+    }
+  });
   ngOnInit() {
     this.loadMangas(this.currentPage);
   }

@@ -21,6 +21,7 @@ export class Header {
   currentTheme = this.themeService.theme;
   isPixelArt = this.themeService.pixelMode;
   search() {
+    console.log(this.searchQuery);
     this.jikanApiService.searchQuery.set(this.searchQuery);
     this.router.navigate(['/animeSearchResults']);
   }

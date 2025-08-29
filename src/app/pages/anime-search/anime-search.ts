@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { JikanApiService } from '../../services/jikan-api-service';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../services/theme-service';
@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './anime-search.html',
   styleUrl: './anime-search.scss',
 })
-export class AnimeSearch implements OnInit {
+export class AnimeSearch {
   searchedAnimes: any = signal([]);
   currentPage: number = 1;
   totalPages: number = 1;
@@ -21,10 +21,14 @@ export class AnimeSearch implements OnInit {
   router: Router = inject(Router);
   themeService: ThemeService = inject(ThemeService);
 
-  ngOnInit() {
-    this.loadAnimes(this.currentPage);
-  }
+  private _searchEffect = effect(() => {
+    const query = this.jikanApiService.searchQuery();
+    if (query) {
+      this.loadAnimes(1);
+    }
+  });
   loadAnimes(page: number) {
+    console.log(this.jikanApiService.searchQuery());
     this.jikanApiService
       .AnimeSearch(this.jikanApiService.searchQuery(), page)
       .subscribe((response) => {
