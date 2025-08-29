@@ -66,4 +66,7 @@ export class MangaSearch {
   navigateToMangaDetails(MangaId: number) {
     this.router.navigate(['/Manga', MangaId]);
   }
+  goToAnimeSearchResults() {
+    this.router.navigateByUrl('/animeSearchResults');
+  }
 }

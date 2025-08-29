@@ -70,4 +70,7 @@ export class AnimeSearch {
   navigateToAnimeDetails(AnimeId: number) {
     this.router.navigate(['/anime', AnimeId]);
   }
+  goToMangaSearchResults() {
+    this.router.navigateByUrl('/mangaSearchResults');
+  }
 }
