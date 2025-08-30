@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { SwiperSlide } from '../swiper-slide/swiper-slide';
 import { ThemeService } from '../../services/theme-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-custom-swiper',
@@ -20,6 +21,7 @@ import { ThemeService } from '../../services/theme-service';
   styleUrl: './custom-swiper.scss',
 })
 export class CustomSwiper implements OnInit, AfterViewInit {
+  router: Router = inject(Router);
   @Input() data: any;
   @ViewChildren('slideRef', { read: ElementRef })
   slideRefs!: QueryList<ElementRef>;
@@ -133,5 +135,12 @@ export class CustomSwiper implements OnInit, AfterViewInit {
     this.transform = `translateX(${this.initialOffset}px)`;
     this.transition = 'transform 0.5s ease';
     console.log(this.transform);
+  }
+
+  goToAnimeDetailsPage(AnimeId: number) {
+    this.router.navigate(['/anime', AnimeId]);
+  }
+  goToMangaDetailsPage(MangaId: number) {
+    this.router.navigate(['/manga', MangaId]);
   }
 }

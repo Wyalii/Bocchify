@@ -25,9 +25,7 @@ export class Header {
     this.jikanApiService.searchQuery.set(this.searchQuery);
     this.router.navigate(['/animeSearchResults']);
   }
-  setTheme(newTheme: ThemeMode) {
-    this.themeService.setTheme(newTheme);
-  }
+
   goToLoginPage() {
     this.router.navigate(['/login']);
   }

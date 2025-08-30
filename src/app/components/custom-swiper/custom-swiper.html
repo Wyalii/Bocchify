@@ -16,6 +16,7 @@
       #slideRef
       *ngFor="let item of data"
       [item]="item"
+      (click)="goToAnimeDetailsPage(item.mal_id)"
     ></app-swiper-slide>
   </div>
 </div>

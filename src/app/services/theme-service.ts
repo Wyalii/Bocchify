@@ -52,25 +52,20 @@ export class ThemeService {
     },
   };
 
-  currentMode = computed(() => this.userTheme());
   theme = computed(() => this.themeMap[this.userTheme()]);
-
-  setTheme(newMode: ThemeMode) {
-    this.userTheme.set(newMode);
-  }
-  getThemeData(theme: ThemeMode): ThemeData {
-    return this.themeMap[theme];
-  }
 
   cycleTheme() {
     const order: ThemeMode[] = ['bocchi', 'ryo', 'ikuyo', 'nikija'];
     const currentIndex = order.indexOf(this.userTheme());
     const nextMode = order[(currentIndex + 1) % order.length];
     this.userTheme.set(nextMode);
+    localStorage.setItem('theme', this.userTheme().toString());
   }
 
   togglePixelMode() {
-    this.pixelMode.set(!this.pixelMode());
+    const newPixelMode = !this.pixelMode();
+    this.pixelMode.set(newPixelMode);
+    localStorage.setItem('Bocchify-PixelMode', newPixelMode.toString());
   }
   toggleModal() {
     this.showModal.set(!this.showModal());

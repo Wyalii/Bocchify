@@ -24,6 +24,11 @@ export class LandingPage implements OnInit {
   animeData = signal<any[]>([]);
   mangaData = signal<any[]>([]);
   ngOnInit(): void {
+    if (localStorage.getItem('Bocchify-PixelMode') === 'true') {
+      this.themeService.pixelMode.set(true);
+    } else {
+      this.themeService.pixelMode.set(false);
+    }
     this.fetchTopAnimes();
     this.fetchTopMangas();
   }
@@ -58,9 +63,7 @@ export class LandingPage implements OnInit {
       },
     });
   }
-  setTheme(newTheme: ThemeMode) {
-    this.themeService.setTheme(newTheme);
-  }
+
   goToTopAnimePage() {
     this.router.navigate(['/topAnimesPage']);
   }

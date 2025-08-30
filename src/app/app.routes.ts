@@ -6,6 +6,7 @@ import { TopAnimePage } from './pages/top-anime-page/top-anime-page';
 import { TopMangaPage } from './pages/top-manga-page/top-manga-page';
 import { AnimeSearch } from './pages/anime-search/anime-search';
 import { MangaSearch } from './pages/manga-search/manga-search';
+import { AnimeDetails } from './pages/anime-details/anime-details';
 
 export const routes: Routes = [
   {
@@ -32,5 +33,10 @@ export const routes: Routes = [
   {
     path: 'mangaSearchResults',
     component: MangaSearch,
+  },
+  {
+    path: 'anime/:id',
+    title: 'AnimeDetails',
+    component: AnimeDetails,
   },
 ];
