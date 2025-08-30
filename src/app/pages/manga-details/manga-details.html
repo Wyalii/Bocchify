@@ -1,0 +1,118 @@
+<!-- <img
+  *ngIf="isFetchingDetails"
+  [src]="themeService.loadingImage"
+  class="loading"
+/> -->
+<ng-container>
+  <header class="manga-details-header">
+    <div class="box2">
+      <h1 class="manga-title-english">
+        English Title: {{mangaDetails().title_english}}
+      </h1>
+      <h2 class="manga-title-japanese">
+        Japanese Title: {{mangaDetails().title_japanese}}
+      </h2>
+    </div>
+    <app-theme-control-component></app-theme-control-component>
+  </header>
+  <main class="manga-details-main">
+    <aside class="manga-sidebar">
+      <picture>
+        <source
+          media="(max-width: 500px)"
+          [srcset]="mangaDetails()?.images?.webp?.large_image_url"
+        />
+        <img
+          [src]="mangaDetails()?.images?.webp?.image_url"
+          alt="Description"
+          class="manga-img"
+        />
+      </picture>
+      <section class="manga-information-mobile">
+        <div class="box1">
+          <p class="title">Information</p>
+          <!-- <div class="loading-container" *ngIf="isFetchingDetails">
+            <img [src]="this.themeService.loadingImage" class="loading" />
+          </div> -->
+          <img
+            [src]="favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'"
+            class="star"
+            (click)="addToFavouritesFunc(mangaDetails().mal_id)"
+          />
+        </div>
+        <hr />
+        <p>Type: {{mangaDetails().type}}</p>
+        <p>Status: {{mangaDetails().status}}</p>
+        <p>Genres:</p>
+        <ul class="manga-Genres">
+          <li *ngFor="let genre of mangaDetails().genres">
+            <a [href]="genre.url" target="_blank">{{genre.name}}</a>
+          </li>
+        </ul>
+
+        <p>Themes:</p>
+        <ul class="manga-Themes">
+          <li *ngFor="let theme of mangaDetails().themes">
+            <a [href]="theme.url" target="_blank">{{theme.name}}</a>
+          </li>
+        </ul>
+
+        <p>Volumes: {{mangaDetails().volumes}}</p>
+      </section>
+      <section class="manga-information">
+        <div class="box1">
+          <p class="title">Information</p>
+          <!-- <div class="loading-container" *ngIf="isFetchingDetails">
+            <img [src]="this.themeService.loadingImage" class="loading" />
+          </div> -->
+          <img
+            [src]="favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'"
+            class="star"
+            (click)="addToFavouritesFunc(mangaDetails().mal_id)"
+          />
+        </div>
+        <hr />
+        <p>Type: {{mangaDetails().type}}</p>
+        <p>Volumes: {{mangaDetails().volumes}}</p>
+        <p>Status: {{mangaDetails().status}}</p>
+
+        <p>Genres:</p>
+        <ul class="manga-Genres">
+          <li *ngFor="let genre of mangaDetails().genres">
+            <a [href]="genre.url" target="_blank">{{genre.name}}</a>
+          </li>
+        </ul>
+
+        <p>Themes:</p>
+        <ul class="manga-Themes">
+          <li *ngFor="let theme of mangaDetails().themes">
+            <a [href]="theme.url" target="_blank">{{theme.name}}</a>
+          </li>
+        </ul>
+
+        <p>Duration: {{mangaDetails().duration}}</p>
+      </section>
+
+      <section class="manga-statistics">
+        <p class="title">Statistics</p>
+        <hr />
+        <p>Score: {{mangaDetails().score}}</p>
+        <p>Scored By: {{mangaDetails().scored_by}} mal users</p>
+        <p>Ranked: #{{mangaDetails().rank}}</p>
+      </section>
+    </aside>
+
+    <section class="manga-details-section">
+      <header class="manga-miniheader">
+        <div class="rank">Rank #{{mangaDetails().rank}}</div>
+        <div class="score">Score: {{mangaDetails().score}}</div>
+        <div class="scored-by">
+          Scored By: {{mangaDetails().scored_by}} MAL users
+        </div>
+      </header>
+      <h3>Synopsis</h3>
+      <hr />
+      <p class="synopsis">{{mangaDetails().synopsis}}</p>
+    </section>
+  </main>
+</ng-container>

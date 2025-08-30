@@ -136,11 +136,4 @@ export class CustomSwiper implements OnInit, AfterViewInit {
     this.transition = 'transform 0.5s ease';
     console.log(this.transform);
   }
-
-  goToAnimeDetailsPage(AnimeId: number) {
-    this.router.navigate(['/anime', AnimeId]);
-  }
-  goToMangaDetailsPage(MangaId: number) {
-    this.router.navigate(['/manga', MangaId]);
-  }
 }

@@ -1,4 +1,7 @@
-<div class="swiper-slide">
+<div
+  class="swiper-slide"
+  (click)="item.genres[0].type === 'anime' ? goToAnimeDetailsPage(item.mal_id):goToMangaDetailsPage(item.mal_id)"
+>
   <p class="title-vertical">{{item.title }}</p>
   <img [src]="item.images.jpg.image_url" class="item-img" />
   <div class="rank">{{item.rank}}</div>

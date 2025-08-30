@@ -111,4 +111,41 @@ export class JikanApiService {
       })
     );
   }
+
+  getMangaDetails(id: string) {
+    // const token = this.cookieService.getToken();
+    const url = `https://api.jikan.moe/v4/manga/${id}/full`;
+    // if (token) {
+    //   return this.http.get<any>(url).pipe(
+    //     switchMap((response) =>
+    //       from(this.backendService.checkFavourite(id, token)).pipe(
+    //         map((isFavourited) => {
+    //           return {
+    //             data: response.data,
+    //             isFavourited: isFavourited.isFavourited,
+    //           };
+    //         })
+    //       )
+    //     ),
+    //     catchError((err) => {
+    //       this.toastr.error('Failed to load manga details.', 'Error');
+    //       console.error('Manga Details Error:', err);
+    //       return throwError(() => err);
+    //     })
+    //   );
+    // } else {
+    return this.http.get<any>(url).pipe(
+      map((response) => {
+        return {
+          data: response.data,
+          isFavourited: false,
+        };
+      }),
+      catchError((err) => {
+        // this.toastr.error('Failed to load manga details.', 'Error');
+        console.error('Manga Details Error:', err);
+        return throwError(() => err);
+      })
+    );
+  }
 }
