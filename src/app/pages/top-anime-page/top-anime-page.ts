@@ -49,7 +49,7 @@ export class TopAnimePage implements OnInit {
     console.log(this.loadAnimes(this.currentPage + 1));
   }
 
-  navigateToAnimeDetails(AnimeId: number) {
+  goToAnimeDetailsPage(AnimeId: number) {
     this.router.navigate(['/anime', AnimeId]);
   }
 }

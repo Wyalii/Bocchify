@@ -55,7 +55,7 @@ export class TopMangaPage {
     console.log(this.loadMangas(this.currentPage + 1));
   }
 
-  navigateToMangaDetails(MangaId: number) {
-    this.router.navigate(['/Manga', MangaId]);
+  goToMangaDetailsPage(MangaId: number) {
+    this.router.navigate(['/manga', MangaId]);
   }
 }

@@ -2,7 +2,7 @@
   <section *ngFor="let anime of topAnimes()?.data" class="anime-list">
     <img
       [src]="anime.images.jpg.image_url"
-      (click)="navigateToAnimeDetails(anime.mal_id)"
+      (click)="goToAnimeDetailsPage(anime.mal_id)"
       class="anime-img"
     />
     <section class="anime-info">

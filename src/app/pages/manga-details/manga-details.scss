@@ -1,9 +1,19 @@
 .manga-title-english {
   font-size: x-large;
+  overflow-x: auto;
+  white-space: nowrap;
+  @media (max-width: 500px) {
+    font-size: large;
+  }
 }
 
 .manga-title-japanese {
   font-size: large;
+  overflow-x: auto;
+  white-space: nowrap;
+  @media (max-width: 500px) {
+    font-size: medium;
+  }
 }
 .manga-details-header {
   display: flex;

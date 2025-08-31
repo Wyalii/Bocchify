@@ -62,19 +62,22 @@
     </div>
 
     <label for="fileUpload" class="selected-image-container">
-      <p>select profile image.</p>
-      <img
-        *ngIf="isPixelArt()"
-        [src]="selectedImage || 'guest-pfp-pixel.png'"
-        alt="Profile Image"
-        class="selected-image"
-      />
-      <img
-        *ngIf="!isPixelArt()"
-        [src]="selectedImage || 'guest-pfp.jpg'"
-        alt="Profile Image"
-        class="selected-image"
-      />
+      <div class="box2">
+        <p>select profile image.</p>
+        <img
+          *ngIf="isPixelArt()"
+          [src]="selectedImage() || 'guest-pfp-pixel.png'"
+          alt="Profile Image"
+          class="selected-image"
+        />
+        <img
+          *ngIf="!isPixelArt()"
+          [src]="selectedImage() || 'guest-pfp.jpg'"
+          alt="Profile Image"
+          class="selected-image"
+        />
+      </div>
+      <p class="error" *ngIf="passwordMismatch">Passwords do not match</p>
     </label>
     <input
       type="file"
@@ -83,7 +86,13 @@
       hidden
       (change)="onImageSelect($event)"
     />
-    <button class="register-btn">Register</button>
+    <button
+      class="register-btn"
+      (click)="registerUser()"
+      [disabled]="registrationForm.invalid || isRegistering"
+    >
+      Register
+    </button>
     <div class="register-footer">
       <p>have an account?</p>
       <p (click)="goToLogin()">login</p>

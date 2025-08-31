@@ -1,5 +1,7 @@
 .anime-title-english {
   font-size: x-large;
+  overflow-x: auto;
+  white-space: nowrap;
   @media (max-width: 500px) {
     font-size: large;
   }
@@ -7,6 +9,9 @@
 
 .anime-title-japanese {
   font-size: large;
+  overflow-x: auto;
+  white-space: nowrap;
+
   @media (max-width: 500px) {
     font-size: medium;
   }

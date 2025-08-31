@@ -2,7 +2,7 @@
   <section *ngFor="let manga of topMangas()?.data" class="manga-list">
     <img
       [src]="manga.images.jpg.image_url"
-      (click)="navigateToMangaDetails(manga.mal_id)"
+      (click)="goToMangaDetailsPage(manga.mal_id)"
       class="manga-img"
     />
     <section class="manga-info">
