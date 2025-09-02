@@ -111,6 +111,9 @@ export class RegisterPage {
   passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password')?.value;
     const confirm = control.get('confirmPassword')?.value;
+    if (password && password.length < 6) {
+      return { passwordTooShort: true };
+    }
 
     if (password !== confirm) {
       return { passwordMismatch: true };
@@ -119,5 +122,8 @@ export class RegisterPage {
   }
   get passwordMismatch() {
     return this.registrationForm.errors?.['passwordMismatch'];
+  }
+  get passwordLength() {
+    return this.registrationForm.errors?.['passwordTooShort'];
   }
 }

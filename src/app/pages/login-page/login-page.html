@@ -1,5 +1,4 @@
 <div
-  *ngIf="themeService.showModal()"
   class="overlay"
   [ngStyle]="{ background: currentTheme().backgroundRgba }"
 ></div>
@@ -36,10 +35,16 @@
         placeholder="Password"
       />
     </div>
-    <button class="login-btn">Login</button>
+    <button
+      class="login-btn"
+      (click)="loginUser()"
+      [disabled]="loginForm.invalid || loading"
+    >
+      Login
+    </button>
     <div class="login-footer">
       <p>don't have an account?</p>
-      <p (click)="goToRegister()">register</p>
+      <p (click)="goToRegister()" class="curs">register</p>
     </div>
   </form>
 </section>
