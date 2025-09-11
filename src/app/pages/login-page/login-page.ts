@@ -10,6 +10,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { BocchifyApiService } from '../../services/bocchify-api-service';
 import { LoginRequest } from '../../interfaces/login-request';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login-page',
@@ -29,7 +30,7 @@ export class LoginPage {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl(''),
   });
-
+  snackBar: MatSnackBar = inject(MatSnackBar);
   loginUser() {
     if (this.loginForm.invalid) {
       return;
@@ -44,10 +45,12 @@ export class LoginPage {
       next: (res) => {
         console.log(res);
         this.loading = false;
+        this.snackBar.open('Success', 'Close', { duration: 3000 });
       },
       error: (err) => {
         console.log(err);
         this.loading = false;
+        this.snackBar.open(err.error.message, 'Close', { duration: 3000 });
       },
     });
   }

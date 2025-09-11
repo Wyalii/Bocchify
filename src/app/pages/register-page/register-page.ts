@@ -20,7 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class RegisterPage {
   errorMessage: string = '';
-  isRegistering: boolean = false;
+  isLoading: boolean = false;
   snackBar: MatSnackBar = inject(MatSnackBar);
   bocchifyApiService: BocchifyApiService = inject(BocchifyApiService);
   router: Router = inject(Router);
@@ -87,7 +87,7 @@ export class RegisterPage {
     if (this.registrationForm.invalid) {
       return;
     }
-    this.isRegistering = true;
+    this.isLoading = true;
     const formData = this.registrationForm.value;
     const registrationRequest = {
       Username: formData.username!,
@@ -99,12 +99,12 @@ export class RegisterPage {
       next: (res: any) => {
         this.snackBar.open('Success', 'Close', { duration: 3000 });
         console.log(res);
-        this.isRegistering = false;
+        this.isLoading = false;
       },
       error: (err: any) => {
         this.snackBar.open(err.error.message, 'Close', { duration: 3000 });
         console.log(err);
-        this.isRegistering = false;
+        this.isLoading = false;
       },
     });
   }

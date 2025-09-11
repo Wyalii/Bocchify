@@ -8,6 +8,7 @@ import { AnimeSearch } from './pages/anime-search/anime-search';
 import { MangaSearch } from './pages/manga-search/manga-search';
 import { AnimeDetails } from './pages/anime-details/anime-details';
 import { MangaDetails } from './pages/manga-details/manga-details';
+import { ProfilePage } from './pages/profile-page/profile-page';
 
 export const routes: Routes = [
   {
@@ -44,5 +45,10 @@ export const routes: Routes = [
     path: 'manga/:id',
     title: 'MangaDetails',
     component: MangaDetails,
+  },
+  {
+    path: 'profile/:id',
+    title: 'profile',
+    component: ProfilePage,
   },
 ];

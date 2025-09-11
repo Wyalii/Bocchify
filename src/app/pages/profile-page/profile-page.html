@@ -1,0 +1,26 @@
+<div class="overlay"></div>
+<div class="container">
+  <h1>My Profile</h1>
+  <div class="wrapper">
+    <div class="box1">
+      <img src="/Bochi.jpeg" class="user-pfp" />
+      <p>Edit Img</p>
+    </div>
+    <div class="box2">
+      <p>username</p>
+      <div
+        class="input"
+        [style.backgroundColor]="currentTheme().backgroundColor"
+      ></div>
+      <p>email</p>
+      <div
+        class="input"
+        [style.backgroundColor]="currentTheme().backgroundColor"
+      ></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn close-btn">Close</button>
+    <button class="btn fav-btn">Favourites</button>
+  </div>
+</div>
