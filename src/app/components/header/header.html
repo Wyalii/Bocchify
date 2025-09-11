@@ -35,35 +35,5 @@
       (click)="search()"
     />
   </div>
-  <div class="user-box">
-    <p>username</p>
-    <img src="/guest-pfp.jpg" class="user-pfp" *ngIf="!isPixelArt()" />
-    <img
-      src="/PixelArt/guest-pfp-pixel.png"
-      class="user-pfp"
-      *ngIf="isPixelArt()"
-    />
-  </div>
-  <div class="box3">
-    <button
-      (click)="goToLoginPage()"
-      class="login-btn"
-      [style.backgroundColor]="currentTheme().backgroundColor"
-      [ngStyle]="{
-      'font-family': isPixelArt() ? 'Pixelify Sans, sans-serif' : 'Gill Sans, sans-serif'
-      }"
-    >
-      Login
-    </button>
-    <button
-      class="community-btn"
-      [style.backgroundColor]="currentTheme().backgroundColor"
-      [ngStyle]="{
-      'font-family': isPixelArt() ? 'Pixelify Sans, sans-serif' : 'Gill Sans, sans-serif'
-      }"
-    >
-      Favourites
-    </button>
-  </div>
-  <img src="burger-menu.png" class="burger-menu-logo" *ngIf="!isPixelArt()" />
+  <app-theme-control-component></app-theme-control-component>
 </header>

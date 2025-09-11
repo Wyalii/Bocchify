@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { ThemeMode } from '../../interfaces/theme-mode';
 import { Router } from '@angular/router';
 import { JikanApiService } from '../../services/jikan-api-service';
+import { ThemeControlComponent } from '../theme-control-component/theme-control-component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ThemeControlComponent],
   templateUrl: './header.html',
   styleUrls: ['./header.scss'],
 })
