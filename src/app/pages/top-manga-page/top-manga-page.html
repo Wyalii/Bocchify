@@ -1,4 +1,5 @@
 <section class="manga-list-container">
+  <app-theme-control-component></app-theme-control-component>
   <section *ngFor="let manga of topMangas()?.data" class="manga-list">
     <img
       [src]="manga.images.jpg.image_url"

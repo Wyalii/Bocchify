@@ -4,10 +4,11 @@ import { Router } from '@angular/router';
 import { ThemeService } from '../../services/theme-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ThemeControlComponent } from '../../components/theme-control-component/theme-control-component';
 
 @Component({
   selector: 'app-anime-search',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ThemeControlComponent],
   templateUrl: './anime-search.html',
   styleUrl: './anime-search.scss',
 })

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [CommonModule, FormsModule, CustomSwiper],
+  imports: [CommonModule, FormsModule, CustomSwiper, ThemeControlComponent],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',
 })

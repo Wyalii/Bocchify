@@ -6,6 +6,11 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  @media (max-width: 600px) {
+    padding: 0;
+    width: 100%;
+    justify-content: center;
+  }
 }
 .cont {
   width: 80%;
@@ -46,6 +51,9 @@ app-theme-control-component {
   padding: 20px;
   @media (max-width: 800px) {
     width: 250px;
+  }
+  @media (max-width: 420px) {
+    width: 150px;
   }
 }
 .search-logo {

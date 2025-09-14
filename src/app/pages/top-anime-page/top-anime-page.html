@@ -1,4 +1,5 @@
 <section class="anime-list-container">
+  <app-theme-control-component></app-theme-control-component>
   <section *ngFor="let anime of topAnimes()?.data" class="anime-list">
     <img
       [src]="anime.images.jpg.image_url"

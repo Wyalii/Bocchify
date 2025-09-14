@@ -4,10 +4,11 @@ import { JikanApiService } from '../../services/jikan-api-service';
 import { ThemeService } from '../../services/theme-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ThemeControlComponent } from '../../components/theme-control-component/theme-control-component';
 
 @Component({
   selector: 'app-top-manga-page',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ThemeControlComponent],
   templateUrl: './top-manga-page.html',
   styleUrl: './top-manga-page.scss',
 })
