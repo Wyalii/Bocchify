@@ -1,5 +1,4 @@
 import { Component, inject, signal } from '@angular/core';
-import { ThemeControlComponent } from '../../components/theme-control-component/theme-control-component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { JikanApiService } from '../../services/jikan-api-service';
@@ -8,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-manga-details',
-  imports: [ThemeControlComponent, CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './manga-details.html',
   styleUrl: './manga-details.scss',
 })

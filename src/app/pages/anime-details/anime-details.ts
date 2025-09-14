@@ -5,11 +5,10 @@ import { ThemeService } from '../../services/theme-service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ThemeControlComponent } from '../../components/theme-control-component/theme-control-component';
 
 @Component({
   selector: 'app-anime-details',
-  imports: [CommonModule, FormsModule, ThemeControlComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './anime-details.html',
   styleUrl: './anime-details.scss',
 })

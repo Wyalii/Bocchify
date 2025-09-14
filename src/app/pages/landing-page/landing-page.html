@@ -1,16 +1,5 @@
 <div class="landing-container">
   <div class="box1">
-    <img
-      [src]="currentTheme().backgroundImage"
-      *ngIf="!isPixelArt()"
-      class="landing-image"
-    />
-    <img
-      [src]="currentTheme().backgroundImagePixel"
-      *ngIf="isPixelArt()"
-      class="landing-image"
-    />
-
     <div class="headings-box">
       <h1 class="hero-heading">
         <span>Welcome To</span>
@@ -22,6 +11,16 @@
         <span>community.</span>
       </h2>
     </div>
+    <img
+      [src]="currentTheme().backgroundImage"
+      *ngIf="!isPixelArt()"
+      class="landing-image"
+    />
+    <img
+      [src]="currentTheme().backgroundImagePixel"
+      *ngIf="isPixelArt()"
+      class="landing-image"
+    />
   </div>
 </div>
 <div class="swiper-container" *ngIf="mangaData().length">

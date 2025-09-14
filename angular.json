@@ -23,12 +23,11 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public/",
+                "output": "./"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           },
           "configurations": {
             "production": {
@@ -77,12 +76,11 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public/",
+                "output": "./"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           }
         }
       }

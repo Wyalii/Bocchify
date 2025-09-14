@@ -1,8 +1,3 @@
-<!-- <img
-  *ngIf="isFetchingDetails"
-  [src]="themeService.loadingImage"
-  class="loading"
-/> -->
 <ng-container>
   <header class="manga-details-header">
     <div class="box2">
@@ -13,7 +8,6 @@
         Japanese Title: {{mangaDetails().title_japanese}}
       </h2>
     </div>
-    <app-theme-control-component></app-theme-control-component>
   </header>
   <main class="manga-details-main">
     <aside class="manga-sidebar">
@@ -31,9 +25,7 @@
       <section class="manga-information-mobile">
         <div class="box1">
           <p class="title">Information</p>
-          <!-- <div class="loading-container" *ngIf="isFetchingDetails">
-            <img [src]="this.themeService.loadingImage" class="loading" />
-          </div> -->
+
           <img
             [src]="favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'"
             class="star"
@@ -62,9 +54,7 @@
       <section class="manga-information">
         <div class="box1">
           <p class="title">Information</p>
-          <!-- <div class="loading-container" *ngIf="isFetchingDetails">
-            <img [src]="this.themeService.loadingImage" class="loading" />
-          </div> -->
+
           <img
             [src]="favourited ? '/star-removebg-preview.png' : '/empty-star-removebg-preview.png'"
             class="star"

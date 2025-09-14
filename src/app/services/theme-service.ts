@@ -60,6 +60,12 @@ export class ThemeService {
     const nextMode = order[(currentIndex + 1) % order.length];
     this.userTheme.set(nextMode);
     localStorage.setItem('theme', this.userTheme().toString());
+    const img = document.querySelector('.landing-image') as HTMLElement | null;
+    if (img != null) {
+      img.classList.remove('slide-in');
+      void img.offsetWidth;
+      img.classList.add('slide-in');
+    }
   }
 
   togglePixelMode() {
